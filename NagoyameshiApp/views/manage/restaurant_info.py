@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from ...models.restaurant import Restaurant
+from NagoyameshiApp.models.restaurant import Restaurant
 
 
 # ================== 管理（店舗側）画面 ==================

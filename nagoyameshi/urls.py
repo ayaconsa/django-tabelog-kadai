@@ -75,21 +75,23 @@ urlpatterns = [
     path('manage/review_confirmation/', ReviewConfirmationView.as_view(), name="manage_review_confirmation"),
     
     
-    
+    # デフォルトのadmin
     path('admin/', admin.site.urls),
-    path('admin/login/', AdminLoginView.as_view(), name="admin_login"),
+    
+    # デフォルトのadminとは変えないとうまく表示されない
+    path('admin2/login/', AdminLoginView.as_view(), name="admin_login"),
     path('admin2/top/', AdminTopView.as_view(), name="admin_top"),
-    path('admin/category_list/', CategoryListView.as_view(), name="admin_category_list"),
-    path('admin/user_list/', UserListView.as_view(), name="admin_user_list"),
-    path('admin/sales/', SalesView.as_view(), name="admin_sales"),
-    path('admin/user_number/', UserNumberView.as_view(), name="admin_user_number"),
+    path('admin2/category_list/', CategoryListView.as_view(), name="admin_category_list"),
+    path('admin2/user_list/', UserListView.as_view(), name="admin_user_list"),
+    path('admin2/sales/', SalesView.as_view(), name="admin_sales"),
+    path('admin2/user_number/', UserNumberView.as_view(), name="admin_user_number"),
     
     
-    path('admin/restaurant_list/', AdminRestaurantListView.as_view(), name="admin_restaurant_list"),
-    path('admin/restaurant_detail/', AdminRestaurantDetailView.as_view(), name="admin_restaurant_detail"),
-    path('admin/restaurant_edit/', AdminRestaurantEditView.as_view(), name="admin_restaurant_edit"),
+    path('admin2/restaurant_list/', AdminRestaurantListView.as_view(), name="admin_restaurant_list"),
+    path('admin2/restaurant_detail/', AdminRestaurantDetailView.as_view(), name="admin_restaurant_detail"),
+    path('admin2/restaurant_edit/', AdminRestaurantEditView.as_view(), name="admin_restaurant_edit"),
     
-    path('admin/booking_confirmation/', AdminBookingConfirmationView.as_view(), name="admin_booking_comfirmation"),
-    path('admin/review_confirmation/', AdminReviewConfirmationView.as_view(), name="admin_review_confirmation"),
+    path('admin2/booking_confirmation/', AdminBookingConfirmationView.as_view(), name="admin_booking_comfirmation"),
+    path('admin2/review_confirmation/', AdminReviewConfirmationView.as_view(), name="admin_review_confirmation"),
     
 ]

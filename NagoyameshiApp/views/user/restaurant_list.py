@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from ...models.restaurant import Restaurant
+from NagoyameshiApp.models.restaurant import Restaurant
 
 # ================== ユーザー画面 ==================
 # ************** 非会員でも表示できる画面 **************
