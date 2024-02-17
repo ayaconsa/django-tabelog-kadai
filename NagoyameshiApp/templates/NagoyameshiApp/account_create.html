@@ -1,0 +1,28 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+
+<div class="container">
+<form method="POST" action="{% url 'account_create' %}">
+  {% csrf_token %}
+  <label>ユーザーID</label>
+  {{ form.username }}
+  {{ form.username.errors }}
+  <label>パスワード</label>
+  {{ form.password1 }}
+  {{ form.password1.errors }}
+  <label>パスワード(確認)</label>
+  {{ form.password2 }}
+  {{ form.password2.errors }}
+  <button type = "submit">登録</button>
+</form>
+</div>
+
+{% endblock content %}

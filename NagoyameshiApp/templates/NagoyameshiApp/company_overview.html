@@ -1,0 +1,65 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+
+<div class="container">
+  <div class="row justify-content-center">
+
+    <!-- パンくずリスト -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">会社概要</li>
+      </ol>
+    </nav>
+
+    <!-- タイトル -->
+    <h1 class="mb-4 text-center">会社概要</h1>
+
+    <!-- テーブル -->
+    <div class="container my_table">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="w-25" scope="row">会社名</th>
+            <td>NAGOYAMESHI株式会社</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">所在地</th>
+            <td>〒101-0022 東京都千代田区神田練塀町300番地 住友不動産秋葉原駅前ビル5F</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">代表者</th>
+            <td>侍 太郎</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">設立</th>
+            <td>2015年3月19日</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">資本金</th>
+            <td>110,000千円</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">事業内容</th>
+            <td>飲食店等の情報提供サービス</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">従業員数</th>
+            <td>83名</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

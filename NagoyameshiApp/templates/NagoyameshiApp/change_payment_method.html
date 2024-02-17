@@ -1,0 +1,28 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+  <div class="container">
+    <!-- 備忘録）カラム使用時にrow忘れない -->
+  <div class="row">
+                          
+    <!-- パンくずリスト -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
+        <li class="breadcrumb-item active" aria-current="page">店舗詳細</li>
+      </ol>
+    </nav>
+	</div>
+
+
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock content %}

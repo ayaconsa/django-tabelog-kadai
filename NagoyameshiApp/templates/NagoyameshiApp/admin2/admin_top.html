@@ -1,0 +1,16 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/admin2/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+<a href={% url 'admin_restaurant_list'%}>店舗一覧</a>
+<a href={% url 'admin_user_list'%}>会員一覧</a>
+<a href={% url 'admin_category_list'%}>カテゴリ一覧</a>
+<a href={% url 'admin_sales'%}>売上集計</a>
+
+{% endblock content %}

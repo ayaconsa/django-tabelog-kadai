@@ -1,0 +1,338 @@
+<!-- カルーセルの上にheaderを乗せる都合でbase.htmlを継承せず -->
+
+{% load django_bootstrap5 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>nagoyameshi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+
+      <header>
+        <div class="my_header_top_page">
+          <!-- **************ロゴとナビゲーションバーここから -->
+          <nav class="navbar navbar-expand-lg bg-body-tertiary my_navbar_top_page">
+            <div class="container-fluid">
+              <!-- ロゴ -->
+              <a class="navbar-brand my_navbar_brand" href="{% url 'top' %}">Nagoyameshi</a>
+              <!-- ボタンの表示・非表示 -->
+              <button class="navbar-toggler my_navbar_btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- 新規会員登録・ログインボタン -->
+              <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link my_nav_link" href="{% url 'account_create' %}">新規会員登録</a>
+                  </li>
+                  <li class="nav-item my_nav_item">
+                    <a class="nav-link my_nav_link" href="{% url 'login' %}">ログイン</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <!-- **************ロゴとナビゲーションバーここまで -->
+
+
+          <!-- **************カルーセルここから -->
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'img/misokatsu.jpg' %}" class="d-block w-100 my_carousel_img" alt="味噌カツ">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'img/sushi.jpg' %}" class="d-block w-100 my_carousel_img" alt="寿司">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'img/humburger.jpg' %}" class="d-block w-100 my_carousel_img" alt="ハンバーガー">
+              </div>
+            </div>
+          </div>
+          <!-- **************カルーセルここまで -->
+
+          <!-- **************検索ボックスここから -->
+          <div class="container search_box">
+            <form>
+              <input type="text" placeholder="店舗名・エリア・カテゴリ" class="form-control search_txt">
+              <a class="btn search_btn" href="{% url 'restaurant_list' %}">検索</a>
+            </form>
+          </div>
+          <!-- **************検索ボックスここまで -->
+        </div>
+      </header>
+
+
+
+
+      <main>
+        <!-- **************「評価の高いお店」ここから -->
+        <div class="container mx-auto top_rated">
+          <h2>評価が高いお店</h2>
+
+          <div class="container top_rated_cards">
+          <!-- カード -->
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <!-- カード１ -->
+              <!-- 要）カードの中身修正 -->
+              <!-- 要）カラムの調整（スマホで2列になるように） -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード２ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード３ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード４ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード５ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード６ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+        <!-- **************「評価の高いお店」ここまで -->
+
+        <!-- **************「料理ジャンルから探す」ここから -->
+        <div class="container mx-auto genre">
+          <h2>料理ジャンルから探す</h2>
+
+          <!-- ジャンルキーワード群 -->
+          <div class="container">
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">和食</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">洋食</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">中華</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">フレンチ</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">イタリアン</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">名古屋コーチン</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">味噌カツ</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">うなぎ</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">焼き鳥</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">うどん・そば</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">きしめん</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">焼肉</a>
+            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">ハンバーガー</a>
+          </div>
+        </div>
+        <!-- **************「料理ジャンルから探す」ここまで -->
+
+        <!-- **************「新規掲載店舗」ここから -->
+        <div class="container mx-auto latest">
+          <h2>新規掲載店舗</h2>
+          <div class="container">
+            <!-- カード -->
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+              <!-- カード１ -->
+              <!-- 要）カードの中身修正 -->
+              <!-- 要）カラムの調整（スマホで2列になるように） -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード２ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード３ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード４ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード５ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <!-- カード６ -->
+              <div class="col">
+                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                  <div class="card h-100">
+                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <div class="card-body">
+                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <p class="card-text">
+                        秘伝のタレを使った老舗の味
+                      </p>
+                      <p>&#9733; 3.00（3件）</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+          </div>
+        </div>
+        <!-- **************「新規掲載店舗」ここまで -->
+      </main>
+
+
+      <!-- ********フッター -->
+      <footer>
+        <div class="footer_brand">
+          <a href="{% url 'top' %}">Nagoyameshi</a>
+        </div>
+        <div class="footer_link">
+          <a href="{% url 'company_overview' %}">会社概要</a>
+          <a href="{% url 'terms_of_use' %}">利用規約</a>
+        </div>
+          <div class="footer_copyright">
+            <span>&copy;NAGOYAMESHI ALL rights reserved.</span>
+          </div>
+    </div>
+  </body>
+</html>
+
+

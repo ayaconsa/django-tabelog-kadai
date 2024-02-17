@@ -1,0 +1,202 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+  <div class="container">
+    <!-- 備忘録）カラム使用時にrow忘れない -->
+  <div class="row">
+                          
+    <!-- パンくずリスト -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
+        <li class="breadcrumb-item active" aria-current="page">店舗詳細</li>
+      </ol>
+    </nav>
+	</div>
+
+    <!-- 上部 -->
+    <div>
+			<!-- タイトル -->
+			<div>
+				<h3>味噌かつサムライ</h3>
+			</div>
+			<!-- 評価 -->
+			<div>
+				<p>&#9733; 3.00（3件）</p>
+			</div>
+			<!-- お気に入り追加ボタン -->
+			<div>
+				<button>お気に入り追加</button>
+			</div>
+    </div>
+
+		<!-- タブ -->
+		<p id="my_tabcontrol">
+			<a href="#top">トップ</a>
+			<a href="#resavation">予約</a>
+			<a href="#review">レビュー</a>
+		</p>
+
+		<!-- タブの中身 -->
+		<div id="my_tabbody">
+			<!-- ******トップ****** -->
+			<div id="top">
+				<img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
+				<h2>秘伝のタレを使った老舗の味</h2>
+				<p>
+					昼はボリューム満点のランチ、夜はお酒を出してますので居酒屋としてご活用いただけます♪もちろん夜も当店自慢のボリューム満点のでっかい味噌カツやエビフライをお出ししてます☆とんかつはボリューム満点ですが、サラダ油等の植物油で揚げていますので、あっさりしててとてもヘルシー♪ぜひ一度ご賞味ください♪
+				</p>
+				<!-- テーブル -->
+				<table class="table">
+					<tbody>
+						<tr>
+							<th class="w-25" scope="row">価格帯</th>
+							<td>1,000円〜3,000円</td>
+						</tr>
+						<tr>
+							<th class="w-25" scope="row">座席数</th>
+							<td>20席</td>
+						</tr>
+						<tr>
+							<th class="w-25" scope="row">住所</th>
+							<td>愛知県名古屋市瑞穂区明前町13-33</td>
+						</tr>
+						<tr>
+							<th class="w-25" scope="row">予約・お問い合わせ</th>
+							<td>050-1234-5678</td>
+						</tr>
+						<tr>
+							<th class="w-25" scope="row">営業時間</th>
+							<td>11:00 〜 21:00</td>
+						</tr>
+						<tr>
+							<th class="w-25" scope="row">定休日</th>
+							<td>水曜日</td>
+						</tr>
+						<tr>
+							<th class="w-25" scope="row">カテゴリ</th>
+							<td>味噌カツ</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- ******予約****** -->
+			<div id="resavation">
+        <p>予約日</p>
+        <form>
+          <input type="date" name="reserve_date">
+        </form>
+				<p>予約時間</p>
+				<form>
+          <select name="reserve_time">
+            <option value="">選択してください</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="17:00">17:30</option>
+            <option value="17:30">17:00</option>
+            <option value="18:00">18:30</option>
+            <option value="18:30">18:00</option>
+            <option value="19:00">19:30</option>
+						<option value="19:30">19:00</option>
+            <option value="20:00">20:30</option>
+          </select>
+        </form>
+				<p>人数</p>
+				<form>
+          <select name="reserve_number">
+            <option value="">選択してください</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+						<option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </form>
+				<button class="btn search_btn list_search_item">予約する</button>
+
+
+
+			</div>
+			<!-- ******レビュー****** -->
+			<div id="review">
+				<!-- レビュー１ -->
+				<p>侍太郎さん</p>
+				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+				<p>
+					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+				</p>
+				<!-- レビュー２ -->
+				<p>侍太郎さん</p>
+				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+				<p>
+					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+				</p>
+				<!-- レビュー３ -->
+				<p>侍太郎さん</p>
+				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+				<p>
+					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+				</p>
+				<!-- レビュー４ -->
+				<p>侍太郎さん</p>
+				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+				<p>
+					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+				</p>
+				<!-- レビュー５ -->
+				<p>侍太郎さん</p>
+				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+				<p>
+					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+				</p>
+
+      <!-- ページネーション -->
+      <nav aria-label="Page navigation example w-100">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+				
+			</div>
+		</div>
+
+	</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock content %}

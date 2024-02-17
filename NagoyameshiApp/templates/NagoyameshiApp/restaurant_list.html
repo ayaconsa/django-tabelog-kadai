@@ -1,0 +1,248 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+  <div class="container">
+    <!-- 備忘録）カラム使用時にrow忘れない -->
+  <div class="row">
+
+    <!-- パンくずリスト -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">店舗一覧</li>
+      </ol>
+    </nav>
+
+    <!-- 左側のカラム（検索窓） -->
+    <div class="col-xl-3 col-lg-4 col-md-12 list_search_all">
+      <!-- キーワード検索 -->
+      <div class="list_search border_bottom">
+        <div class="fs-6 list_search_item">
+          <span>キーワード</span>から探す
+        </div>
+        <form>
+          <input type="text" placeholder="店舗名・カテゴリ" class="form-control list_search_box">
+          <button class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
+        </form>
+      </div>
+
+      <!-- ジャンル検索 -->
+      <div class="list_search border_bottom">
+        <div class="fs-6 list_search_item">
+          <span>ジャンル</span>から探す
+        </div>
+        <form>
+          <select name="list_genre" class="form-control list_search_box">
+            <option value="">選択してください</option>
+            <option value="和食">和食</option>
+            <option value="洋食">洋食</option>
+            <option value="中華">中華</option>
+            <option value="フレンチ">フレンチ</option>
+            <option value="イタリアン">イタリアン</option>
+            <option value="名古屋コーチン">名古屋コーチン</option>
+            <option value="味噌カツ">味噌カツ</option>
+            <option value="うなぎ">うなぎ</option>
+            <option value="おでん">おでん</option>
+            <option value="焼き鳥">焼き鳥</option>
+            <option value="うどん・そば">うどん・そば</option>
+            <option value="きしめん">きしめん</option>
+            <option value="焼肉">焼肉</option>
+            <option value="ハンバーガー">ハンバーガー</option>
+          </select>
+          <button class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
+        </form>
+      </div>
+
+      <!-- 予算から探す -->
+      <div class="list_search">
+        <div class="fs-6 list_search_item">
+          <span>予算</span>から探す
+        </div>
+        <div class="list_search_item_price">
+        <form>
+          <select name="list_price_min" class="form-control list_search_box_price">
+            <option value="1,000">1,000 円</option>
+            <option value="2,000">2,000 円</option>
+            <option value="3,000">3,000 円</option>
+            <option value="4,000">4,000 円</option>
+            <option value="5,000">5,000 円</option>
+            <option value="6,000">6,000 円</option>
+            <option value="8,000">8,000 円</option>
+            <option value="10,000">10,000 円</option>
+            <option value="15,000">15,000 円</option>
+            <option value="20,000">20,000 円</option>
+            <option value="30,000">30,000 円</option>
+          </select>
+          <p class="list_search_box_price"> 〜 </p>
+          <select name="list_price_min" class="form-control list_search_box_price">
+            <option value="1,000">1,000 円</option>
+            <option value="2,000">2,000 円</option>
+            <option value="3,000">3,000 円</option>
+            <option value="4,000">4,000 円</option>
+            <option value="5,000">5,000 円</option>
+            <option value="6,000">6,000 円</option>
+            <option value="8,000">8,000 円</option>
+            <option value="10,000">10,000 円</option>
+            <option value="15,000">15,000 円</option>
+            <option value="20,000">20,000 円</option>
+            <option value="30,000">30,000 円</option>
+          </select>
+          </div>
+          <button class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- 右側のカラム -->
+    <div class="col list_right_column d-flex flex-column align-items-center">
+      <!-- 上部 -->
+      <div class="d-flex justify-content-between align-items-center mb-3 w-100">
+        <!-- 検索された店舗数 -->
+        <div class="hit_restaurants_number">
+          <span>35</span>店舗（1〜10件）
+        </div>
+
+        <!-- 並び替え -->
+        <div>
+          <select name="sort" class="form-control">
+            <option value="掲載日が新しい順">掲載日が新しい順</option>
+            <option value="価格が安い順">価格が安い順</option>
+            <option value="価格が高い順">価格が高い順</option>
+            <option value="予約数順">予約数順</option>
+          </select>
+
+        </div>
+      </div>
+
+      <!-- 店舗カード -->
+      <div class="mb-3">
+        <!-- 店舗１ -->
+        <a href="{% url 'restaurant_detail' %}">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">味噌かつサムライ</h5>
+                <p class="card-text">秘伝のタレを使った老舗の味</p>
+                <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
+                <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </a>
+
+        <!-- 店舗２ -->
+        <a href="{% url 'restaurant_detail' %}">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">味噌かつサムライ</h5>
+                  <p class="card-text">秘伝のタレを使った老舗の味</p>
+                  <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
+                  <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+  
+        <!-- 店舗３ -->
+        <a href="{% url 'restaurant_detail' %}">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">味噌かつサムライ</h5>
+                  <p class="card-text">秘伝のタレを使った老舗の味</p>
+                  <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
+                  <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+  
+        <!-- 店舗４ -->
+        <a href="{% url 'restaurant_detail' %}">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">味噌かつサムライ</h5>
+                  <p class="card-text">秘伝のタレを使った老舗の味</p>
+                  <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
+                  <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+  
+        <!-- 店舗５ -->
+        <a href="{% url 'restaurant_detail' %}">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">味噌かつサムライ</h5>
+                  <p class="card-text">秘伝のタレを使った老舗の味</p>
+                  <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
+                  <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+  
+
+      </div>
+
+      <!-- ページネーション -->
+      <nav aria-label="Page navigation example w-100">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  </div>
+
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+<div class="container">
+	<form>
+    <input type="text" placeholder="ユーザー名" />
+    <input type="password" placeholder="パスワード" />
+    <button type="submit">ログイン</button>
+  </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% load django_bootstrap5 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <header>
+      <a href={% url 'admin_top'%}>Nagoyameshi 管理者用サイト</a>
+      <p>ログアウト</p>
+    </header>
+
+    <main>
+    {% block content %}{% endblock %}
+    </main>
+
+
+    <footer>
+      
+  </body>
+</html>
