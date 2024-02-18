@@ -6,4 +6,4 @@ from django.views.generic import TemplateView
 
 # 予約一覧
 class BookingsView(TemplateView):
-    template_name = "NagoyameshiApp/bookings.html"
+    template_name = "NagoyameshiApp/user/bookings.html"

@@ -6,4 +6,4 @@ from django.views.generic import TemplateView
 
 # アカウント削除
 class DeleteAccountView(TemplateView):
-    template_name = "NagoyameshiApp/delete_account.html"
+    template_name = "NagoyameshiApp/user/delete_account.html"

@@ -19,10 +19,10 @@ class CreateAccountView(CreateView):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect("/")
-        return render(request, "NagoyameshiApp/account_create.html", {"form": form,})
+        return render(request, "NagoyameshiApp/user/account_create.html", {"form": form,})
 
     def get(self, request, *args, **kwargs):
         form = UserCreateForm(request.POST)
-        return  render(request, "NagoyameshiApp/account_create.html", {"form": form,})
+        return  render(request, "NagoyameshiApp/user/account_create.html", {"form": form,})
 
 create_account = CreateAccountView.as_view()

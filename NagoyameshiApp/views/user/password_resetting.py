@@ -7,4 +7,4 @@ from django.views.generic import TemplateView
 
 # パスワード再設定ページ
 class PasswordResettingView(LoginRequiredMixin, TemplateView):
-    template_name = "NagoyameshiApp/password_resetting.html"
+    template_name = "NagoyameshiApp/user/password_resetting.html"

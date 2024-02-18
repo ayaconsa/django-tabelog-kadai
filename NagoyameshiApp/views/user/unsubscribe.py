@@ -6,4 +6,4 @@ from django.views.generic import TemplateView
 
 # サブスク解約
 class UnsubscribeView(TemplateView):
-    template_name = "NagoyameshiApp/unsubscribe.html"
+    template_name = "NagoyameshiApp/user/unsubscribe.html"

@@ -9,4 +9,4 @@ from NagoyameshiApp.models.user import User
 # 会員情報
 class AccountInfoView(LoginRequiredMixin, TemplateView):
     model = User
-    template_name = "NagoyameshiApp/acount_info.html"
+    template_name = "NagoyameshiApp/user/acount_info.html"
