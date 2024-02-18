@@ -6,5 +6,5 @@ from django.views.generic import TemplateView
 
 
 # 管理者（サイト運営者）トップページ
-class AdminReviewConfirmationView(TemplateView):
-    template_name = "NagoyameshiApp/admin/admin_review_confirmation.html"
+class AdminBookingConfirmationView(TemplateView):
+    template_name = "NagoyameshiApp/admin2/admin_booking_confirmation.html"

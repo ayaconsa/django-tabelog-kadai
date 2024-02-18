@@ -5,4 +5,4 @@ from django.views.generic import TemplateView
 
 # 会員一覧
 class UserListView(TemplateView):
-    template_name = "NagoyameshiApp/admin/user_list.html"
+    template_name = "NagoyameshiApp/admin2/user_list.html"

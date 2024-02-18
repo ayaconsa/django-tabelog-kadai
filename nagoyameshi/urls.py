@@ -26,18 +26,18 @@ from NagoyameshiApp.views.manage.restaurant_info import RestaurantInfoView
 from NagoyameshiApp.views.manage.booking_confirmation import BookingConfirmationView
 from NagoyameshiApp.views.manage.review_confirmation import ReviewConfirmationView
 
-from NagoyameshiApp.views.superuser.admin_login import AdminLoginView
-from NagoyameshiApp.views.superuser.admin_top import AdminTopView
-from NagoyameshiApp.views.superuser.category_list import CategoryListView
-from NagoyameshiApp.views.superuser.user_list import UserListView
-from NagoyameshiApp.views.superuser.sales import SalesView
-from NagoyameshiApp.views.superuser.user_number import UserNumberView
+from NagoyameshiApp.views.admin2.admin_login import AdminLoginView
+from NagoyameshiApp.views.admin2.admin_top import AdminTopView
+from NagoyameshiApp.views.admin2.category_list import CategoryListView
+from NagoyameshiApp.views.admin2.user_list import UserListView
+from NagoyameshiApp.views.admin2.sales import SalesView
+from NagoyameshiApp.views.admin2.user_number import UserNumberView
 
-from NagoyameshiApp.views.superuser.admin_restaurant_list import AdminRestaurantListView
-from NagoyameshiApp.views.superuser.admin_restaurant_detail import AdminRestaurantDetailView
-from NagoyameshiApp.views.superuser.admin_restaurant_edit import AdminRestaurantEditView
-from NagoyameshiApp.views.superuser.admin_booking_confirmation import AdminBookingConfirmationView
-from NagoyameshiApp.views.superuser.admin_review_confirmation import AdminReviewConfirmationView
+from NagoyameshiApp.views.admin2.admin_restaurant_list import AdminRestaurantListView
+from NagoyameshiApp.views.admin2.admin_restaurant_detail import AdminRestaurantDetailView
+from NagoyameshiApp.views.admin2.admin_restaurant_edit import AdminRestaurantEditView
+from NagoyameshiApp.views.admin2.admin_booking_confirmation import AdminBookingConfirmationView
+from NagoyameshiApp.views.admin2.admin_review_confirmation import AdminReviewConfirmationView
 
 
 
