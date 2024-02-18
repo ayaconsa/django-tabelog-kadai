@@ -91,7 +91,7 @@ urlpatterns = [
     path('admin2/restaurant_detail/', AdminRestaurantDetailView.as_view(), name="admin_restaurant_detail"),
     path('admin2/restaurant_edit/', AdminRestaurantEditView.as_view(), name="admin_restaurant_edit"),
     
-    path('admin2/booking_confirmation/', AdminBookingConfirmationView.as_view(), name="admin_booking_comfirmation"),
+    path('admin2/booking_confirmation/', AdminBookingConfirmationView.as_view(), name="admin_booking_confirmation"),
     path('admin2/review_confirmation/', AdminReviewConfirmationView.as_view(), name="admin_review_confirmation"),
     
 ]

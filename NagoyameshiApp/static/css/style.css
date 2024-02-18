@@ -345,3 +345,64 @@ footer {
 #my_tabcontrol a:nth-child(3), #my_tabbody div:nth-child(3) { 
   background-color: #ddddff; 
 }/* 3つ目のタブとその中身用の配色 */
+
+
+
+
+
+
+/* ********** admin *********** */
+
+/* 店舗詳細ページ */
+
+
+.admin_table {
+  margin: 30px;
+}
+
+.admin_table tr {
+  border-bottom: solid 1px gray;
+}
+
+.admin_table th {
+  width: 25%;
+  padding: 10px;
+}
+
+.admin_table td {
+  padding: 10px;
+}
+
+.admin_link {
+  text-decoration: none;
+}
+
+.admin_btn_parent {
+  display: flex;
+  /* ボタンの左右の揃え方 */
+  justify-content: left;
+}
+
+.admin_btn {
+  display: flex;
+    /* 文字の左右の揃え方 */
+    justify-content: center;
+    /* 上下の揃え方 */
+    align-items: center;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    color: #000000;
+    text-decoration: none;
+    background-color: #9EAFDC;
+    border-radius: 10px;
+  margin: 10px;
+  margin-left: 30px;
+}
+
+.admin_restaurant_img {
+  display: block;
+  margin: auto;
+  width: 80%;
+  margin-bottom: 30px;
+}
