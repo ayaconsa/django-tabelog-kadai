@@ -8,9 +8,24 @@
 {% block content %}
 {% load static %}
 
-<a href={% url 'admin_restaurant_list'%}>店舗一覧</a>
-<a href={% url 'admin_user_list'%}>会員一覧</a>
-<a href={% url 'admin_category_list'%}>カテゴリ一覧</a>
-<a href={% url 'admin_sales'%}>売上集計</a>
+<h1>Nagoyameshi 管理画面トップ</h1>
+
+
+<!-- リンク -->
+<div class="admin_btn_parent">
+	<div class="admin_btn">
+		<a class="admin_link" href="{% url 'admin_restaurant_list'%}">店舗一覧</a>
+	</div>
+	<div class="admin_btn">
+		<a class="admin_link" href="{% url 'admin_category_list'%}">カテゴリ一覧</a>
+	</div>
+	<div class="admin_btn">
+		<a class="admin_link" href="{% url 'admin_user_list'%}">会員一覧</a>
+	</div>
+	<div class="admin_btn">
+		<a class="admin_link" href="{% url 'admin_sales'%}">売上集計</a>
+	</div>
+</div>
+
 
 {% endblock content %}

@@ -11,17 +11,24 @@
     {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
   </head>
+
   <body>
+
     <header>
-      <a href={% url 'admin_top'%}>Nagoyameshi 管理者用サイト</a>
-      <p>ログアウト</p>
+      <div class="admin_header">
+        <div class="admin_logo">
+          <h1><a href="{% url 'admin_top'%}">Nagoyameshi 管理画面</a></h1>
+        </div>
+
+        <nav class="admin_menu_right">
+          <a href="#">ログアウト</a>
+        </nav>
+      </div>
     </header>
 
     <main>
     {% block content %}{% endblock %}
     </main>
 
-
-      
   </body>
 </html>

@@ -8,7 +8,47 @@
 {% block content %}
 {% load static %}
 
-<h1>管理者（admin）カテゴリ一覧ページ</h1>
+<h1>カテゴリ一覧</h1>
+
+<!-- パンくずリスト -->
+<nav>
+	<ol class="admin_breadcrumb">
+    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+    <li>カテゴリ一覧</li>
+	</ol>
+</nav>
+
+<!-- カテゴリリスト -->
+<table class="admin_table_category_list">
+	<tr>
+		<td>和食</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+    </td>
+	</tr>
+	<tr>
+		<td>洋食</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+    </td>
+	</tr>
+	<tr>
+		<td>焼肉</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+    </td>
+	</tr>
+	<tr>
+		<td>
+			<form>
+				<input type="text">
+			</form>
+		</td>
+		<td>
+			<a class="admin_link" href="#">追加</a>
+    </td>
+	</tr>
+
 
 
 {% endblock content %}

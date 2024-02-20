@@ -8,7 +8,93 @@
 {% block content %}
 {% load static %}
 
-<h1>管理者（admin）レビュー確認ページ</h1>
+<h1>レビュー確認（味噌かつサムライ）</h1>
 
+<!-- パンくずリスト -->
+<nav>
+	<ol class="admin_breadcrumb">
+    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+    <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
+    <li><a href="{% url 'admin_restaurant_detail' %}">店舗情報 詳細</a></li>
+    <li>レビュー確認（味噌かつサムライ）</li>
+	</ol>
+</nav>
+
+<!-- レビューリスト -->
+<table class="admin_table_list">
+	<tr>
+		<th>投稿者</th>
+		<th>評価</th>
+		<th>コメント</th>
+		<th>投稿日時</th>
+	</tr>
+	<tr>
+		<td>samurai taro</td>
+		<td>4</td>
+		<td>
+			名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+		</td>
+		<td>2023/12/12 18:00</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+		</td>
+	</tr>
+	<tr>
+		<td>samurai taro</td>
+		<td>4</td>
+		<td>
+			名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+		</td>
+		<td>2023/12/12 18:00</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+		</td>
+	</tr>
+	<tr>
+		<td>samurai taro</td>
+		<td>4</td>
+		<td>
+			名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+		</td>
+		<td>2023/12/12 18:00</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+		</td>
+	</tr>
+	<tr>
+		<td>samurai taro</td>
+		<td>4</td>
+		<td>
+			名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+		</td>
+		<td>2023/12/12 18:00</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+		</td>
+	</tr>
+	<tr>
+		<td>samurai taro</td>
+		<td>4</td>
+		<td>
+			名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+		</td>
+		<td>2023/12/12 18:00</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+		</td>
+	</tr>
+	<tr>
+		<td>samurai taro</td>
+		<td>4</td>
+		<td>
+			名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+		</td>
+		<td>2023/12/12 18:00</td>
+		<td>
+			<a class="admin_link" href="#">削除</a>
+		</td>
+	</tr>
+
+</table>
 
 {% endblock content %}

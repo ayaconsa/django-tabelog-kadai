@@ -8,7 +8,62 @@
 {% block content %}
 {% load static %}
 
-<h1>管理者（admin）予約確認ページ</h1>
+<h1>予約確認（味噌かつサムライ）</h1>
+
+<!-- パンくずリスト -->
+<nav>
+	<ol class="admin_breadcrumb">
+    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+    <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
+    <li><a href="{% url 'admin_restaurant_detail' %}">店舗情報 詳細</a></li>
+    <li>予約確認（味噌かつサムライ）</li>
+	</ol>
+</nav>
+
+<!-- 店舗リスト -->
+<table class="admin_table_list">
+	<tr>
+		<th>氏名</th>
+		<th>予約日</th>
+		<th>時間</th>
+		<th>人数</th>
+		<th>電話番号</th>
+	</tr>
+	<tr>
+		<td>山田太郎</td>
+		<td>2024/2/20</td>
+		<td>18:00</td>
+		<td>5</td>
+		<td>080-0000-1234</td>
+	</tr>
+	<tr>
+		<td>山田太郎</td>
+		<td>2024/2/20</td>
+		<td>18:00</td>
+		<td>5</td>
+		<td>080-0000-1234</td>
+	</tr>
+	<tr>
+		<td>山田太郎</td>
+		<td>2024/2/20</td>
+		<td>18:00</td>
+		<td>5</td>
+		<td>080-0000-1234</td>
+	</tr>
+	<tr>
+		<td>山田太郎</td>
+		<td>2024/2/20</td>
+		<td>18:00</td>
+		<td>5</td>
+		<td>080-0000-1234</td>
+	</tr>
+	<tr>
+		<td>山田太郎</td>
+		<td>2024/2/20</td>
+		<td>18:00</td>
+		<td>5</td>
+		<td>080-0000-1234</td>
+	</tr>
 
 
 {% endblock content %}

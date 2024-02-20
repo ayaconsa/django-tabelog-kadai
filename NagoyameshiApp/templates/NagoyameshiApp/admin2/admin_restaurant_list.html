@@ -8,7 +8,98 @@
 {% block content %}
 {% load static %}
 
-<h1>管理者（admin）店舗一覧ページ</h1>
+<h1>登録店舗一覧</h1>
+
+<!-- パンくずリスト -->
+<nav>
+	<ol class="admin_breadcrumb">
+    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+    <li>登録店舗一覧</li>
+	</ol>
+</nav>
+
+<!-- 新規登録ボタン -->
+<div class="admin_btn_parent">
+	<div class="admin_btn">
+		<a class="admin_link" href="{% url 'admin_restaurant_registration'%}">新規店舗登録</a>
+	</div>
+</div>
+
+<!-- 店舗リスト -->
+<table class="admin_table_list">
+	<tr>
+		<th>店舗ID</th>
+		<th>店舗名</th>
+		<th>カテゴリ</th>
+		<th>キャッチコピー</th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>001</td>
+		<td>味噌かつサムライ</td>
+		<td>味噌かつ</td>
+		<td>秘伝のタレを使った老舗の味</td>
+		<td>
+			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
+		</td>
+	</tr>
+	<tr>
+		<td>001</td>
+		<td>味噌かつサムライ</td>
+		<td>味噌かつ</td>
+		<td>秘伝のタレを使った老舗の味</td>
+		<td>
+			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
+		</td>
+	</tr>
+	<tr>
+		<td>001</td>
+		<td>味噌かつサムライ</td>
+		<td>味噌かつ</td>
+		<td>秘伝のタレを使った老舗の味</td>
+		<td>
+			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
+		</td>
+	</tr>
+	<tr>
+		<td>001</td>
+		<td>味噌かつサムライ</td>
+		<td>味噌かつ</td>
+		<td>秘伝のタレを使った老舗の味</td>
+		<td>
+			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
+		</td>
+	</tr>
+	<tr>
+		<td>001</td>
+		<td>味噌かつサムライ</td>
+		<td>味噌かつ</td>
+		<td>秘伝のタレを使った老舗の味</td>
+		<td>
+			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
+		</td>
+	</tr>
+	<tr>
+		<td>001</td>
+		<td>味噌かつサムライ</td>
+		<td>味噌かつ</td>
+		<td>秘伝のタレを使った老舗の味</td>
+		<td>
+			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
+		</td>
+	</tr>
+	<tr>
+		<td>001</td>
+		<td>味噌かつサムライ</td>
+		<td>味噌かつ</td>
+		<td>秘伝のタレを使った老舗の味</td>
+		<td>
+			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
+		</td>
+	</tr>
+
+</table>
+
 
 
 {% endblock content %}

@@ -36,6 +36,7 @@ from NagoyameshiApp.views.admin2.user_number import UserNumberView
 from NagoyameshiApp.views.admin2.admin_restaurant_list import AdminRestaurantListView
 from NagoyameshiApp.views.admin2.admin_restaurant_detail import AdminRestaurantDetailView
 from NagoyameshiApp.views.admin2.admin_restaurant_edit import AdminRestaurantEditView
+from NagoyameshiApp.views.admin2.admin_restaurant_registration import AdminRestaurantRegistrationView
 from NagoyameshiApp.views.admin2.admin_booking_confirmation import AdminBookingConfirmationView
 from NagoyameshiApp.views.admin2.admin_review_confirmation import AdminReviewConfirmationView
 
@@ -90,6 +91,8 @@ urlpatterns = [
     path('admin2/restaurant_list/', AdminRestaurantListView.as_view(), name="admin_restaurant_list"),
     path('admin2/restaurant_detail/', AdminRestaurantDetailView.as_view(), name="admin_restaurant_detail"),
     path('admin2/restaurant_edit/', AdminRestaurantEditView.as_view(), name="admin_restaurant_edit"),
+    path('admin2/restaurant_registration/', AdminRestaurantRegistrationView.as_view(), name="admin_restaurant_registration"),
+    
     
     path('admin2/booking_confirmation/', AdminBookingConfirmationView.as_view(), name="admin_booking_confirmation"),
     path('admin2/review_confirmation/', AdminReviewConfirmationView.as_view(), name="admin_review_confirmation"),
