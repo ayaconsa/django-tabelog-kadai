@@ -1,22 +1,40 @@
-<!-- base.htmlを継承する -->
-{% extends 'NagoyameshiApp/admin2/admin2_base.html' %}
-
-<!-- ページタイトル -->
-{% block title %}nagoyameshi{% endblock %}
-
-<!-- コンテンツ本体 -->
-{% block content %}
+{% load django_bootstrap5 %}
 {% load static %}
 
-<h1>管理者（admin）ログインページ</h1>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>nagoyameshi管理画面</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
 
-<form>
-	<p>メールアドレス</p>
-	<input type="text"/>
-	<p>パスワード</p>
-	<input type="text"/>
-	<button type="submit">ログイン</button>
-</form>
+  <body>
 
+    <header>
+      <div class="admin_header">
+        <div class="admin_logo">
+          <h1>Nagoyameshi 管理画面</h1>
+        </div>
 
-{% endblock content %}
+      </div>
+    </header>
+
+    <main>
+			<h1>管理者ログイン</h1>
+
+			<form class="admin_login">
+				<p>メールアドレス</p>
+				<input type="text" />
+				<p>パスワード</p>
+				<input type="password" />
+				<button type="submit">ログイン</button>
+			</form>
+
+    </main>
+
+  </body>
+</html>

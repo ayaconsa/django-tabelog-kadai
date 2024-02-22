@@ -2,13 +2,70 @@
 {% extends 'NagoyameshiApp/admin2/admin2_base.html' %}
 
 <!-- ページタイトル -->
-{% block title %}nagoyameshi{% endblock %}
+{% block title %}nagoyameshi管理画面{% endblock %}
 
 <!-- コンテンツ本体 -->
 {% block content %}
 {% load static %}
 
 <h1>売上集計</h1>
+
+<!-- パンくずリスト -->
+<nav>
+	<ol class="admin_breadcrumb">
+    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+    <li>売上集計</li>
+	</ol>
+</nav>
+
+<h2>年間売上</h2>
+
+<!-- 年間売上の表 -->
+<table class="admin_table_list">
+	<tr>
+		<th></th>
+		<th>売上</th>
+		<th>会員数（締日時点）</th>
+	</tr>
+	<tr>
+		<td>2023年</td>
+		<td>100,000円</td>
+		<td>100</td>
+	</tr>
+</table>
+
+
+
+<h2>月間売上</h2>
+
+<!-- 月間売上の表 -->
+<table class="admin_table_list">
+	<tr>
+		<th></th>
+		<th>売上</th>
+		<th>会員数（締日時点）</th>
+	</tr>
+	<tr>
+		<td>2023/12</td>
+		<td>10,000円</td>
+		<td>100</td>
+	</tr>
+	<tr>
+		<td>2023/11</td>
+		<td>10,000円</td>
+		<td>90</td>
+	</tr>
+	<tr>
+		<td>2023/10</td>
+		<td>10,000円</td>
+		<td>80</td>
+	</tr>
+	<tr>
+		<td>2023/09</td>
+		<td>10,000円</td>
+		<td>70</td>
+	</tr>
+</table>
 
 
 

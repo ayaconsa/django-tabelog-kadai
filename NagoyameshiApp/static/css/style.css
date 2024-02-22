@@ -500,3 +500,30 @@ h2 {
 .admin_table_category_list td a {
   padding-left: 15px;
 }
+
+.admin_login {
+  width: 300px;
+  justify-content: left;
+}
+
+.admin_login p {
+  padding: 15px 0 5px 0;
+  margin-bottom: 0;
+  margin-left: 15px;
+}
+
+.admin_login input[type="text"],
+.admin_login input[type="password"] {
+  width: 90%;
+  margin-left: 15px;
+}
+
+.admin_login button[type="submit"] {
+  margin: 30px 0 0 15px;
+  padding: 5px 15px;
+  background-color: #2B2A4C;
+  color: white;
+  border: none;
+  
+}
+
