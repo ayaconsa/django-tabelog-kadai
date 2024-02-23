@@ -349,6 +349,78 @@ h2 {
 
 
 
+.user_login {
+  width: 300px;
+  margin: 15px auto;
+  position: relative;
+  text-align: center;
+}
+
+.user_login h1 {
+  text-align: center;
+  padding: 30px;
+  border-bottom: 1px solid;
+}
+
+.user_login input[type="text"],
+.user_login input[type="password"] {
+  width: 90%;
+  margin: 20px 0;
+  padding: 5px;
+}
+
+.auto_login {
+  padding: 20px 0;
+  border-bottom: 1px solid;
+}
+
+.user_login button[type="submit"] {
+  margin-top: 20px;
+  padding: 8px 15px;
+  background-color: #B31312;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 60%;
+  text-align: center;
+}
+
+.user_login_a {
+  margin: 15px;
+}
+
+.user_login a {
+  color: #B31312;
+  text-decoration: none;
+}
+
+.account_create {
+  width: 90%;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.account_create_row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.account_create_label {
+  width: 30%;
+  text-align: left;
+}
+
+.account_create_form {
+  width: 50%;
+}
+
+
+
+
+
+
+
 
 
 /* ********** admin *********** */

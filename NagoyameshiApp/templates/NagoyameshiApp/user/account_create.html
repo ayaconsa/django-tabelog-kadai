@@ -8,21 +8,24 @@
 {% block content %}
 {% load static %}
 
+<div class="account_create">
+  <form>
+    <h1>新規会員登録</h1>
+    <div>
+      <label for="name" class="account_create_row">
+        <div class="account_create_label">
+          <span>氏名</span>
+          <span>必須</span>
+        </div>
+      </label>
+      <div class="account_create_form">
+        <input type="text" name="name" placeholder="侍 太郎">
+      </div>
 
-<div class="container">
-<form method="POST" action="{% url 'account_create' %}">
-  {% csrf_token %}
-  <label>ユーザーID</label>
-  {{ form.username }}
-  {{ form.username.errors }}
-  <label>パスワード</label>
-  {{ form.password1 }}
-  {{ form.password1.errors }}
-  <label>パスワード(確認)</label>
-  {{ form.password2 }}
-  {{ form.password2.errors }}
-  <button type = "submit">登録</button>
-</form>
+    </div>
+
+  </form>
 </div>
+
 
 {% endblock content %}

@@ -8,12 +8,24 @@
 {% block content %}
 {% load static %}
 
-<div class="container">
-	<form>
-    <input type="text" placeholder="ユーザー名" />
+<div class="user_login">
+  <form>
+    <h1>ログイン</h1>
+    <input type="text" placeholder="メールアドレス" />
     <input type="password" placeholder="パスワード" />
+    <div class="auto_login">
+      <input type="checkbox" name="auto_login" />
+      <label for="auto_login">次回から自動的にログインする</label>
+    </div>
     <button type="submit">ログイン</button>
   </form>
+  <div class="user_login_a">
+    <a href="{% url 'password_resetting'%}">パスワードをお忘れの方はこちら</a>
+  </div>
+  <div class="user_login_a">
+    <a href="{% url 'account_create'%}">新規会員登録はこちら</a>
+  </div>
 </div>
+
 
 {% endblock content %}
