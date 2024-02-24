@@ -395,25 +395,66 @@ h2 {
 }
 
 .account_create {
-  width: 90%;
+  width: 500px;
   margin: 15px auto;
   text-align: center;
 }
 
-.account_create_row {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.account_create_label {
-  width: 30%;
-  text-align: left;
+.account_create h1 {
+  padding: 30px;
+  border-bottom: 1px solid;
 }
 
 .account_create_form {
-  width: 50%;
+  border-bottom: 1px solid;
+  text-align: left;
+  padding: 20px;
 }
+
+.account_create label {
+  margin: 10px 0;
+}
+
+.account_create_title {
+  display: inline-block;
+  min-width: 200px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.account_create_required {
+  background-color: #B31312;
+  color: #EEE2DE;
+  font-size: small;
+  padding: 5px;
+  border-radius: 5px;
+  vertical-align: middle;
+}
+
+.account_create_no_required {
+  font-size: small;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.account_create button[type="submit"] {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 8px 15px;
+  background-color: #B31312;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 60%;
+  text-align: center;
+}
+
+.account_create a {
+  color: #B31312;
+  text-decoration: none;
+  text-align: center;
+}
+
 
 
 

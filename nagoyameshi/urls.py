@@ -79,7 +79,7 @@ urlpatterns = [
     # デフォルトのadmin
     path('admin/', admin.site.urls),
     
-    # デフォルトのadminとは変えないとうまく表示されない
+    # デフォルトのadminとは変えないとうまく表示されないのでadmin2にした
     path('admin2/login/', AdminLoginView.as_view(), name="admin_login"),
     path('admin2/top/', AdminTopView.as_view(), name="admin_top"),
     path('admin2/category_list/', CategoryListView.as_view(), name="admin_category_list"),
