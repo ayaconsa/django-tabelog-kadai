@@ -1,12 +1,13 @@
 from typing import Any
 from django.views.generic import CreateView
 from NagoyameshiApp.models.restaurant import Restaurant
+from django import forms
 
 
 # ================== 管理者（サイト運営側）画面 ==================
 
 
-# 管理者（サイト運営者）トップページ
+# 店舗登録画面
 class AdminRestaurantRegistrationView(CreateView):
     model = Restaurant
     fields = '__all__'
@@ -24,3 +25,4 @@ class AdminRestaurantRegistrationView(CreateView):
         name.widget.attrs = {"placeholder":"店舗名を入力してください"}
         
         return context
+    

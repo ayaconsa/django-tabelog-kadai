@@ -1,0 +1,35 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/admin2/admin2_base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi管理画面{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+<h1>店舗情報 削除</h1>
+
+<!-- パンくずリスト -->
+<nav>
+	<ol class="admin_breadcrumb">
+    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+    <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
+    <li>「{{ restaurant.name }}」店舗情報 削除</li>
+	</ol>
+</nav>
+
+<form method="post">
+	{% csrf_token %}
+	店舗情報を本当に削除しますか？<br>
+	店舗名：{{ restaurant.name }}<br>
+	<br>
+	<input type="submit" value="削除">
+	<br>
+	<br>
+	<br>
+	<a href="{% url 'admin_restaurant_list' %}">戻る</a><br>
+</form>
+
+
+{% endblock content %}

@@ -19,6 +19,9 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="登録日時")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新日時")
     
+    def __str__(self):
+        return self.user.username
+    
     class Meta:
         app_label = 'NagoyameshiApp'
 

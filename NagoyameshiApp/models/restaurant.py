@@ -1,5 +1,6 @@
 from django.db import models
 from NagoyameshiApp.models.category import Category
+from django.urls import reverse
 
 class Restaurant(models.Model):
     
@@ -18,6 +19,9 @@ class Restaurant(models.Model):
     img = models.ImageField(blank=True, default="img/noImage.png", verbose_name="店舗画像")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="登録日時")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新日時")
+    
+    def get_absolute_url(self):
+        return reverse('admin_restaurant_detail', args=[self.pk])
     
     class Meta:
         app_label = 'NagoyameshiApp'
