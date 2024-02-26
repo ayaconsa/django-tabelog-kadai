@@ -89,8 +89,8 @@ urlpatterns = [
     
     
     path('admin2/restaurant_list/', AdminRestaurantListView.as_view(), name="admin_restaurant_list"),
-    path('admin2/restaurant_detail/', AdminRestaurantDetailView.as_view(), name="admin_restaurant_detail"),
-    path('admin2/restaurant_edit/', AdminRestaurantEditView.as_view(), name="admin_restaurant_edit"),
+    path('admin2/restaurant_detail/<int:pk>', AdminRestaurantDetailView.as_view(), name="admin_restaurant_detail"),
+    path('admin2/restaurant_edit/<int:pk>', AdminRestaurantEditView.as_view(), name="admin_restaurant_edit"),
     path('admin2/restaurant_registration/', AdminRestaurantRegistrationView.as_view(), name="admin_restaurant_registration"),
     
     

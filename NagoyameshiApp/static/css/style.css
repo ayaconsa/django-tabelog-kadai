@@ -640,3 +640,17 @@ h2 {
   
 }
 
+.restaurant-regist {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.restaurant-regist p {
+  width: 80%;
+  margin: 25px auto;
+}
+
+.restaurant-regist label {
+  min-width: 20%;
+}
+

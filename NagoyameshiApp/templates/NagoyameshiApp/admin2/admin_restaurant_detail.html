@@ -16,72 +16,72 @@
     <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
     <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
     <li>店舗情報 詳細</li>
-  </ol>
+	</ol>
 </nav>
 
 
 <div class="admin_btn_parent">
 	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_restaurant_edit'%}">店舗情報編集</a>
+		<a class="admin_link" href="{% url 'admin_restaurant_edit' pk=restaurant.pk %}">店舗情報編集</a>
 	</div>
 	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_booking_confirmation'%}">予約確認</a>
+		<a class="admin_link" href="{% url 'admin_booking_confirmation' %}">予約確認</a>
 	</div>
 	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_review_confirmation'%}">レビュー確認</a>
+		<a class="admin_link" href="{% url 'admin_review_confirmation' %}">レビュー確認</a>
 	</div>
 </div>
 
-
+<!-- メモ：Restrantオブジェクトから自動的にrestrantという名前で渡される -->
 <table class="admin_table">
 	<tbody>
 		<tr>
 			<th>店舗名</th>
-			<td>味噌かつサムライ</td>
+			<td>{{ restaurant.name }}</td>
 		</tr>
 		<tr>
 			<th>カテゴリ</th>
-			<td>味噌かつ</td>
+			<td>{{ restaurant.category}}</td>
 		</tr>
 		<tr>
 			<th>価格（最大）</th>
-			<td>3000</td>
+			<td>{{ restaurant.price_max }}</td>
 		</tr>
 		<tr>
 			<th>価格（最小）</th>
-			<td>1000</td>
+			<td>{{ restaurant.price_min }}</td>
 		</tr>
 		<tr>
 			<th>座席数</th>
-			<td>20</td>
+			<td>あとでmodel変更する</td>
 		</tr>
 		<tr>
 			<th>住所</th>
-			<td>愛知県名古屋市瑞穂区明前町13-33</td>
+			<td>{{ restaurant.address }}</td>
 		</tr>
 		<tr>
 			<th>電話番号</th>
-			<td>050-1234-5678</td>
+			<td>{{ restaurant.tel }}</td>
 		</tr>
 		<tr>
 			<th>営業時間（開始）</th>
-			<td>11:00</td>
+			<td>{{ restaurant.open_time }}</td>
 		</tr>
 		<tr>
 			<th>営業時間（終了）</th>
-			<td>20:00</td>
+			<td>{{ restaurant.close_time }}</td>
 		</tr>
 		<tr>
 			<th>定休日</th>
-			<td>水曜日</td>
+			<td>{{ restaurant.close_day }}</td>
 		</tr>
 		<tr>
 			<th>キャッチコピー</th>
-			<td>秘伝のタレを使った老舗の味</td>
+			<td>{{ restaurant.catch_copy }}</td>
 		</tr>
 		<tr>
 			<th>説明</th>
-			<td>昼はボリューム満点のランチ、夜はお酒を出してますので居酒屋としてご活用いただけます♪もちろん夜も当店自慢のボリューム満点のでっかい味噌カツやエビフライをお出ししてます☆とんかつはボリューム満点ですが、サラダ油等の植物油で揚げていますので、あっさりしててとてもヘルシー♪ぜひ一度ご賞味ください♪</td>
+			<td>{{ restaurant.explanation }}</td>
 		</tr>
 		<tr>
 			<th>評価</th>

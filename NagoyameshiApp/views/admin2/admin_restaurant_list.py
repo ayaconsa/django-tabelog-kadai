@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from NagoyameshiApp.models.restaurant import Restaurant
 
 
 
@@ -6,5 +7,6 @@ from django.views.generic import TemplateView
 
 
 # 管理者（サイト運営者）トップページ
-class AdminRestaurantListView(TemplateView):
+class AdminRestaurantListView(ListView):
+    model = Restaurant
     template_name = "NagoyameshiApp/admin2/admin_restaurant_list.html"

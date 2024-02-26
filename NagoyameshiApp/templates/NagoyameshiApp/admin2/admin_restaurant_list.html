@@ -34,70 +34,17 @@
 		<th>キャッチコピー</th>
 		<th></th>
 	</tr>
+	{% for Restaurant in object_list %}
 	<tr>
-		<td>001</td>
-		<td>味噌かつサムライ</td>
-		<td>味噌かつ</td>
-		<td>秘伝のタレを使った老舗の味</td>
+		<td>{{ Restaurant.id }}</td>
+		<td>{{ Restaurant.name }}</td>
+		<td>{{ Restaurant.category }}</td>
+		<td>{{ Restaurant.catch_copy }}</td>
 		<td>
-			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
+			<button onclick="location.href='{% url 'admin_restaurant_detail' pk=Restaurant.pk %}'" class="admin_table_link">詳細</button>
 		</td>
 	</tr>
-	<tr>
-		<td>001</td>
-		<td>味噌かつサムライ</td>
-		<td>味噌かつ</td>
-		<td>秘伝のタレを使った老舗の味</td>
-		<td>
-			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
-		</td>
-	</tr>
-	<tr>
-		<td>001</td>
-		<td>味噌かつサムライ</td>
-		<td>味噌かつ</td>
-		<td>秘伝のタレを使った老舗の味</td>
-		<td>
-			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
-		</td>
-	</tr>
-	<tr>
-		<td>001</td>
-		<td>味噌かつサムライ</td>
-		<td>味噌かつ</td>
-		<td>秘伝のタレを使った老舗の味</td>
-		<td>
-			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
-		</td>
-	</tr>
-	<tr>
-		<td>001</td>
-		<td>味噌かつサムライ</td>
-		<td>味噌かつ</td>
-		<td>秘伝のタレを使った老舗の味</td>
-		<td>
-			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
-		</td>
-	</tr>
-	<tr>
-		<td>001</td>
-		<td>味噌かつサムライ</td>
-		<td>味噌かつ</td>
-		<td>秘伝のタレを使った老舗の味</td>
-		<td>
-			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
-		</td>
-	</tr>
-	<tr>
-		<td>001</td>
-		<td>味噌かつサムライ</td>
-		<td>味噌かつ</td>
-		<td>秘伝のタレを使った老舗の味</td>
-		<td>
-			<a class="admin_table_link" href="{% url 'admin_restaurant_detail' %}">詳細</a>
-		</td>
-	</tr>
-
+	{% endfor %}
 </table>
 
 
