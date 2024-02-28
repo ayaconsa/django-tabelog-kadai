@@ -1,5 +1,5 @@
 from django.db import models
-from NagoyameshiApp.models.user import User
+from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.models.restaurant import Restaurant
 
 
@@ -12,7 +12,7 @@ class Review(models.Model):
         (5, '★★★★★'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     
     score = models.PositiveSmallIntegerField(choices=SCORE, default='3', verbose_name="評価")

@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .models.user import User
+from NagoyameshiApp.models.custom_user import CustomUser
 
 class UserCreateForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -9,5 +9,5 @@ class UserCreateForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
     class Meta(UserCreationForm.Meta):
-        model = User
+        model = CustomUser
         fields = UserCreationForm.Meta.fields

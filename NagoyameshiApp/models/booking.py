@@ -1,5 +1,5 @@
 from django.db import models
-from NagoyameshiApp.models.user import User
+from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.models.restaurant import Restaurant
 
 
@@ -9,7 +9,7 @@ class Booking(models.Model):
     )
     
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     
     date = models.DateTimeField(default='', verbose_name="予約日")

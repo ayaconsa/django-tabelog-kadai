@@ -1,11 +1,11 @@
 from django.db import models
-from NagoyameshiApp.models.user import User
+from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.models.restaurant import Restaurant
 
 
 class Favorite(models.Model):
     
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="登録日時")

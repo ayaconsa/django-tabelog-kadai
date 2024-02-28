@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from NagoyameshiApp.models.user import User
+from NagoyameshiApp.models.custom_user import CustomUser
 
 
 
@@ -8,5 +8,5 @@ from NagoyameshiApp.models.user import User
 
 # 会員情報
 class AccountInfoView(LoginRequiredMixin, TemplateView):
-    model = User
+    model = CustomUser
     template_name = "NagoyameshiApp/user/acount_info.html"
