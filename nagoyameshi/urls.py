@@ -26,21 +26,21 @@ from NagoyameshiApp.views.manage.restaurant_info import RestaurantInfoView
 from NagoyameshiApp.views.manage.booking_confirmation import BookingConfirmationView
 from NagoyameshiApp.views.manage.review_confirmation import ReviewConfirmationView
 
-from NagoyameshiApp.views.admin2.admin_login import AdminLoginView
-from NagoyameshiApp.views.admin2.admin_top import AdminTopView
-from NagoyameshiApp.views.admin2.category_list import CategoryListView
-from NagoyameshiApp.views.admin2.user_list import UserListView
-from NagoyameshiApp.views.admin2.sales import SalesView
-from NagoyameshiApp.views.admin2.user_number import UserNumberView
+from NagoyameshiApp.views.admin2.admin2_login import AdminLoginView
+from NagoyameshiApp.views.admin2.admin2_top import AdminTopView
+from NagoyameshiApp.views.admin2.admin2_category_list import CategoryListView
+from NagoyameshiApp.views.admin2.admin2_user_list import UserListView
+from NagoyameshiApp.views.admin2.admin2_sales import SalesView
+from NagoyameshiApp.views.admin2.admin2_user_number import UserNumberView
 
-from NagoyameshiApp.views.admin2.admin_restaurant_list import AdminRestaurantListView
-from NagoyameshiApp.views.admin2.admin_restaurant_detail import AdminRestaurantDetailView
-from NagoyameshiApp.views.admin2.admin_restaurant_edit import AdminRestaurantEditView
-from NagoyameshiApp.views.admin2.admin_restaurant_delete import AdminRestaurantDeleteView
+from NagoyameshiApp.views.admin2.admin2_restaurant_list import AdminRestaurantListView
+from NagoyameshiApp.views.admin2.admin2_restaurant_detail import AdminRestaurantDetailView
+from NagoyameshiApp.views.admin2.admin2_restaurant_edit import AdminRestaurantEditView
+from NagoyameshiApp.views.admin2.admin2_restaurant_delete import AdminRestaurantDeleteView
 
-from NagoyameshiApp.views.admin2.admin_restaurant_registration import AdminRestaurantRegistrationView
-from NagoyameshiApp.views.admin2.admin_booking_confirmation import AdminBookingConfirmationView
-from NagoyameshiApp.views.admin2.admin_review_confirmation import AdminReviewConfirmationView
+from NagoyameshiApp.views.admin2.admin2_restaurant_registration import AdminRestaurantRegistrationView
+from NagoyameshiApp.views.admin2.admin2_booking_confirmation import AdminBookingConfirmationView
+from NagoyameshiApp.views.admin2.admin2_review_confirmation import AdminReviewConfirmationView
 
 
 
