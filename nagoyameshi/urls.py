@@ -83,7 +83,7 @@ urlpatterns = [
     
     # デフォルトのadminとは変えないとうまく表示されないのでadmin2にした
     path('admin2/login/', AdminLoginView.as_view(), name="admin_login"),
-    path('admin2/top/', AdminTopView.as_view(), name="admin_top"),
+    path('admin2/', AdminTopView.as_view(), name="admin_top"),
     path('admin2/category_list/', CategoryListView.as_view(), name="admin_category_list"),
     path('admin2/user_list/', UserListView.as_view(), name="admin_user_list"),
     path('admin2/sales/', SalesView.as_view(), name="admin_sales"),

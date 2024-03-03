@@ -20,33 +20,26 @@
 
 <!-- カテゴリリスト -->
 <table class="admin_table_category_list">
+	{% for category in object_list %}
 	<tr>
-		<td>和食</td>
+		<td>{{ category.name }}</td>
 		<td>
-			<a class="admin_link" href="#">削除</a>
+			<!-- category_delete未設定 -->
+			<button onclick="location.href='{% url 'category_delete.pk' %}'" class="admin_link">削除</button>
     </td>
 	</tr>
+	{% endfor %}
 	<tr>
-		<td>洋食</td>
-		<td>
-			<a class="admin_link" href="#">削除</a>
-    </td>
-	</tr>
-	<tr>
-		<td>焼肉</td>
-		<td>
-			<a class="admin_link" href="#">削除</a>
-    </td>
-	</tr>
-	<tr>
-		<td>
-			<form>
-				<input type="text">
-			</form>
-		</td>
-		<td>
-			<a class="admin_link" href="#">追加</a>
-    </td>
+		<form method="post" enctype="multipart/form-data">
+			<td>
+				<!-- 後ほど変更する -->
+				{% csrf_token %}
+				{{ form.as_p }}
+			</td>
+			<td>
+				<input type="submit" value="追加" class="admin_btn">
+			</td>
+		</form>
 	</tr>
 
 
