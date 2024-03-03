@@ -29,6 +29,10 @@ from NagoyameshiApp.views.manage.review_confirmation import ReviewConfirmationVi
 from NagoyameshiApp.views.admin2.admin2_login import AdminLoginView
 from NagoyameshiApp.views.admin2.admin2_top import AdminTopView
 from NagoyameshiApp.views.admin2.admin2_category_list import CategoryListView
+from NagoyameshiApp.views.admin2.admin2_category_delete import CategoryDeleteView
+from NagoyameshiApp.views.admin2.admin2_category_registration import CategoryRegistrationView
+
+
 from NagoyameshiApp.views.admin2.admin2_user_list import UserListView
 from NagoyameshiApp.views.admin2.admin2_sales import SalesView
 from NagoyameshiApp.views.admin2.admin2_user_number import UserNumberView
@@ -85,6 +89,9 @@ urlpatterns = [
     path('admin2/login/', AdminLoginView.as_view(), name="admin_login"),
     path('admin2/', AdminTopView.as_view(), name="admin_top"),
     path('admin2/category_list/', CategoryListView.as_view(), name="admin_category_list"),
+    path('admin2/category_confirm_delete/<int:pk>', CategoryDeleteView.as_view(), name="admin_category_delete"),
+    path('admin2/category_registration/', CategoryRegistrationView.as_view(), name="admin_category_registration"),
+    
     path('admin2/user_list/', UserListView.as_view(), name="admin_user_list"),
     path('admin2/sales/', SalesView.as_view(), name="admin_sales"),
     path('admin2/user_number/', UserNumberView.as_view(), name="admin_user_number"),

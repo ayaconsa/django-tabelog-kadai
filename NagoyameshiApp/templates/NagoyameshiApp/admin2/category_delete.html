@@ -1,0 +1,29 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/admin2/admin2_base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi管理画面{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+<h1>カテゴリ一覧</h1>
+
+<!-- パンくずリスト -->
+<nav>
+	<ol class="admin_breadcrumb">
+    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+    <li><a href="{% url 'admin_category_list' %}">カテゴリ一覧</a></li>
+    <li>カテゴリ削除</li>
+	</ol>
+</nav>
+ 
+ <form method="post">
+     {% csrf_token %}
+     以下のカテゴリを削除してもよろしいですか？<br>
+     {{ object }}<br>
+     <a href="{% url 'admin_category_list' %}">戻る</a>
+     <input type="submit" class="btn btn-danger" value="削除">
+ </form>
+ {% endblock %}
