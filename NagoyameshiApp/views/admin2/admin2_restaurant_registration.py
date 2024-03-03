@@ -1,7 +1,5 @@
-from typing import Any
 from django.views.generic import CreateView
 from NagoyameshiApp.models.restaurant import Restaurant
-from django import forms
 
 
 # ================== 管理者（サイト運営側）画面 ==================

@@ -33,150 +33,21 @@
 		<th>職業</th>
 		<th>登録日</th>
 	</tr>
+    {% for user in object_list %}
     <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name}}</td>
+        <td>{{ user.furigana }}</td>
+        <td>{{ user.email }}</td>
         <td></td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
+        <td>{{ user.birthday }}</td>
+        <td>{{ user.zipcode }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.tel }}</td>
+        <td>{{ user.works }}</td>
+        <td>{{ user.date_joined }}</td>
 	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td></td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td>契約中</td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td></td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td></td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td></td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td>契約中</td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td></td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td></td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td></td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-    <tr>
-        <td>001</td>
-        <td>山田太郎</td>
-        <td>ヤマダタロウ</td>
-        <td>xxxx@xxx.xxx</td>
-        <td>契約中</td>
-        <td>1999/12/12</td>
-        <td>000-0000</td>
-        <td>XX県XX市XXX-XXX</td>
-        <td>000-0000-0000</td>
-        <td>会社員</td>
-        <td>1999/12/12</td>
-	</tr>
-
+    {% endfor %}
 </table>
 
 
