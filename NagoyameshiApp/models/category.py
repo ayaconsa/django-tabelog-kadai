@@ -11,5 +11,8 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('admin_category_list')
     
+    def __str__(self):
+        return self.name # カテゴリ名を返す
+    
     class Meta:
         app_label = 'NagoyameshiApp'
