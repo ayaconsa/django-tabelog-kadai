@@ -9,10 +9,10 @@
 {% load static %}
 
 <div class="user_login">
-  <form>
+  <form method="post">
     <h1>ログイン</h1>
-    <input type="text" placeholder="メールアドレス" />
-    <input type="password" placeholder="パスワード" />
+      {% csrf_token %}
+      {{ form }}
     <div class="auto_login">
       <input type="checkbox" name="auto_login" />
       <label for="auto_login">次回から自動的にログインする</label>

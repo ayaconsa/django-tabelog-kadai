@@ -21,12 +21,12 @@ class CustomUserForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
-        self.fields['name'].widget.attrs = {'placeholder': '氏名'}
-        self.fields['furigana'].widget.attrs = {'placeholder': 'フリガナ'}
-        self.fields['email'].widget.attrs = {'placeholder': 'メールアドレス'}
-        self.fields['zipcode'].widget.attrs = {'placeholder': '郵便番号'}
-        self.fields['address'].widget.attrs = {'placeholder': '住所'}
-        self.fields['tel'].widget.attrs = {'placeholder': '電話番号'}
-        self.fields['works'].widget.attrs = {'placeholder': 'ご職業'}
+        self.fields['name'].widget.attrs = {'placeholder': '侍 太郎'}
+        self.fields['furigana'].widget.attrs = {'placeholder': 'サムライ タロウ'}
+        self.fields['email'].widget.attrs = {'placeholder': 'taro.samurai@example.com'}
+        self.fields['zipcode'].widget.attrs = {'placeholder': '123-1234'}
+        self.fields['address'].widget.attrs = {'placeholder': '東京都千代田区'}
+        self.fields['tel'].widget.attrs = {'placeholder': '09012345678'}
+        self.fields['works'].widget.attrs = {'placeholder': 'エンジニア'}
         
         
