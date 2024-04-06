@@ -8,3 +8,4 @@ local_setting.py
 .bash_history
 .ssh
 .vscode
+.env_aws_s3
