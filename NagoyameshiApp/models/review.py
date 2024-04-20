@@ -25,3 +25,7 @@ class Review(models.Model):
         # 一人のユーザーが同じ店に対して2つ以上のレビューを書けないようにする
         unique_together = ('restaurant', 'user')
         
+    # def get_average( id ):
+        # idに一致するレストランコード取得、平均算出
+
+        # タプルで平均と件数を返す

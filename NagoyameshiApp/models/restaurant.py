@@ -28,3 +28,11 @@ class Restaurant(models.Model):
 
     class Meta:
         app_label = 'NagoyameshiApp'
+
+
+    # def get_average():
+        # 自レストランidに一致するレビューレコードを取得、平均算出
+        # タプルで平均と件数を返す
+
+    # 評価の高い順の表示のため、評価順のリストをカスタムコマンド実行時に取得するようにする（1日1回とかもできる）
+    
