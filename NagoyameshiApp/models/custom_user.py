@@ -20,6 +20,10 @@ class CustomUser(AbstractUser):
     works = models.CharField(blank=True, max_length=20, default='', verbose_name="ご職業")
     
     subscription = models.BooleanField(default='False', verbose_name="サブスク契約")
+    
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="登録日時")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="更新日時")
+
         
     
     def __str__(self):

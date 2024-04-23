@@ -17,6 +17,9 @@ for _ in range(100):  # 100行のダミーデータを生成
     tel = fake.phone_number()
     works = fake.job()
     password = make_password(fake.password())
+    created_at = fake.date_time_this_year()
+    updated_at = created_at
+
 
     CustomUser.objects.create(
         name=name, 
@@ -27,5 +30,7 @@ for _ in range(100):  # 100行のダミーデータを生成
         address=address, 
         tel=tel, 
         works=works, 
-        password=password
+        password=password, 
+        created_at=created_at, 
+        updated_at=updated_at
         )
