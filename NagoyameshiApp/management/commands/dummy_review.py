@@ -22,8 +22,8 @@ class Command(BaseCommand):
         # 各レストランごとにレビューデータを生成
         for restaurant in restaurants:
             for user in users:
-                # レビュー数をランダムに設定（平均0.01、標準偏差0.5）
-                review_count = int(round(np.random.normal(loc=0.01, scale=0.5)))
+                # レビュー数をランダムに設定（平均0.01、標準偏差0.4）
+                review_count = int(round(np.random.normal(loc=0.01, scale=0.4)))
 
                 # レビュー数が0以上の場合、レビューを生成
                 if review_count > 0:
@@ -35,7 +35,11 @@ class Command(BaseCommand):
                         rating_value = 1 if x < 1 else 5 if x > 5 else Decimal(str(x)).quantize(Decimal('0'), ROUND_HALF_UP)
 
                         # レビュー内容をランダムに生成
-                        comment = fake.text()
+                        # レビューコメントの生成をランダムな確立で決定（確率0.5）
+                        if np.random.normal() < 0.5:
+                            comment = fake.text()
+                        else:
+                            comment = ''
 
                         Review.objects.create(
                             restaurant = restaurant, 
