@@ -27,9 +27,9 @@
         <div class="fs-6 list_search_item">
           <span>キーワード</span>から探す
         </div>
-        <form>
-          <input type="text" placeholder="店舗名・カテゴリ" class="form-control list_search_box">
-          <button class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
+        <form method="GET" action="{% url 'restaurant_list' %}">
+          <input type="text" name="keyword" placeholder="店舗名・カテゴリ" class="form-control list_search_box">
+          <button type="submit" class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
         </form>
       </div>
 
@@ -38,8 +38,8 @@
         <div class="fs-6 list_search_item">
           <span>ジャンル</span>から探す
         </div>
-        <form>
-          <select name="list_genre" class="form-control list_search_box">
+        <form method="GET" action="{% url 'restaurant_list' %}">
+          <select name="genre" class="form-control list_search_box">
             <option value="">選択してください</option>
             <option value="和食">和食</option>
             <option value="洋食">洋食</option>
@@ -56,7 +56,7 @@
             <option value="焼肉">焼肉</option>
             <option value="ハンバーガー">ハンバーガー</option>
           </select>
-          <button class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
+          <button type="submit" class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
         </form>
       </div>
 
@@ -66,7 +66,7 @@
           <span>予算</span>から探す
         </div>
         <div class="list_search_item_price">
-        <form>
+        <form method="GET" action="{% url 'restaurant_list' %}">
           <select name="list_price_min" class="form-control list_search_box_price">
             <option value="1,000">1,000 円</option>
             <option value="2,000">2,000 円</option>
@@ -81,7 +81,7 @@
             <option value="30,000">30,000 円</option>
           </select>
           <p class="list_search_box_price"> 〜 </p>
-          <select name="list_price_min" class="form-control list_search_box_price">
+          <select name="list_price_max" class="form-control list_search_box_price">
             <option value="1,000">1,000 円</option>
             <option value="2,000">2,000 円</option>
             <option value="3,000">3,000 円</option>
@@ -95,7 +95,7 @@
             <option value="30,000">30,000 円</option>
           </select>
           </div>
-          <button class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
+          <button type="submit" class="btn search_btn list_search_item" href="{% url 'restaurant_list' %}">検索</button>
         </form>
       </div>
 
@@ -107,7 +107,7 @@
       <div class="d-flex justify-content-between align-items-center mb-3 w-100">
         <!-- 検索された店舗数 -->
         <div class="hit_restaurants_number">
-          <span>35</span>店舗（1〜10件）
+          <span>{{ restaurants.paginator.count }}</span>店舗（{{ restaurants.start_index }}〜{{ restaurants.enx_index }}件）
         </div>
 
         <!-- 並び替え -->
@@ -124,122 +124,54 @@
 
       <!-- 店舗カード -->
       <div class="mb-3">
-        <!-- 店舗１ -->
-        <a href="{% url 'restaurant_detail' %}">
+        {% for restaurant in restaurants %}
+        <a href="{% url 'restaurant_detail' restaurant.pk %}">
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
+              <img src="{{ restaurant.img.url }}" class="img-fluid rounded-start" alt="{{ restaurant.name }}">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">味噌かつサムライ</h5>
-                <p class="card-text">秘伝のタレを使った老舗の味</p>
-                <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
-                <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
+                <h5 class="card-title">{{ restaurant.name }}</h5>
+                <p class="card-text">{{ restaurant.catch_copy }}</p>
+                <p class="card-text"><small class="text-body-secondary">{{ restaurant.category }}</small></p>
+                <p class="card-text"><small class="text-body-secondary">&#9733; {{ restaurant.get_average.0 }}（{{ restaurant.get_average.1 }}件）</small></p>
               </div>
             </div>
           </div>
         </div>
         </a>
-
-        <!-- 店舗２ -->
-        <a href="{% url 'restaurant_detail' %}">
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">味噌かつサムライ</h5>
-                  <p class="card-text">秘伝のタレを使った老舗の味</p>
-                  <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
-                  <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </a>
-  
-        <!-- 店舗３ -->
-        <a href="{% url 'restaurant_detail' %}">
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">味噌かつサムライ</h5>
-                  <p class="card-text">秘伝のタレを使った老舗の味</p>
-                  <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
-                  <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </a>
-  
-        <!-- 店舗４ -->
-        <a href="{% url 'restaurant_detail' %}">
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">味噌かつサムライ</h5>
-                  <p class="card-text">秘伝のタレを使った老舗の味</p>
-                  <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
-                  <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </a>
-  
-        <!-- 店舗５ -->
-        <a href="{% url 'restaurant_detail' %}">
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="味噌カツ">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">味噌かつサムライ</h5>
-                  <p class="card-text">秘伝のタレを使った老舗の味</p>
-                  <p class="card-text"><small class="text-body-secondary">味噌カツ</small></p>
-                  <p class="card-text"><small class="text-body-secondary">&#9733; 3.5</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </a>
-  
+        {% endfor %}  
 
       </div>
 
       <!-- ページネーション -->
       <nav aria-label="Page navigation example w-100">
         <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
+            {% if restaurants.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+            {% for num in restaurants.paginator.page_range %}
+            <li class="page-item {% if num == restaurants.number %}active{% endif %}">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endfor %}
+            {% if restaurants.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ restaurants.paginator.num_pages }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
         </ul>
       </nav>
+
+
     </div>
   </div>
   </div>
