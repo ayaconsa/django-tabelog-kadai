@@ -29,10 +29,30 @@ class Restaurant(models.Model):
     class Meta:
         app_label = 'NagoyameshiApp'
 
+    def get_average(self):
+        # 最初に書くとインポートエラーが生じるためこちらに移動
+        from NagoyameshiApp.models.review import Review
 
-    # def get_average():
         # 自レストランidに一致するレビューレコードを取得、平均算出
-        # タプルで平均と件数を返す
+        reviews = Review.objects.filter(restaurant=self)
+        if reviews.exists():
+            total_score = sum(review.score for review in reviews)
+            average_score = total_score / len(reviews)
+            # 平均評価を小数点以下2桁まで丸める
+            average_score = round(average_score, 2)
+            # タプルで平均と件数を返す
+            return (average_score, len(reviews))
+        else:
+            return (0, 0)
+        
+    # 評価の高い順の表示のため、評価順のリストをカスタムコマンド実行時に取得するようにする（1日1回とかもできる）    
+    @staticmethod
+    def get_top_rated_restaurants():
+        from NagoyameshiApp.models.review import Review
+        return Restaurant.objects.annotate(avg_score=models.Avg('review__score')).order_by('-avg_score')
 
-    # 評価の高い順の表示のため、評価順のリストをカスタムコマンド実行時に取得するようにする（1日1回とかもできる）
-    
+    def get_favorite_count(self):
+        from NagoyameshiApp.models.favorite import Favorite
+        # 自店舗に対するお気に入り登録件数を取得
+        return self.favorited_by.count()
+

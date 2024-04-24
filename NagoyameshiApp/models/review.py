@@ -22,10 +22,7 @@ class Review(models.Model):
     
     class Meta:
         app_label = 'NagoyameshiApp'
-        # 一人のユーザーが同じ店に対して2つ以上のレビューを書けないようにする
+        # 一人のユーザーが同じ店に対して2つ以上のレビューを書くこと可能
+        # ↓1つのレビューしか書けなくする場合↓
         # unique_together = ('restaurant', 'user')
         
-    # def get_average( id ):
-        # idに一致するレストランコード取得、平均算出
-
-        # タプルで平均と件数を返す
