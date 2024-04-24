@@ -64,4 +64,12 @@ class Restaurant(models.Model):
             # 予約に紐づいたユーザー名を取得し、予約データに追加
             booking.user_name = booking.user.name
         return bookings
+    
+    def get_reviews(self):
+        from NagoyameshiApp.models.review import Review
+        reviews = Review.objects.filter(restaurant=self)
+        for review in reviews:
+            # 予約に紐づいたユーザー名を取得し、予約データに追加
+            review.user_name = review.user.name
+        return reviews
 
