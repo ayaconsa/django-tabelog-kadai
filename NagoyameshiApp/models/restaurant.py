@@ -56,3 +56,12 @@ class Restaurant(models.Model):
         # 自店舗に対するお気に入り登録件数を取得
         return self.favorited_by.count()
 
+    def get_booking_data(self):
+        from NagoyameshiApp.models.booking import Booking
+        # 自店舗に対する予約データを取得
+        bookings = Booking.objects.filter(restaurant=self)
+        for booking in bookings:
+            # 予約に紐づいたユーザー名を取得し、予約データに追加
+            booking.user_name = booking.user.name
+        return bookings
+

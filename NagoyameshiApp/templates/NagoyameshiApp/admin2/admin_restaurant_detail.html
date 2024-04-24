@@ -25,10 +25,10 @@
 		<a class="admin_link" href="{% url 'admin_restaurant_edit' pk=restaurant.pk %}">店舗情報編集</a>
 	</div>
 	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_booking_confirmation' %}">予約確認</a>
+		<a class="admin_link" href="{% url 'admin_booking_confirmation' pk=restaurant.pk %}">予約確認</a>
 	</div>
 	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_review_confirmation' %}">レビュー確認</a>
+		<a class="admin_link" href="{% url 'admin_review_confirmation' pk=restaurant.pk %}">レビュー確認</a>
 	</div>
 </div>
 

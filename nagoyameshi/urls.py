@@ -104,7 +104,7 @@ urlpatterns = [
     path('admin2/restaurant_registration/', AdminRestaurantRegistrationView.as_view(), name="admin_restaurant_registration"),
     
     
-    path('admin2/booking_confirmation/', AdminBookingConfirmationView.as_view(), name="admin_booking_confirmation"),
-    path('admin2/review_confirmation/', AdminReviewConfirmationView.as_view(), name="admin_review_confirmation"),
+    path('admin2/booking_confirmation/<int:pk>', AdminBookingConfirmationView.as_view(), name="admin_booking_confirmation"),
+    path('admin2/review_confirmation/<int:pk>', AdminReviewConfirmationView.as_view(), name="admin_review_confirmation"),
     
 ]
