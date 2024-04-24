@@ -86,7 +86,7 @@
               <!-- 要）カラムの調整（スマホで2列になるように） -->
               {% for restaurant in top_rated_restaurants %}
               <div class="col">
-                <a href="{{ restaurant.get_absolute_url }}" class="link-dark card-link">
+                <a href="{% url 'restaurant_detail' pk=restaurant.pk %}" class="link-dark card-link">
                   <div class="card h-100">
                     <img src="{{ restaurant.img.url }}" class="card-img-top" alt="{{ restaurant.name }}">
                     <div class="card-body">
@@ -140,7 +140,7 @@
               <!-- 要）カラムの調整（スマホで2列になるように） -->
               {% for restaurant in latest_restaurants %}
               <div class="col">
-                <a href="{{ restaurant.get_absolute_url }}" class="link-dark card-link">
+                <a href="{% url 'restaurant_detail' pk=restaurant.pk %}" class="link-dark card-link">
                   <div class="card h-100">
                     <img src="{{ restaurant.img.url }}" class="card-img-top" alt="{{ restaurant.name}}">
                     <div class="card-body">

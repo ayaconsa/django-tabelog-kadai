@@ -61,7 +61,7 @@ urlpatterns = [
     path('account_create/', CreateAccountView.as_view(), name="account_create"),
     path('login/', LoginView.as_view(), name="login"),   
     path('restaurant_list/', RestaurantListView.as_view(), name="restaurant_list"),
-    path('restaurant_detail/', RestaurantDetailView.as_view(), name="restaurant_detail"),
+    path('restaurant_detail/<int:pk>', RestaurantDetailView.as_view(), name="restaurant_detail"),
 
     path('logout/', LogoutView.as_view(), name="logout"),
     path('password_resetting/', PasswordResettingView.as_view(), name="password_resetting"),

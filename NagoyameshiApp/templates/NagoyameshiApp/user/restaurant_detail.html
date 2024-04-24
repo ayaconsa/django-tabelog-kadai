@@ -7,6 +7,7 @@
 <!-- コンテンツ本体 -->
 {% block content %}
 {% load static %}
+{% load custom_filters %}
 
   <div class="container">
     <!-- 備忘録）カラム使用時にrow忘れない -->
@@ -26,11 +27,11 @@
     <div>
 			<!-- タイトル -->
 			<div>
-				<h3>味噌かつサムライ</h3>
+				<h3>{{ restaurant.name }}</h3>
 			</div>
 			<!-- 評価 -->
 			<div>
-				<p>&#9733; 3.00（3件）</p>
+				<p>&#9733; {{ average_score }}（{{ review_count }}件）</p>
 			</div>
 			<!-- お気に入り追加ボタン -->
 			<div>
@@ -49,41 +50,41 @@
 		<div id="my_tabbody">
 			<!-- ******トップ****** -->
 			<div id="top">
-				<img src="{% static 'img/misokatsu.jpg' %}" class="img-fluid rounded-start" alt="店舗画像">
-				<h2>秘伝のタレを使った老舗の味</h2>
+				<img src="{{ restaurant.img.url }}" class="img-fluid rounded-start" alt="{{ restaurant.name }}" >
+				<h2>{{ restaurant.catch_copy }}</h2>
 				<p>
-					昼はボリューム満点のランチ、夜はお酒を出してますので居酒屋としてご活用いただけます♪もちろん夜も当店自慢のボリューム満点のでっかい味噌カツやエビフライをお出ししてます☆とんかつはボリューム満点ですが、サラダ油等の植物油で揚げていますので、あっさりしててとてもヘルシー♪ぜひ一度ご賞味ください♪
+					{{ restaurant.explanation }}
 				</p>
 				<!-- テーブル -->
 				<table class="table">
 					<tbody>
 						<tr>
 							<th class="w-25" scope="row">価格帯</th>
-							<td>1,000円〜3,000円</td>
+							<td>{{ restaurant.price_max }}円〜{{ restaurant.price_min }}円</td>
 						</tr>
 						<tr>
 							<th class="w-25" scope="row">座席数</th>
-							<td>20席</td>
+							<td>{{ restaurant.seat }}席</td>
 						</tr>
 						<tr>
 							<th class="w-25" scope="row">住所</th>
-							<td>愛知県名古屋市瑞穂区明前町13-33</td>
+							<td>{{ restaurant.address }}</td>
 						</tr>
 						<tr>
 							<th class="w-25" scope="row">予約・お問い合わせ</th>
-							<td>050-1234-5678</td>
+							<td>{{ restaurant.tel }}</td>
 						</tr>
 						<tr>
 							<th class="w-25" scope="row">営業時間</th>
-							<td>11:00 〜 21:00</td>
+							<td>{{ restaurant.open_time }} 〜 {{ restaurant.close_time }}</td>
 						</tr>
 						<tr>
 							<th class="w-25" scope="row">定休日</th>
-							<td>水曜日</td>
+							<td>{{ restaurant.close_day }}</td>
 						</tr>
 						<tr>
 							<th class="w-25" scope="row">カテゴリ</th>
-							<td>味噌カツ</td>
+							<td>{{ restaurant.category }}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -141,36 +142,15 @@
 			</div>
 			<!-- ******レビュー****** -->
 			<div id="review">
-				<!-- レビュー１ -->
-				<p>侍太郎さん</p>
-				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+				{% for review in reviews %}
+				<p>{{ review.user.name }}</p>
 				<p>
-					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
+					{% for _ in review.score|get_range %}
+					&#9733;
+					{% endfor %}
 				</p>
-				<!-- レビュー２ -->
-				<p>侍太郎さん</p>
-				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-				<p>
-					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
-				</p>
-				<!-- レビュー３ -->
-				<p>侍太郎さん</p>
-				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-				<p>
-					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
-				</p>
-				<!-- レビュー４ -->
-				<p>侍太郎さん</p>
-				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-				<p>
-					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
-				</p>
-				<!-- レビュー５ -->
-				<p>侍太郎さん</p>
-				<p>&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-				<p>
-					名古屋では有名な格安で焼肉食べ放題のお店。タイミングよく仕事で行く機会があったので、地元の友人と一緒に来店しました。店内は広くゆったりとできます。
-				</p>
+				<p>{{ review.comment }}</p>
+				{% endfor %}
 
       <!-- ページネーション -->
       <nav aria-label="Page navigation example w-100">
