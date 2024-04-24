@@ -13,4 +13,5 @@ class AdminReviewConfirmationView(TemplateView):
         # 自店舗に対するレビュー情報を取得してテンプレートに渡す
         restaurant = Restaurant.objects.get(pk=self.kwargs['pk'])
         context['reviews'] = restaurant.get_reviews()
+        context['restaurant_name'] = restaurant.name
         return context

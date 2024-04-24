@@ -45,6 +45,7 @@ from NagoyameshiApp.views.admin2.admin2_restaurant_delete import AdminRestaurant
 from NagoyameshiApp.views.admin2.admin2_restaurant_registration import AdminRestaurantRegistrationView
 from NagoyameshiApp.views.admin2.admin2_booking_confirmation import AdminBookingConfirmationView
 from NagoyameshiApp.views.admin2.admin2_review_confirmation import AdminReviewConfirmationView
+from NagoyameshiApp.views.admin2.admin2_review_deletion_confirmation import ReviewDeletionConfirmationView
 
 
 
@@ -106,5 +107,6 @@ urlpatterns = [
     
     path('admin2/booking_confirmation/<int:pk>', AdminBookingConfirmationView.as_view(), name="admin_booking_confirmation"),
     path('admin2/review_confirmation/<int:pk>', AdminReviewConfirmationView.as_view(), name="admin_review_confirmation"),
-    
+    path('admin2/review_deletion_confirmation/<int:pk>', ReviewDeletionConfirmationView.as_view(), name="admin_review_deletion_confirmation"),
+
 ]

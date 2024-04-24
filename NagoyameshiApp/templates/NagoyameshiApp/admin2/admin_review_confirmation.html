@@ -8,7 +8,7 @@
 {% block content %}
 {% load static %}
 
-<h1>レビュー確認（味噌かつサムライ）</h1>
+<h1>レビュー一覧：{{ restaurant_name }}</h1>
 
 <!-- パンくずリスト -->
 <nav>
@@ -16,7 +16,7 @@
     <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
     <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
     <li><a href="{% url 'admin_restaurant_detail' pk=reviews.0.restaurant.pk %}">店舗情報 詳細</a></li>
-    <li>レビュー確認（味噌かつサムライ）</li>
+    <li>レビュー一覧</li>
 	</ol>
 </nav>
 
@@ -38,7 +38,7 @@
             <td>{{ review.comment }}</td>
             <td>{{ review.created_at }}</td>
 			<td>
-				<a class="admin_link" href="#">削除</a>
+				<a class="admin_link" href="{% url 'admin_review_deletion_confirmation' pk=review.pk %}">削除</a>
 			</td>	
         </tr>
         {% endfor %}

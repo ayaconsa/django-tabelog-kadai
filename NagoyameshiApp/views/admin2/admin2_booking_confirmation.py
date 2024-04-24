@@ -13,4 +13,5 @@ class AdminBookingConfirmationView(TemplateView):
         # 自店舗に対する予約情報を取得してテンプレートに渡す
         restaurant = Restaurant.objects.get(pk=self.kwargs['pk'])
         context['bookings'] = restaurant.get_booking_data()
+        context['restaurant_name'] = restaurant.name
         return context

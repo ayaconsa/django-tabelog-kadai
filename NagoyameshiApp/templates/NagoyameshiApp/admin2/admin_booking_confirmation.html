@@ -8,7 +8,7 @@
 {% block content %}
 {% load static %}
 
-<h1>予約確認（味噌かつサムライ）</h1>
+<h1>予約確認：{{ restaurant_name }}</h1>
 
 <!-- パンくずリスト -->
 <nav>
@@ -16,7 +16,7 @@
     <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
     <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
     <li><a href="{% url 'admin_restaurant_detail' pk=bookings.0.restaurant.pk %}">店舗情報 詳細</a></li>
-    <li>予約確認（味噌かつサムライ）</li>
+    <li>予約確認</li>
 	</ol>
 </nav>
 
