@@ -81,105 +81,25 @@
           <div class="container top_rated_cards">
           <!-- カード -->
             <div class="row row-cols-1 row-cols-md-3 g-4">
-              <!-- カード１ -->
+              <!-- レストラン表示 -->
               <!-- 要）カードの中身修正 -->
               <!-- 要）カラムの調整（スマホで2列になるように） -->
+              {% for restaurant in top_rated_restaurants %}
               <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                <a href="{{ restaurant.get_absolute_url }}" class="link-dark card-link">
                   <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <img src="{{ restaurant.img.url }}" class="card-img-top" alt="{{ restaurant.name }}">
                     <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <h5 class="card-title">{{ restaurant.name }}</h5>
                       <p class="card-text">
-                        秘伝のタレを使った老舗の味
+                        {{ restaurant.catch_copy }}
                       </p>
-                      <p>&#9733; 3.00（3件）</p>
+                      <p>&#9733; {{ restaurant.get_average.0 }}（{{ restaurant.get_average.1 }}件）</p>
                     </div>
                   </div>
                 </a>
               </div>
-
-              <!-- カード２ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- カード３ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- カード４ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- カード５ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- カード６ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-
+              {% endfor %}
             </div>
           </div>
 
@@ -215,104 +135,25 @@
           <div class="container">
             <!-- カード -->
               <div class="row row-cols-1 row-cols-md-3 g-4">
-              <!-- カード１ -->
+              <!-- レストラン表示 -->
               <!-- 要）カードの中身修正 -->
               <!-- 要）カラムの調整（スマホで2列になるように） -->
+              {% for restaurant in latest_restaurants %}
               <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
+                <a href="{{ restaurant.get_absolute_url }}" class="link-dark card-link">
                   <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
+                    <img src="{{ restaurant.img.url }}" class="card-img-top" alt="{{ restaurant.name}}">
                     <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
+                      <h5 class="card-title">{{ restaurant.name }}</h5>
                       <p class="card-text">
-                        秘伝のタレを使った老舗の味
+                        {{ restaurant.catch_copy }}
                       </p>
-                      <p>&#9733; 3.00（3件）</p>
+                      <p>&#9733; {{ restaurant.get_average.0 }}（{{ restaurant.get_average.1 }}件）</p>
                     </div>
                   </div>
                 </a>
               </div>
-
-              <!-- カード２ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- カード３ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- カード４ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- カード５ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- カード６ -->
-              <div class="col">
-                <a href="{% url 'restaurant_detail' %}" class="link-dark card-link">
-                  <div class="card h-100">
-                    <img src="{% static 'img/misokatsu.jpg' %}" class="card-img-top" alt="味噌カツ">
-                    <div class="card-body">
-                      <h5 class="card-title">味噌かつサムライ</h5>
-                      <p class="card-text">
-                        秘伝のタレを使った老舗の味
-                      </p>
-                      <p>&#9733; 3.00（3件）</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
+              {% endfor %}
           </div>
         </div>
         <!-- **************「新規掲載店舗」ここまで -->

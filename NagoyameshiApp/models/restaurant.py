@@ -40,7 +40,7 @@ class Restaurant(models.Model):
             average_score = total_score / len(reviews)
             # 平均評価を小数点以下2桁まで丸める
             average_score = round(average_score, 2)
-            # タプルで平均と件数を返す
+            # タプルで（平均, 件数）を返す
             return (average_score, len(reviews))
         else:
             return (0, 0)
@@ -72,4 +72,8 @@ class Restaurant(models.Model):
             # 予約に紐づいたユーザー名を取得し、予約データに追加
             review.user_name = review.user.name
         return reviews
+    
+    @staticmethod
+    def get_latest_restaurants():
+        return Restaurant.objects.order_by('-created_at')
 
