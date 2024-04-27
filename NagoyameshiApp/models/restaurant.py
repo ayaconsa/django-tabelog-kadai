@@ -50,7 +50,7 @@ class Restaurant(models.Model):
     @staticmethod
     def get_top_rated_restaurants():
         from NagoyameshiApp.models.review import Review
-        return Restaurant.objects.annotate(avg_score=models.Avg('review__score')).order_by('-avg_score')
+        return Restaurant.objects.annotate(avg_score=models.Avg('review__score')).order_by('-avg_score')[:6]
 
     def get_favorite_count(self):
         from NagoyameshiApp.models.favorite import Favorite
