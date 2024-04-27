@@ -6,8 +6,8 @@ class Restaurant(models.Model):
     
     name = models.CharField(max_length=100, default='', verbose_name="店舗名")
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name="カテゴリ")
-    price_max = models.PositiveIntegerField(default='0', verbose_name="価格（最大）")
-    price_min = models.PositiveIntegerField(default='0', verbose_name="価格（最小）")
+    price_max = models.PositiveIntegerField(default=0, verbose_name="価格（最大）")
+    price_min = models.PositiveIntegerField(default=0, verbose_name="価格（最小）")
     seat = models.PositiveIntegerField(default='0', verbose_name="座席数")
     address = models.CharField(max_length=200, default='', verbose_name="住所")
     tel = models.CharField(max_length=11, default='', verbose_name="電話番号")
@@ -45,7 +45,8 @@ class Restaurant(models.Model):
         else:
             return (0, 0)
         
-    # 評価の高い順の表示のため、評価順のリストをカスタムコマンド実行時に取得するようにする（1日1回とかもできる）    
+    # 評価の高い順の表示のため、評価順のリストをカスタムコマンド実行時に取得するようにする（1日1回とかもできる）
+    # 重たくなるので、ここで6件に絞った方がいい。応用も効く    
     @staticmethod
     def get_top_rated_restaurants():
         from NagoyameshiApp.models.review import Review

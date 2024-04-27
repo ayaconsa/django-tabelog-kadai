@@ -61,9 +61,9 @@
 
           <!-- **************検索ボックスここから -->
           <div class="container search_box">
-            <form>
-              <input type="text" placeholder="店舗名・エリア・カテゴリ" class="form-control search_txt">
-              <a class="btn search_btn" href="{% url 'restaurant_list' %}">検索</a>
+            <form method="GET" action="{% url 'restaurant_list' %}">
+              <input type="text" name="keyword" placeholder="店舗名・エリア・カテゴリ" class="form-control search_txt">
+              <button type="submit" class="btn search_btn">検索</button>
             </form>
           </div>
           <!-- **************検索ボックスここまで -->
