@@ -21,8 +21,8 @@ class CustomUser(AbstractUser):
     
     subscription = models.BooleanField(default='False', verbose_name="サブスク契約")
     
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="登録日時")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="更新日時")
+    created_at = models.DateTimeField(auto_now_add=False, verbose_name="登録日時")
+    updated_at = models.DateTimeField(auto_now=False, verbose_name="更新日時")
 
         
     
