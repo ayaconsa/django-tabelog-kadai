@@ -44,11 +44,3 @@ for(var i=0; i<tabs.length; i++) {
 // ---------------------------
 tabs[0].onclick();
 
-
-// custom.js
-document.addEventListener('DOMContentLoaded', function() {
-  // プルダウンが変更されたときにフォームを送信する
-  document.getElementById('sort-select').addEventListener('change', function() {
-    document.getElementById('sort-form').submit();
-  });
-});
