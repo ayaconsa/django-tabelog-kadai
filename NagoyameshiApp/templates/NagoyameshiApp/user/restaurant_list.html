@@ -112,13 +112,14 @@
 
         <!-- 並び替え -->
         <div>
-          <select name="sort" class="form-control">
-            <option value="掲載日が新しい順">掲載日が新しい順</option>
-            <option value="価格が安い順">価格が安い順</option>
-            <option value="価格が高い順">価格が高い順</option>
-            <option value="予約数順">予約数順</option>
-          </select>
-
+          <form method="GET" action="{% url 'restaurant_list' %}">
+            <select name="sort" class="form-control">
+              <option value="掲載日が新しい順">掲載日が新しい順</option>
+              <option value="価格が安い順">価格が安い順</option>
+              <option value="価格が高い順">価格が高い順</option>
+              <option value="予約数順">予約数順</option>
+            </select>
+          </form>
         </div>
       </div>
 
