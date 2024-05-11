@@ -8,3 +8,6 @@ django-storages==1.14.2
 Faker==24.9.0
 numpy==1.26.4
 scipy==1.13.0
+mysqlclient==2.2.4
+mecab-python3==1.0.9
+ipadic==1.0.0

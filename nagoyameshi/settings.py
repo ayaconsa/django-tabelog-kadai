@@ -24,7 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u&n&ko&(pp)mi%03e!2wov7c(!n$a6^q+=r!dd^*qz88xs%nv^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.path.exists('.is_debug'):
+    DEBUG = True
+else:
+    DEBUG = False
+
 
 # Herokuデプロイのために変更
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
@@ -82,12 +86,24 @@ WSGI_APPLICATION = 'nagoyameshi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG == False:          # 本番環境(Heroku)の場合
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:                       # デバッグ環境(ローカル)の場合
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'nagoyameshi',                      # データベース名
+            'USER': os.environ['MARIADB_USER'],         # MariaDBのユーザー名
+            'PASSWORD': os.environ['MARIADB_PASSWORD'], # パスワード
+            'HOST': os.environ['MARIADB_HOST'],         # DBホスト名
+            'PORT': os.environ['MARIADB_PORT'],         # DBポート番号
+        }
+    }
 
 
 # Password validation

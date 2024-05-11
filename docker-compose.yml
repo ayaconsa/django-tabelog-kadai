@@ -1,5 +1,17 @@
 version: '3.5'
 services:
+  mariadb:
+    image: mariadb:11.3.2
+    container_name: mariadb
+    ports:
+    - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: samurai
+    volumes:
+    - db-volume:/var/lib/mysql
+    restart: always
+    command: mariadbd --default-time-zone=Asia/Tokyo 
+
   django:
     image: django_bs5
     container_name: django-bs5
@@ -8,3 +20,9 @@ services:
     tty: true
     env_file:
       - .env_aws_s3
+      - .env_mariadb
+
+volumes:
+  db-volume:
+    name: mariadb-data
+    driver: local
