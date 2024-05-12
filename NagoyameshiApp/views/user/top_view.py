@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from NagoyameshiApp.models.restaurant import Restaurant
+from NagoyameshiApp.models.category import Category
 from django.db.models import Q
 
 
@@ -16,6 +17,10 @@ class TopView(TemplateView):
         # 店舗データの取得
         restaurants = Restaurant.objects.all()
 
+        # カテゴリデータの取得
+        categories = Category.objects.all()
+        context['categories'] = categories
+
         # キーワード検索
         keyword = self.request.GET.get('keyword')
         if keyword:
@@ -28,6 +33,14 @@ class TopView(TemplateView):
                 Q(catch_copy__icontains=keyword)
             )
         
+        # ジャンルで絞り込んだ場合
+        genre = self.request.GET.get('genre')
+        if genre:
+            restaurants = Restaurant.objects.filter(category__name=genre)
+        else:
+            restaurants = Restaurant.objects.all()
+
+
         # 評価の高い順にレストランを取得し表示する（上位6件）
         context['top_rated_restaurants'] = Restaurant.get_top_rated_restaurants()[:6]
         context['latest_restaurants'] = Restaurant.get_latest_restaurants()[:6]

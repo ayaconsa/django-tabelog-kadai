@@ -112,20 +112,10 @@
 
           <!-- ジャンルキーワード群 -->
           <div class="container">
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">和食</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">洋食</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">中華</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">フレンチ</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">イタリアン</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">名古屋コーチン</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">味噌カツ</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">うなぎ</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">焼き鳥</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">うどん・そば</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">きしめん</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">焼肉</a>
-            <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}" role="button">ハンバーガー</a>
-          </div>
+            {% for category in categories %}
+              <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}?genre={{ category.name }}" role="button">{{ category.name }}</a>
+            {% endfor %}
+            </div>
         </div>
         <!-- **************「料理ジャンルから探す」ここまで -->
 
