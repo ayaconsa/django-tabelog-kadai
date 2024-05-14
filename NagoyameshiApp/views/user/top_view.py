@@ -3,7 +3,6 @@ from NagoyameshiApp.models.restaurant import Restaurant
 from NagoyameshiApp.models.category import Category
 from django.db.models import Q
 
-
 # ================== ユーザー画面 ==================
 # ************** 非会員でも表示できる画面 **************
 
@@ -40,8 +39,11 @@ class TopView(TemplateView):
         else:
             restaurants = Restaurant.objects.all()
 
-
         # 評価の高い順にレストランを取得し表示する（上位6件）
         context['top_rated_restaurants'] = Restaurant.get_top_rated_restaurants()[:6]
         context['latest_restaurants'] = Restaurant.get_latest_restaurants()[:6]
+
+        # ようこそ〇〇さんを表示するために取得
+        context['user'] = self.request.user
+
         return context

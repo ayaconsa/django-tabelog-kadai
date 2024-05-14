@@ -27,16 +27,32 @@
               <button class="navbar-toggler my_navbar_btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <!-- 新規会員登録・ログインボタン -->
-              <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+              <!-- ログイン状態によって表示を切り替え -->
+              <div class="collapse navbar-collapse justify-content-end" id="navbarTagglerDemo02">
+                {% if user.is_authenticated %}
+                <!-- ログインしている場合 -->
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link my_nav_link" href="{% url 'account_create' %}">新規会員登録</a>
+                    <span class="nav-link my_nav_link">ようこそ {{ user.name }} さん</span>
                   </li>
-                  <li class="nav-item my_nav_item">
-                    <a class="nav-link my_nav_link" href="{% url 'login' %}">ログイン</a>
+                  <li class="nav-item">
+                    <form action="{% url 'logout' %}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="nav-link my_nav_link">ログアウト</button>
+                    </form>
                   </li>
                 </ul>
+                {% else %}
+                <!-- ログインしていない場合 -->
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link my_nav_link" href="{% url 'account_create' %}">新規会員登録</a>
+                  </li>
+                  <li class="nav-item my_nav_item">
+                      <a class="nav-link my_nav_link" href="{% url 'login' %}">ログイン</a>
+                  </li>
+                </ul>
+                {% endif %}
               </div>
             </div>
           </nav>
