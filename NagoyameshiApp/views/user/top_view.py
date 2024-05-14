@@ -43,7 +43,4 @@ class TopView(TemplateView):
         context['top_rated_restaurants'] = Restaurant.get_top_rated_restaurants()[:6]
         context['latest_restaurants'] = Restaurant.get_latest_restaurants()[:6]
 
-        # ようこそ〇〇さんを表示するために取得
-        context['user'] = self.request.user
-
         return context
