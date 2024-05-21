@@ -127,40 +127,33 @@ USE_TZ = True
 
 
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+# CSSとJSファイルの設定
+if DEBUG:
+    # 開発環境
+    # ブラウザからアクセスする際のURL
+    STATIC_URL = '/static/'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+    # プロジェクトのアプリで使うstaticファイルを格納している、サーバ内の場所を指定
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "NagoyameshiApp/static")
+    ]
 
+    # collectstaticコマンドを実行した際に収集されたstaticファイルを配置する場所の設定）
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+else:
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATIC_URL = 'https://aws-egami-test-nagoyameshi.s3.ap-northeast-1.amazonaws.com/static/'
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'top'
-LOGOUOT_REDIRECT_URL = 'top'
+# Mediaファイル（投稿画像）の設定
+if DEBUG:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = 'https://aws-egami-test-nagoyameshi.s3.s3.ap-northeast-1.amazonaws.com/static/photos/'
 
+else:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = 'https://aws-egami-test-nagoyameshi.s3.s3.ap-northeast-1.amazonaws.com/static/photos/'
 
-
-
-# ブラウザからアクセスする際のURL
-# STATIC_URL = 'static/'
-# S3を使うためにコメントアウト
-
-# collectstaticコマンドを実行した際に収集されたstaticファイルを配置する場所の設定）
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# S3を使うためにコメントアウト
-
-# プロジェクトのアプリで使うstaticファイルを格納している、サーバ内の場所を指定
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "NagoyameshiApp/static")
-]
-
-# CSSなどを参照するstaticファイルの保管先を指定
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# S3を使うために追加
-
-# 投稿機能によってアップロードされた写真の保管先を指定
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# S3を使うために追加
 
 # S3の設定
 # アクセスキーID
@@ -172,8 +165,15 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 # バケット名
 AWS_STORAGE_BUCKET_NAME = 'aws-egami-test-nagoyameshi'
 
-# 保存先URL
-STATIC_URL = 'https://aws-egami-test-nagoyameshi.s3.ap-northeast-1.amazonaws.com/'
-AWS_LOCATION = 'static'
 
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'top'
+LOGOUT_REDIRECT_URL = 'top'

@@ -110,3 +110,7 @@ urlpatterns = [
     path('admin2/review_deletion_confirmation/<int:pk>', ReviewDeletionConfirmationView.as_view(), name="admin_review_deletion_confirmation"),
 
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
