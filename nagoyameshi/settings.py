@@ -139,7 +139,7 @@ if DEBUG:
     ]
 
     # collectstaticコマンドを実行した際に収集されたstaticファイルを配置する場所の設定）
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 else:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

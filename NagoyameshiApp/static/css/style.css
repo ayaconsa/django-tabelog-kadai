@@ -18,32 +18,9 @@
   position: absolute;
   width: 100%;
   z-index: 1;
-}
-/* トップページ用ここまで */
-
-
-.my_navbar_brand {
-  color: #FFFFFF;
+  top: 0;
   background-color: #2B2A4C;
-  padding: 10px 15px 10px 15px;
-  margin: 10px 0px 3px 0px;
-  border-radius: 25px;
-}
-
-.my_navbar_btn {
-  right: 0px;
-  background-color: #FFFFFF;
-}
-
-.my_nav_link {
-  color: #FFFFFF;
-  background-color: #B31312;
-  padding: 10px;
-  margin: 3px 10px 0 3px;
-  border-radius: 10px;
-  width: 120px;
-  right: 0px;
-  text-align: center;
+  opacity: .9;
 }
 
 /* *******カルーセル */
@@ -59,7 +36,10 @@
 .search_box {
   position: absolute;
   bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 0px 20px;
+  z-index: 2; /* カルーセルの上に表示 */
 }
 
 .search_txt {
@@ -653,4 +633,6 @@ h2 {
 .restaurant-regist label {
   min-width: 20%;
 }
+
+
 
