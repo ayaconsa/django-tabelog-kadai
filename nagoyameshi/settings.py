@@ -144,15 +144,19 @@ if DEBUG:
 else:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATIC_URL = 'https://aws-egami-test-nagoyameshi.s3.ap-northeast-1.amazonaws.com/static/'
+    # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
 
 # Mediaファイル（投稿画像）の設定
 if DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     MEDIA_URL = 'https://aws-egami-test-nagoyameshi.s3.s3.ap-northeast-1.amazonaws.com/static/photos/'
+    # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
 
 else:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     MEDIA_URL = 'https://aws-egami-test-nagoyameshi.s3.s3.ap-northeast-1.amazonaws.com/static/photos/'
+    # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
+
 
 
 # S3の設定
