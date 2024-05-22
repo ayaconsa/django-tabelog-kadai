@@ -8,22 +8,73 @@
 {% block content %}
 {% load static %}
 
-<h1>会員登録情報</h1>
-
-  <div class="container">
-    <!-- 備忘録）カラム使用時にrow忘れない -->
-  <div class="row">
+<div class="container">
+  <div class="row justify-content-center">
                           
     <!-- パンくずリスト -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
-        <li class="breadcrumb-item active" aria-current="page">店舗詳細</li>
+        <li class="breadcrumb-item active" aria-current="page">会員情報</li>
       </ol>
     </nav>
-	</div>
 
+    <!-- タイトル -->
+    <h1 class="mb-4 text-center">会員情報</h1>
+
+    <!-- テーブル -->
+    <div class="container my_table">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="w-25" scope="row">氏名</th>
+            <td>{{ user.name }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">フリガナ</th>
+            <td>{{ user.furigana }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">メールアドレス</th>
+            <td>{{ user.email }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">生年月日</th>
+            <td>{{ user.birthday }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">郵便番号</th>
+            <td>{{ user.zipcode }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">住所</th>
+            <td>{{ user.address }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">電話番号</th>
+            <td>{{ user.tel }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">ご職業</th>
+            <td>{{ user.works }}</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- 会員情報変更ボタン -->
+    <div class="mt-4 text-center">
+      <a href="{% url 'account_info_edit' %}" class="btn btn-outline-success">会員情報変更</a>
+    </div>
+    
+    <!-- 退会ボタン -->
+    <div class="mt-2 text-center">
+      <a href="{% url 'account_delete' %}" class="btn btn-outline-danger">退会</a>
+    </div>
+
+  </div>
+</div>
 
 <script src="{% static 'js/script.js' %}"></script>
 

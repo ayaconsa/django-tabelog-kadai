@@ -1,4 +1,3 @@
-from typing import Any
 from django.views.generic import UpdateView
 from NagoyameshiApp.models.restaurant import Restaurant
 
@@ -7,7 +6,7 @@ from NagoyameshiApp.models.restaurant import Restaurant
 # ================== 管理者（サイト運営側）画面 ==================
 
 
-# 管理者（サイト運営者）トップページ
+# 店舗情報編集ページ
 class AdminRestaurantEditView(UpdateView):
     model = Restaurant
     fields = '__all__'

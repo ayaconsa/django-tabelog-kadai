@@ -1,0 +1,49 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/user/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+<div class="container">
+  <div class="row justify-content-center">
+                          
+    <!-- パンくずリスト -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'account_info' %}">会員情報</a></li>
+        <li class="breadcrumb-item active" aria-current="page">退会確認</li>
+      </ol>
+    </nav>
+
+    <!-- タイトル -->
+    <h1 class="mb-4 text-center">退会確認</h1>
+
+    <div class="container text-center">
+      <p>本当に退会しますか？</p>
+    </div>
+      
+		<!-- 退会確認フォーム -->
+		<form method="post">
+			{% csrf_token %}
+			<!-- 退会ボタン -->
+			<div class="mt-4 text-center">
+				<input type="submit" value="退会" class="btn btn-danger">
+			</div>
+		</form>
+
+		<!-- 戻るボタン -->
+		<div class="mt-4 text-center">
+			<a href="{% url 'account_info' %}" class="btn btn-outline-secondary ml-2">戻る</a>
+		</div>
+		
+    </div>
+  </div>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock content %}
