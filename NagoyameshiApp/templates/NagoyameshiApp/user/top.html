@@ -77,7 +77,7 @@
           <div class="container search_box">
             <form method="GET" action="{% url 'restaurant_list' %}">
               <input type="text" name="keyword" placeholder="店舗名・エリア・カテゴリ" class="form-control search_txt">
-              <button type="submit" class="btn btn-outline-success">検索</button>
+              <button type="submit" class="btn btn-success">検索</button>
             </form>
           </div>
           <!-- **************検索ボックスここまで -->
@@ -125,7 +125,7 @@
           <!-- ジャンルキーワード群 -->
           <div class="container">
             {% for category in categories %}
-              <a class="btn btn-primary outline" href="{% url 'restaurant_list' %}?genre={{ category.name }}" role="button">{{ category.name }}</a>
+              <a class="btn btn-outline-success" href="{% url 'restaurant_list' %}?genre={{ category.name }}" role="button">{{ category.name }}</a>
             {% endfor %}
             </div>
         </div>

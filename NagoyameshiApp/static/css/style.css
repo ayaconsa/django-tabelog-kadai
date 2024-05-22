@@ -23,6 +23,16 @@
   opacity: .9;
 }
 
+/* base用 */
+.my_navbar_base {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  background-color: #2B2A4C;
+  margin-bottom: 20px;
+}
+
 /* *******カルーセル */
 
 .my_carousel_img {
@@ -75,35 +85,11 @@ h2 {
   margin: 20px;
   padding: 0 10px 50px 10px;
   border-bottom: solid 0.5px #000000;
-
 }
 
-/* 以下、Bootstrapのキーワードボタンの色変更 */
-.btn-primary {
-  background: #EA906C;
-  color: #000;
+.genre a {
   margin: 10px 5px;
 }
-
-.btn-primary:hover, .btn-primary:focus, 
-.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
-.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
-.open > .dropdown-toggle.btn-primary, 
-.open > .dropdown-toggle.btn-primary:hover,
-.open > .dropdown-toggle.btn-primary:focus, 
-.open > .dropdown-toggle.btn-primary.focus,
-.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
-  background: #EA906C;
-  color: #000;
-}
-
-.btn-primary.outline {
-  border: 3px solid #EA906C;
-  color: #000;
-}
-/* ボタンの色変更ここまで */
 
 
 /* ******新規掲載店舗 */
