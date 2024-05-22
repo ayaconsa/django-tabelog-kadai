@@ -2,27 +2,62 @@
 {% extends 'NagoyameshiApp/user/base.html' %}
 
 <!-- ページタイトル -->
-{% block title %}nagoyameshi{% endblock %}
+{% block title %}予約一覧{% endblock %}
 
 <!-- コンテンツ本体 -->
 {% block content %}
 {% load static %}
 
-
-  <div class="container">
-    <!-- 備忘録）カラム使用時にrow忘れない -->
-  <div class="row">
+<div class="container">
+  <div class="row justify-content-center">
                           
     <!-- パンくずリスト -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
-        <li class="breadcrumb-item active" aria-current="page">店舗詳細</li>
+        <li class="breadcrumb-item active" aria-current="page">予約一覧</li>
       </ol>
     </nav>
-	</div>
 
+    <!-- タイトル -->
+    <h1 class="mb-4 text-center">予約一覧</h1>
+
+    <!-- 予約リスト -->
+    <div class="container">
+      {% if bookings %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">店舗名</th>
+              <th scope="col">予約日</th>
+              <th scope="col">予約時間</th>
+              <th scope="col">人数</th>
+              <th scope="col">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for booking in bookings %}
+              <tr>
+                <td>{{ booking.restaurant.name }}</td>
+                <td>{{ booking.date|date:"Y-m-d" }}</td>
+                <td>{{ booking.time }}</td>
+                <td>{{ booking.number_of_persons }}</td>
+                <td>
+                  <form method="post" action="{% url 'booking_cancel' pk=booking.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">キャンセル</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="text-center">現在予約はありません。</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
 <script src="{% static 'js/script.js' %}"></script>
 

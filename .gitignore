@@ -10,3 +10,4 @@ local_setting.py
 .vscode
 .env_aws_s3
 .is_debug
+.env_stripe

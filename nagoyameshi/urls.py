@@ -18,7 +18,10 @@ from NagoyameshiApp.views.user.account_info import AccountInfoView
 from NagoyameshiApp.views.user.account_info_update import AccountInfoEditView
 from NagoyameshiApp.views.user.account_delete import AccountDeleteView
 from NagoyameshiApp.views.user.bookings import BookingsView
+from NagoyameshiApp.views.user.booking_cancel import BookingCancelView
 from NagoyameshiApp.views.user.favorites import FavoritesView
+from NagoyameshiApp.views.user.favorite_delete import FavoriteDeleteView
+
 from NagoyameshiApp.views.user.change_payment_method import ChangePaymentMethodView
 from NagoyameshiApp.views.user.unsubscribe import UnsubscribeView
 
@@ -75,7 +78,9 @@ urlpatterns = [
     path('account_delete/', AccountDeleteView.as_view(), name="account_delete"),
 
     path('bookings/', BookingsView.as_view(), name="bookings"),
+    path('bookings/cancel/<int:pk>', BookingCancelView.as_view(), name="booking_cancel"),
     path('favorites/', FavoritesView.as_view(), name="favorites"),
+    path('favorites/delete/<int:pk>', FavoriteDeleteView.as_view(), name="favorites_delete"),
     path('change_payment_method/', ChangePaymentMethodView.as_view(), name="change_payment_method"),
     path('unsubscribe/', UnsubscribeView.as_view(), name="unsubscribe"),
     

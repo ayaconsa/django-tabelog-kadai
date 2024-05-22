@@ -2,28 +2,56 @@
 {% extends 'NagoyameshiApp/user/base.html' %}
 
 <!-- ページタイトル -->
-{% block title %}nagoyameshi{% endblock %}
+{% block title %}お気に入り一覧{% endblock %}
 
 <!-- コンテンツ本体 -->
 {% block content %}
 {% load static %}
 
-
-  <div class="container">
-    <!-- 備忘録）カラム使用時にrow忘れない -->
-  <div class="row">
+<div class="container">
+  <div class="row justify-content-center">
                           
     <!-- パンくずリスト -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
-        <li class="breadcrumb-item active" aria-current="page">店舗詳細</li>
+        <li class="breadcrumb-item active" aria-current="page">お気に入り一覧</li>
       </ol>
     </nav>
-  </div>
-  </div>
 
+    <!-- タイトル -->
+    <h1 class="mb-4 text-center">お気に入り一覧</h1>
+
+    <!-- お気に入りリスト -->
+    <div class="container">
+      {% if favorites %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">店舗名</th>
+              <th scope="col">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for favorite in favorites %}
+              <tr>
+                <td>{{ favorite.restaurant.name }}</td>
+                <td>
+                  <form method="post" action="{% url 'favorite_delete' pk=favorite.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">削除</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="text-center">現在お気に入りはありません。</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
 <script src="{% static 'js/script.js' %}"></script>
 

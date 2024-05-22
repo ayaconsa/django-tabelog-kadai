@@ -2,33 +2,51 @@
 {% extends 'NagoyameshiApp/user/base.html' %}
 
 <!-- ページタイトル -->
-{% block title %}nagoyameshi{% endblock %}
-
-
-<!-- 有料会員のご案内 -->
-<!-- メモ）クレジットカード登録 -->
-
+{% block title %}有料プラン登録{% endblock %}
 
 <!-- コンテンツ本体 -->
 {% block content %}
 {% load static %}
 
-<h1>有料会員のご案内</h1>
+<div class="container">
+  <!-- パンくずリスト -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">有料プラン登録</li>
+    </ol>
+  </nav>
 
-  <div class="container">
-    <!-- 備忘録）カラム使用時にrow忘れない -->
-  <div class="row">
-                          
-    <!-- パンくずリスト -->
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
-        <li class="breadcrumb-item active" aria-current="page">店舗詳細</li>
-      </ol>
-    </nav>
-  </div>
-  </div>
+  <!-- 中央寄せの要素 -->
+  <div class="subscription-guide-container">
+    <div class="subscription-guide">
+      <!-- タイトル -->
+      <h1 class="mb-4 text-center">有料プランのご案内</h1>
 
+      <!-- プラン詳細 -->
+      <div class="container text-center">
+        <ul class="list-unstyled">
+          <li>・店舗予約ができる</li>
+          <li>・お気に入り登録ができる</li>
+          <li>・レビュー投稿ができる</li>
+          <li>・月額300円</li>
+        </ul>
+      </div>
+
+      <!-- クレジットカード登録フォーム -->
+      <form method="post" class="text-center">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" class="form-control mb-3" placeholder="カード名義人" name="card_name">
+          <input type="text" class="form-control mb-3" placeholder="カード番号" name="card_number">
+          <input type="text" class="form-control mb-3" placeholder="有効期限 (MM/YY)" name="card_expiry">
+        </div>
+        <button type="submit" class="btn btn-outline-success">登録</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
 
 {% endblock content %}

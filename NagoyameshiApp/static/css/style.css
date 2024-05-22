@@ -621,4 +621,22 @@ h2 {
 }
 
 
+/* サブスク案内ページ */
 
+.subscription-guide-container {
+  display: flex;
+  justify-content: center;
+}
+.subscription-guide {
+  max-width: 500px;
+  text-align: center;
+}
+.subscription-guide ul {
+  text-align: left;
+  margin: 0 auto;
+  display: inline-block;
+}
+.subscription-guide form {
+  max-width: 400px;
+  margin: 20px auto;
+}
