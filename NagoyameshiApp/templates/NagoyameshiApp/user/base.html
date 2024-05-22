@@ -26,16 +26,16 @@
               <div class="navbar-nav">
                 {% if user.is_authenticated %}
                 <span class="navbar-text">ようこそ {{ user.name }} さん</span>
-                  {% if user.is_subscriber %}
+                  {% if user.subscription %}
                     <!-- サブスク会員の場合のメニュー -->
-                    <a class="nav-link" href="#">お気に入り一覧</a>
-                    <a class="nav-link" href="#">予約一覧</a>
-                    <a class="nav-link" href="#">会員登録情報</a>
-                    <a class="nav-link" href="#">有料会員の解約</a>
+                    <a class="nav-link" href="{% url 'favorites' %}">お気に入り一覧</a>
+                    <a class="nav-link" href="{% url 'bookings' %}">予約一覧</a>
+                    <a class="nav-link" href="{% url 'account_info' %}">会員登録情報</a>
+                    <a class="nav-link" href="{% url 'unsubscribe' %}">有料会員の解約</a>
                   {% else %}
                     <!-- 無料会員の場合のメニュー -->
-                    <a class="nav-link" href="#">会員登録情報</a>
-                    <a class="nav-link" href="#">有料会員のご案内</a>					
+                    <a class="nav-link" href="{% url 'account_info' %}">会員登録情報</a>
+                    <a class="nav-link" href="{% url 'subscription_guide' %}">有料会員のご案内</a>					
                   {% endif %}
                   <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
