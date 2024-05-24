@@ -13,6 +13,7 @@ from NagoyameshiApp.views.user.restaurant_detail import RestaurantDetailView
 from NagoyameshiApp.views.user.logout import LogoutView
 from NagoyameshiApp.views.user.password_resetting import PasswordResettingView
 from NagoyameshiApp.views.user.subscription_guide import SubscriptionGuideView
+from NagoyameshiApp.views.user.create_checkout_session import CreateCheckoutSessionView
 from NagoyameshiApp.views.user.delete_account import DeleteAccountView
 from NagoyameshiApp.views.user.account_info import AccountInfoView
 from NagoyameshiApp.views.user.account_info_update import AccountInfoEditView
@@ -71,6 +72,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name="logout"),
     path('password_resetting/', PasswordResettingView.as_view(), name="password_resetting"),
     path('subscription_guide/', SubscriptionGuideView.as_view(), name="subscription_guide"),
+    path('create_checkout_session/', CreateCheckoutSessionView.as_view(), name="create_checkout_session"),
     path('delete_account/', DeleteAccountView.as_view(), name="delete_account"),
 
     path('account_info/', AccountInfoView.as_view(), name="account_info"),

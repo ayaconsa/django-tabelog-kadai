@@ -1,5 +1,10 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+
+# .envファイルをロード
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env_stripe'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -183,6 +188,22 @@ LOGIN_REDIRECT_URL = 'top'
 LOGOUT_REDIRECT_URL = 'top'
 
 
+
+
+
+
+# 環境変数を出力して確認
+print("Loaded environment variables: ", os.environ)
+
 # Stripeの設定
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
-STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+TEST_SECRET_KEY = os.environ['TEST_SECRET_KEY']
+TEST_PUBLISHABLE_KEY = os.environ['TEST_PUBLISHABLE_KEY']
+
+print("Test Secret Key: ", TEST_SECRET_KEY)  # デバッグ用
+print("Test Publishable Key: ", TEST_PUBLISHABLE_KEY)  # デバッグ用
+
+if not TEST_SECRET_KEY:
+    raise ValueError("TEST_SECRET_KEY is not set in .env_test file")
+
+if not TEST_PUBLISHABLE_KEY:
+    raise ValueError("TEST_PUBLISHABLE_KEY is not set in .env_test file")

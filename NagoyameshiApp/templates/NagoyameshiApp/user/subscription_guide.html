@@ -34,7 +34,7 @@
       </div>
 
       <!-- クレジットカード登録フォーム -->
-      <form method="post" class="text-center">
+      <form action="{% url 'create_checkout_session' %}" method="post" class="text-center">
         {% csrf_token %}
         <div class="form-group">
           <input type="text" class="form-control mb-3" placeholder="カード名義人" name="card_name">
@@ -47,6 +47,10 @@
   </div>
 </div>
 
-<script src="{% static 'js/script.js' %}"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+  // JavaScript for Stripe Checkout
+  const stripe = Stripe("{{ stripe_publishable_key }}");
+</script>
 
 {% endblock content %}
