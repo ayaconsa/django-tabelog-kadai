@@ -21,6 +21,7 @@ services:
     env_file:
       - .env_aws_s3
       - .env_mariadb
+      - .env_stripe
 
 volumes:
   db-volume:

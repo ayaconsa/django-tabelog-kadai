@@ -1,10 +1,5 @@
 from pathlib import Path
 import os
-from dotenv import load_dotenv
-
-
-# .envファイルをロード
-load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env_stripe'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +16,7 @@ else:
 # 「.is_debug（空ファイル）」をmanage.pyと同じところに作る（SQLite時は削除）
 
 # Herokuデプロイのために変更
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -148,18 +143,18 @@ if DEBUG:
 
 else:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATIC_URL = 'https://aws-egami-test-nagoyameshi.s3.ap-northeast-1.amazonaws.com/static/'
+    STATIC_URL = 'https://aws-nagoyameshi-static.s3.ap-northeast-1.amazonaws.com/static/'
     # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
 
 # Mediaファイル（投稿画像）の設定
 if DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIA_URL = 'https://aws-egami-test-nagoyameshi.s3.s3.ap-northeast-1.amazonaws.com/static/photos/'
+    MEDIA_URL = 'https://aws-nagoyameshi-media.s3.ap-northeast-1.amazonaws.com/static/photos/'
     # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
 
 else:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIA_URL = 'https://aws-egami-test-nagoyameshi.s3.s3.ap-northeast-1.amazonaws.com/static/photos/'
+    MEDIA_URL = 'https://aws-nagoyameshi-media.s3.ap-northeast-1.amazonaws.com/static/photos/'
     # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
 
 
@@ -172,7 +167,7 @@ AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 
 # バケット名
-AWS_STORAGE_BUCKET_NAME = 'aws-egami-test-nagoyameshi'
+AWS_STORAGE_BUCKET_NAME = 'aws-nagoyameshi-media'
 
 
 
@@ -196,14 +191,14 @@ LOGOUT_REDIRECT_URL = 'top'
 print("Loaded environment variables: ", os.environ)
 
 # Stripeの設定
-TEST_SECRET_KEY = os.environ['TEST_SECRET_KEY']
-TEST_PUBLISHABLE_KEY = os.environ['TEST_PUBLISHABLE_KEY']
+STRIPE_SECRET_KEY = os.environ['STRIPE_SECRET_KEY']
+STRIPE_PUBLISHABLE_KEY = os.environ['STRIPE_PUBLISHABLE_KEY']
 
-print("Test Secret Key: ", TEST_SECRET_KEY)  # デバッグ用
-print("Test Publishable Key: ", TEST_PUBLISHABLE_KEY)  # デバッグ用
+print("STRIPE Secret Key: ", STRIPE_SECRET_KEY)  # デバッグ用
+print("STRIPE Publishable Key: ", STRIPE_PUBLISHABLE_KEY)  # デバッグ用
 
-if not TEST_SECRET_KEY:
-    raise ValueError("TEST_SECRET_KEY is not set in .env_test file")
+if not STRIPE_SECRET_KEY:
+    raise ValueError("STRIPE_SECRET_KEY is not set in .env_STRIPE file")
 
-if not TEST_PUBLISHABLE_KEY:
-    raise ValueError("TEST_PUBLISHABLE_KEY is not set in .env_test file")
+if not STRIPE_PUBLISHABLE_KEY:
+    raise ValueError("STRIPE_PUBLISHABLE_KEY is not set in .env_STRIPE file")
