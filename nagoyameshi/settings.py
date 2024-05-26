@@ -194,3 +194,10 @@ if not STRIPE_PUBLISHABLE_KEY:
 
 if not STRIPE_WEBHOOK_SECRET:
     raise ValueError("STRIPE_WEBHOOK_SECRET is not set in .env_STRIPE file")
+
+
+# 環境ごとのドメイン設定
+if DEBUG:
+    YOUR_DOMAIN = 'http://127.0.0.1:8000'
+else:
+    YOUR_DOMAIN = 'https://floating-cliffs-94629-07a3203fd75b.herokuapp.com'
