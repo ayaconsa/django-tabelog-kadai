@@ -127,9 +127,9 @@ USE_TZ = True
 
 
 
-# CSSとJSファイルの設定
+# ==CSSとJSファイルの設定==
+# 開発環境（ローカルを参照）
 if DEBUG:
-    # 開発環境
     # ブラウザからアクセスする際のURL
     STATIC_URL = '/static/'
 
@@ -141,21 +141,15 @@ if DEBUG:
     # collectstaticコマンドを実行した際に収集されたstaticファイルを配置する場所の設定）
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# 本番環境
 else:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATIC_URL = 'https://aws-nagoyameshi-static.s3.ap-northeast-1.amazonaws.com/static/'
-    # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
+    STATIC_URL = 'https://aws-egami-test-nagoyameshi.s3.ap-northeast-1.amazonaws.com/'
+    # S3にはディレクトリ概念がないため、バケット直下のフォルダを参照している（以下同）
 
-# Mediaファイル（投稿画像）の設定
-if DEBUG:
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIA_URL = 'https://aws-nagoyameshi-media.s3.ap-northeast-1.amazonaws.com/static/photos/'
-    # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
-
-else:
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    MEDIA_URL = 'https://aws-nagoyameshi-media.s3.ap-northeast-1.amazonaws.com/static/photos/'
-    # /static/と指定しているのに、なぜかs3直下のリンクになってしまう...
+# ==Mediaファイル（投稿画像）の設定（開発環境も本番環境もS3を参照）==
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = 'https://aws-egami-test-nagoyameshi.s3.ap-northeast-1.amazonaws.com/'
 
 
 
@@ -167,8 +161,11 @@ AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 
 # バケット名
-AWS_STORAGE_BUCKET_NAME = 'aws-nagoyameshi-media'
-
+AWS_STORAGE_BUCKET_NAME = 'aws-egami-test-nagoyameshi'
+# バケットを2つに分けることを試みたが、カスタムストレージバックエンドの設定が必要らしく、後回し（以下ChatGPTより）
+    # Djangoでは、デフォルトで静的ファイルとメディアファイルをローカルディスクに保存します。
+    # しかし、S3バケットを使用する場合は、Djangoがどのバケットを使用するかを知る必要があります。
+    # デフォルトの設定では、静的ファイルとメディアファイルを同じバケットに保存するようにしか設定できません。
 
 
 # Default primary key field type
