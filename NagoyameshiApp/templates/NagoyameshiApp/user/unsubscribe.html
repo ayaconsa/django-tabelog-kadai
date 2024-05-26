@@ -10,24 +10,40 @@
 {% block content %}
 {% load static %}
 
-<h1>サブスク解約</h1>
+<div class="container">
+  <!-- パンくずリスト -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">有料プランの解約</li>
+    </ol>
+  </nav>
 
-  <div class="container">
-    <!-- 備忘録）カラム使用時にrow忘れない -->
-  <div class="row">
-                          
-    <!-- パンくずリスト -->
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
-        <li class="breadcrumb-item active" aria-current="page">店舗詳細</li>
-      </ol>
-    </nav>
+  <!-- 中央寄せの要素 -->
+  <div class="subscription-guide-container">
+    <div class="subscription-guide">
+      <!-- タイトル -->
+      <h1 class="mb-4 text-center">有料プランでできること</h1>
+
+      <!-- プラン詳細 -->
+      <div class="container text-center">
+        <ul class="list-unstyled">
+          <li>・店舗予約ができる</li>
+          <li>・お気に入り登録ができる</li>
+          <li>・レビュー投稿ができる</li>
+          <li>・月額300円</li>
+        </ul>
+      </div>
+
+      <p>同月内に再度有料会員登録をされる場合、<br>月額料金が再度請求されますのでご注意ください。</p>
+      <h2>本当に解約しますか？</h2>
+      <form action="{% url 'cancel_subscription' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">解約する</button>
+          <a href="{% url 'subscription_guide' %}" class="btn btn-secondary">戻る</a>
+      </form>
+    </div>
   </div>
-  </div>
-
-
-<script src="{% static 'js/script.js' %}"></script>
+</div>
 
 {% endblock content %}

@@ -20,6 +20,7 @@ class CustomUser(AbstractUser):
     works = models.CharField(blank=True, max_length=20, default='', verbose_name="ご職業")
     
     subscription = models.BooleanField(default='False', verbose_name="サブスク契約")
+    stripe_subscription_id = models.CharField(max_length=255, blank=True, null=True, verbose_name="StripeサブスクリプションID")
     
     # ダミーデータ作成時はauto_now_addとauto_nowをFalseにする
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="登録日時")

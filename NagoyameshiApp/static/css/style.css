@@ -628,7 +628,7 @@ h2 {
   justify-content: center;
 }
 .subscription-guide {
-  max-width: 500px;
+  max-width: 700px;
   text-align: center;
 }
 .subscription-guide ul {
@@ -639,4 +639,7 @@ h2 {
 .subscription-guide form {
   max-width: 400px;
   margin: 20px auto;
+}
+.subscription-guide p {
+  margin-top: 15px;
 }

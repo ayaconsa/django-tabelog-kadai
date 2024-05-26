@@ -2,7 +2,7 @@
 {% extends 'NagoyameshiApp/user/base.html' %}
 
 <!-- ページタイトル -->
-{% block title %}有料プラン登録{% endblock %}
+{% block title %}nagoyameshi{% endblock %}
 
 <!-- コンテンツ本体 -->
 {% block content %}
@@ -36,11 +36,6 @@
       <!-- クレジットカード登録フォーム -->
       <form action="{% url 'create_checkout_session' %}" method="post" class="text-center">
         {% csrf_token %}
-        <div class="form-group">
-          <input type="text" class="form-control mb-3" placeholder="カード名義人" name="card_name">
-          <input type="text" class="form-control mb-3" placeholder="カード番号" name="card_number">
-          <input type="text" class="form-control mb-3" placeholder="有効期限 (MM/YY)" name="card_expiry">
-        </div>
         <button type="submit" class="btn btn-outline-success">登録</button>
       </form>
     </div>

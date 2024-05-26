@@ -16,7 +16,7 @@ else:
 # 「.is_debug（空ファイル）」をmanage.pyと同じところに作る（SQLite時は削除）
 
 # Herokuデプロイのために変更
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -183,22 +183,17 @@ LOGIN_REDIRECT_URL = 'top'
 LOGOUT_REDIRECT_URL = 'top'
 
 
-
-
-
-
-# 環境変数を出力して確認
-print("Loaded environment variables: ", os.environ)
-
 # Stripeの設定
 STRIPE_SECRET_KEY = os.environ['STRIPE_SECRET_KEY']
 STRIPE_PUBLISHABLE_KEY = os.environ['STRIPE_PUBLISHABLE_KEY']
+STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET')
 
-print("STRIPE Secret Key: ", STRIPE_SECRET_KEY)  # デバッグ用
-print("STRIPE Publishable Key: ", STRIPE_PUBLISHABLE_KEY)  # デバッグ用
 
 if not STRIPE_SECRET_KEY:
     raise ValueError("STRIPE_SECRET_KEY is not set in .env_STRIPE file")
 
 if not STRIPE_PUBLISHABLE_KEY:
     raise ValueError("STRIPE_PUBLISHABLE_KEY is not set in .env_STRIPE file")
+
+if not STRIPE_WEBHOOK_SECRET:
+    raise ValueError("STRIPE_WEBHOOK_SECRET is not set in .env_STRIPE file")

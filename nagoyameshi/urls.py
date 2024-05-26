@@ -14,6 +14,11 @@ from NagoyameshiApp.views.user.logout import LogoutView
 from NagoyameshiApp.views.user.password_resetting import PasswordResettingView
 from NagoyameshiApp.views.user.subscription_guide import SubscriptionGuideView
 from NagoyameshiApp.views.user.create_checkout_session import CreateCheckoutSessionView
+from NagoyameshiApp.views.user.checkout_success import CheckoutSuccessView
+from NagoyameshiApp.views.user.checkout_cancel import CheckoutCancelView
+from NagoyameshiApp.views.user.stripe_web_hook import StripeWebhookView
+from NagoyameshiApp.views.user.cancel_subscription import CancelSubscriptionView
+
 from NagoyameshiApp.views.user.delete_account import DeleteAccountView
 from NagoyameshiApp.views.user.account_info import AccountInfoView
 from NagoyameshiApp.views.user.account_info_update import AccountInfoEditView
@@ -73,6 +78,13 @@ urlpatterns = [
     path('password_resetting/', PasswordResettingView.as_view(), name="password_resetting"),
     path('subscription_guide/', SubscriptionGuideView.as_view(), name="subscription_guide"),
     path('create_checkout_session/', CreateCheckoutSessionView.as_view(), name="create_checkout_session"),
+    path('checkout_success/', CheckoutSuccessView.as_view(), name="checkout_success"),
+    path('checkout_cancel/', CheckoutCancelView.as_view(), name="checkout_cancel"),
+    path('stripe-webhook/', StripeWebhookView.as_view(), name='stripe_webhook'),
+    path('cancel_subscription/', CancelSubscriptionView.as_view(), name='cancel_subscription'),
+
+
+
     path('delete_account/', DeleteAccountView.as_view(), name="delete_account"),
 
     path('account_info/', AccountInfoView.as_view(), name="account_info"),

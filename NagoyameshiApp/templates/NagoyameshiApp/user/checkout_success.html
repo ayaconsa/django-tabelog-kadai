@@ -1,0 +1,29 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/user/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+  <div class="container">
+    <!-- 備忘録）カラム使用時にrow忘れない -->
+  <div class="row">
+                          
+    <!-- パンくずリスト -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+      </ol>
+    </nav>
+	</div>
+
+    <div class="container">
+        <h1>支払いが成功しました！</h1>
+        <p>ご利用ありがとうございます。</p>
+    </div>
+
+
+{% endblock content %}
