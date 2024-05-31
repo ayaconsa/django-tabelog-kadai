@@ -10,7 +10,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # Stripeの支払いview
 class CreateCheckoutSessionView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
-        # herokuアプリの設定も加える
+        # YOUR_DOMAINが開発環境と本番環境で変わるようにsettings.pyに記述
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=[
