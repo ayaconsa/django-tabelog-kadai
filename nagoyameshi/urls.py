@@ -16,7 +16,6 @@ from NagoyameshiApp.views.user.subscription_guide import SubscriptionGuideView
 from NagoyameshiApp.views.user.create_checkout_session import CreateCheckoutSessionView
 from NagoyameshiApp.views.user.checkout_success import CheckoutSuccessView
 from NagoyameshiApp.views.user.checkout_cancel import CheckoutCancelView
-from NagoyameshiApp.views.user.stripe_web_hook import StripeWebhookView
 from NagoyameshiApp.views.user.cancel_subscription import CancelSubscriptionView
 
 from NagoyameshiApp.views.user.delete_account import DeleteAccountView
@@ -80,7 +79,6 @@ urlpatterns = [
     path('create_checkout_session/', CreateCheckoutSessionView.as_view(), name="create_checkout_session"),
     path('checkout_success/', CheckoutSuccessView.as_view(), name="checkout_success"),
     path('checkout_cancel/', CheckoutCancelView.as_view(), name="checkout_cancel"),
-    path('stripe-webhook/', StripeWebhookView.as_view(), name='stripe_webhook'),
     path('cancel_subscription/', CancelSubscriptionView.as_view(), name='cancel_subscription'),
 
 
