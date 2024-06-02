@@ -10,6 +10,8 @@ from NagoyameshiApp.views.user.create_account import CreateAccountView
 from NagoyameshiApp.views.user.login import LoginView
 from NagoyameshiApp.views.user.restaurant_list import RestaurantListView
 from NagoyameshiApp.views.user.restaurant_detail import RestaurantDetailView
+from NagoyameshiApp.views.user.booking_success import BookingSuccessView
+
 from NagoyameshiApp.views.user.logout import LogoutView
 from NagoyameshiApp.views.user.password_resetting import PasswordResettingView
 from NagoyameshiApp.views.user.subscription_guide import SubscriptionGuideView
@@ -73,6 +75,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name="login"),   
     path('restaurant_list/', RestaurantListView.as_view(), name="restaurant_list"),
     path('restaurant_detail/<int:pk>', RestaurantDetailView.as_view(), name="restaurant_detail"),
+    path('booking_success/', BookingSuccessView.as_view(), name='booking_success'),
 
     path('logout/', LogoutView.as_view(), name="logout"),
     path('password_resetting/', PasswordResettingView.as_view(), name="password_resetting"),
@@ -81,8 +84,6 @@ urlpatterns = [
     path('checkout_success/', CheckoutSuccessView.as_view(), name="checkout_success"),
     path('checkout_cancel/', CheckoutCancelView.as_view(), name="checkout_cancel"),
     path('cancel_subscription/', CancelSubscriptionView.as_view(), name='cancel_subscription'),
-
-
 
     path('delete_account/', DeleteAccountView.as_view(), name="delete_account"),
 
@@ -93,7 +94,8 @@ urlpatterns = [
     path('bookings/', BookingsView.as_view(), name="bookings"),
     path('bookings/cancel/<int:pk>', BookingCancelView.as_view(), name="booking_cancel"),
     path('favorites/', FavoritesView.as_view(), name="favorites"),
-    path('favorites/delete/<int:pk>', FavoriteDeleteView.as_view(), name="favorites_delete"),
+    path('favorite_delete/<int:pk>', FavoriteDeleteView.as_view(), name="favorite_delete"),
+
     path('change_payment_method/', ChangePaymentMethodView.as_view(), name="change_payment_method"),
     path('unsubscribe/', UnsubscribeView.as_view(), name="unsubscribe"),
     path('toggle_favorite/', ToggleFavoriteView.as_view(), name='toggle_favorite'),

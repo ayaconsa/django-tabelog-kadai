@@ -9,10 +9,8 @@
 {% load static %}
 {% load custom_filters %}
 
-  <div class="container">
-    <!-- 備忘録）カラム使用時にrow忘れない -->
+<div class="container">
   <div class="row">
-                          
     <!-- パンくずリスト -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -21,173 +19,146 @@
         <li class="breadcrumb-item active" aria-current="page">店舗詳細</li>
       </ol>
     </nav>
-	</div>
+  </div>
 
-    <!-- 上部 -->
+  <!-- 上部 -->
+  <div>
+    <!-- タイトル -->
     <div>
-			<!-- タイトル -->
-			<div>
-				<h3>{{ restaurant.name }}</h3>
-			</div>
-			<!-- 評価 -->
-			<div>
-				<p>&#9733; {{ average_score }}（{{ review_count }}件）</p>
-			</div>
-			<!-- お気に入り追加ボタン -->
-			<div class="container">
-			{% if user.is_authenticated and user.subscription %}
-				<button id="favorite-btn" data-restaurant-id="{{ restaurant.id }}">
-					{% if restaurant in user.favorites.all %}
-						お気に入り解除
-					{% else %}
-						お気に入り登録
-					{% endif %}
-				</button>
-			{% endif %}
-			</div>
+      <h3>{{ restaurant.name }}</h3>
     </div>
+    <!-- 評価 -->
+    <div>
+      <p>&#9733; {{ average_score }}（{{ review_count }}件）</p>
+    </div>
+    <!-- お気に入り追加ボタン -->
+    <div class="container">
+      {% if user.is_authenticated and user.subscription %}
+        <button id="favorite-btn" data-restaurant-id="{{ restaurant.id }}">
+          {% if restaurant in user.favorites.all %}
+            お気に入り解除
+          {% else %}
+            お気に入り登録
+          {% endif %}
+        </button>
+      {% endif %}
+    </div>
+  </div>
 
-		<!-- タブ -->
-		<p id="my_tabcontrol">
-			<a href="#top">トップ</a>
-			{% comment %} ここで条件分岐（サブスクかどうか） {% endcomment %}
-			<a href="#resavation">予約</a>
-			<a href="#review">レビュー</a>
-		</p>
+  <!-- タブ -->
+  <p id="my_tabcontrol">
+    <a href="#top">店舗情報</a>
+    <a href="#resavation" class="subscription-required">
+      {% if not user.is_authenticated or not user.subscription %}
+        &#128274; <!-- 鍵アイコン -->
+      {% endif %}
+      予約
+    </a>
+    <a href="#review" class="subscription-required">
+      {% if not user.is_authenticated or not user.subscription %}
+        &#128274; <!-- 鍵アイコン -->
+      {% endif %}
+      レビュー
+    </a>
+  </p>
 
-		<!-- タブの中身 -->
-		<div id="my_tabbody">
-			<!-- ******トップ****** -->
-			<div id="top">
-				<img src="{{ restaurant.img.url }}" class="img-fluid rounded-start" alt="{{ restaurant.name }}" >
-				<h2>{{ restaurant.catch_copy }}</h2>
-				<p>
-					{{ restaurant.explanation }}
-				</p>
-				<!-- テーブル -->
-				<table class="table">
-					<tbody>
-						<tr>
-							<th class="w-25" scope="row">価格帯</th>
-							<td>{{ restaurant.price_max }}円〜{{ restaurant.price_min }}円</td>
-						</tr>
-						<tr>
-							<th class="w-25" scope="row">座席数</th>
-							<td>{{ restaurant.seat }}席</td>
-						</tr>
-						<tr>
-							<th class="w-25" scope="row">住所</th>
-							<td>{{ restaurant.address }}</td>
-						</tr>
-						<tr>
-							<th class="w-25" scope="row">予約・お問い合わせ</th>
-							<td>{{ restaurant.tel }}</td>
-						</tr>
-						<tr>
-							<th class="w-25" scope="row">営業時間</th>
-							<td>{{ restaurant.open_time }} 〜 {{ restaurant.close_time }}</td>
-						</tr>
-						<tr>
-							<th class="w-25" scope="row">定休日</th>
-							<td>{{ restaurant.close_day }}</td>
-						</tr>
-						<tr>
-							<th class="w-25" scope="row">カテゴリ</th>
-							<td>{{ restaurant.category }}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- ******予約****** -->
-			<div id="resavation">
-        <p>予約日</p>
-        <form>
-          <input type="date" name="reserve_date">
-        </form>
-				<p>予約時間</p>
-				<form>
-          <select name="reserve_time">
-            <option value="">選択してください</option>
-            <option value="10:00">10:00</option>
-            <option value="10:30">10:30</option>
-            <option value="11:00">11:00</option>
-            <option value="11:30">11:30</option>
-            <option value="12:00">12:00</option>
-            <option value="12:30">12:30</option>
-            <option value="13:00">13:00</option>
-            <option value="13:30">13:30</option>
-            <option value="14:00">14:00</option>
-            <option value="17:00">17:30</option>
-            <option value="17:30">17:00</option>
-            <option value="18:00">18:30</option>
-            <option value="18:30">18:00</option>
-            <option value="19:00">19:30</option>
-						<option value="19:30">19:00</option>
-            <option value="20:00">20:30</option>
-          </select>
-        </form>
-				<p>人数</p>
-				<form>
-          <select name="reserve_number">
-            <option value="">選択してください</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-						<option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-        </form>
-				<button class="btn search_btn list_search_item">予約する</button>
-
-
-
-			</div>
-			<!-- ******レビュー****** -->
-			<div id="review">
-				{% for review in reviews %}
-				<p>{{ review.user.name }}</p>
-				<p>
-					{% for _ in review.score|get_range %}
-					&#9733;
-					{% endfor %}
-				</p>
-				<p>{{ review.comment }}</p>
-				{% endfor %}
-
-      <!-- ページネーション -->
-      <nav aria-label="Page navigation example w-100">
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-				
-			</div>
+  <!-- タブの中身 -->
+  <div id="my_tabbody">
+    <!-- ******店舗情報****** -->
+    <div id="top">
+      <img src="{{ restaurant.img.url }}" class="img-fluid rounded-start" alt="{{ restaurant.name }}">
+      <h2>{{ restaurant.catch_copy }}</h2>
+      <p>
+        {{ restaurant.explanation }}
+      </p>
+      <!-- テーブル -->
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="w-25" scope="row">価格帯</th>
+            <td>{{ restaurant.price_max }}円〜{{ restaurant.price_min }}円</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">座席数</th>
+            <td>{{ restaurant.seat }}席</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">住所</th>
+            <td>{{ restaurant.address }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">予約・お問い合わせ</th>
+            <td>{{ restaurant.tel }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">営業時間</th>
+            <td>{{ restaurant.open_time }} 〜 {{ restaurant.close_time }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">定休日</th>
+            <td>{{ restaurant.close_day }}</td>
+          </tr>
+          <tr>
+            <th class="w-25" scope="row">カテゴリ</th>
+            <td>{{ restaurant.category }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {% if user.is_authenticated and user.subscription %}
+		<!-- ******予約****** -->
+		<div id="resavation">
+			<form method="post" action="{% url 'restaurant_detail' restaurant.pk %}">
+				{% csrf_token %}
+				{{ booking_form.as_p }}
+				<button type="submit" class="btn search_btn list_search_item">予約する</button>
+			</form>
 		</div>
-
-	</div>
+      <!-- ******レビュー****** -->
+      <div id="review">
+        {% for review in reviews %}
+        <p>{{ review.user.name }}</p>
+        <p>
+          {% for _ in review.score|get_range %}
+          &#9733;
+          {% endfor %}
+        </p>
+        <p>{{ review.comment }}</p>
+        {% endfor %}
+        <!-- ページネーション -->
+        <nav aria-label="Page navigation example w-100">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    {% else %}
+      <!-- 有料会員誘導メッセージ -->
+      <div id="resavation">
+        <p>予約機能は有料会員専用サービスです。<br>
+					月額300円の有料プランについては<a href="{% url 'subscription_guide' %}">こちら</a></p>
+      </div>
+      <div id="review">
+        <p>レビュー閲覧・投稿は有料会員専用サービスです。<br>
+					月額300円の有料プランについては<a href="{% url 'subscription_guide' %}">こちら</a></p>
+      </div>
+    {% endif %}
+  </div>
+</div>
 
 <script src="{% static 'js/script_restaurant_detail.js' %}"></script>
 <script src="{% static 'js/script_favorite.js' %}"></script>
-
 
 {% endblock content %}

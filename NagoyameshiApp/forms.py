@@ -1,5 +1,6 @@
 from django import forms
 from NagoyameshiApp.models.custom_user import CustomUser
+from NagoyameshiApp.models.booking import Booking
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
@@ -30,3 +31,12 @@ class CustomUserForm(forms.ModelForm):
         self.fields['works'].widget.attrs = {'placeholder': 'エンジニア'}
         
         
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['date', 'time', 'number_of_persons']
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+            'time': forms.Select(choices=Booking.TIME_Sorted),
+            'number_of_persons': forms.NumberInput(attrs={'min': 1, 'max': 12}),
+        }

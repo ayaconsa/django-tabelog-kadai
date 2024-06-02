@@ -35,7 +35,7 @@
           <tbody>
             {% for favorite in favorites %}
               <tr>
-                <td>{{ favorite.restaurant.name }}</td>
+                <td><a href="{% url 'restaurant_detail' favorite.restaurant.id %}">{{ favorite.restaurant.name }}</a></td>
                 <td>
                   <form method="post" action="{% url 'favorite_delete' pk=favorite.pk %}">
                     {% csrf_token %}

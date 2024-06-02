@@ -1,0 +1,11 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/user/base.html' %}
+
+{% block title %}予約完了{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>予約が完了しました</h2>
+    <p>予約が正常に完了しました。予約一覧は<a href="{% url 'bookings' %}">こちら</a>から確認できます。</p>
+</div>
+{% endblock %}
