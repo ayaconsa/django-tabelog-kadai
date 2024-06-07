@@ -12,7 +12,8 @@ from NagoyameshiApp.views.user.restaurant_list import RestaurantListView
 from NagoyameshiApp.views.user.restaurant_detail import RestaurantDetailView
 from NagoyameshiApp.views.user.booking_success import BookingSuccessView
 from NagoyameshiApp.views.user.review_create import ReviewCreateView
-
+from NagoyameshiApp.views.user.reviews import ReviewsView
+from NagoyameshiApp.views.user.create_booking import CreateBookingView
 from NagoyameshiApp.views.user.logout import LogoutView
 from NagoyameshiApp.views.user.password_resetting import PasswordResettingView
 from NagoyameshiApp.views.user.subscription_guide import SubscriptionGuideView
@@ -20,7 +21,6 @@ from NagoyameshiApp.views.user.create_checkout_session import CreateCheckoutSess
 from NagoyameshiApp.views.user.checkout_success import CheckoutSuccessView
 from NagoyameshiApp.views.user.checkout_cancel import CheckoutCancelView
 from NagoyameshiApp.views.user.cancel_subscription import CancelSubscriptionView
-
 from NagoyameshiApp.views.user.delete_account import DeleteAccountView
 from NagoyameshiApp.views.user.account_info import AccountInfoView
 from NagoyameshiApp.views.user.account_info_update import AccountInfoEditView
@@ -29,7 +29,6 @@ from NagoyameshiApp.views.user.bookings import BookingsView
 from NagoyameshiApp.views.user.booking_cancel import BookingCancelView
 from NagoyameshiApp.views.user.favorites import FavoritesView
 from NagoyameshiApp.views.user.favorite_delete import FavoriteDeleteView
-
 from NagoyameshiApp.views.user.change_payment_method import ChangePaymentMethodView
 from NagoyameshiApp.views.user.unsubscribe import UnsubscribeView
 from NagoyameshiApp.views.user.toggle_favorite import ToggleFavoriteView
@@ -45,17 +44,13 @@ from NagoyameshiApp.views.admin2.admin2_top import AdminTopView
 from NagoyameshiApp.views.admin2.admin2_category_list import CategoryListView
 from NagoyameshiApp.views.admin2.admin2_category_delete import CategoryDeleteView
 from NagoyameshiApp.views.admin2.admin2_category_registration import CategoryRegistrationView
-
-
 from NagoyameshiApp.views.admin2.admin2_user_list import UserListView
 from NagoyameshiApp.views.admin2.admin2_sales import SalesView
 from NagoyameshiApp.views.admin2.admin2_user_number import UserNumberView
-
 from NagoyameshiApp.views.admin2.admin2_restaurant_list import AdminRestaurantListView
 from NagoyameshiApp.views.admin2.admin2_restaurant_detail import AdminRestaurantDetailView
 from NagoyameshiApp.views.admin2.admin2_restaurant_edit import AdminRestaurantEditView
 from NagoyameshiApp.views.admin2.admin2_restaurant_delete import AdminRestaurantDeleteView
-
 from NagoyameshiApp.views.admin2.admin2_restaurant_registration import AdminRestaurantRegistrationView
 from NagoyameshiApp.views.admin2.admin2_booking_confirmation import AdminBookingConfirmationView
 from NagoyameshiApp.views.admin2.admin2_review_confirmation import AdminReviewConfirmationView
@@ -71,14 +66,12 @@ urlpatterns = [
     path('', TopView.as_view(), name="top"),
     path('company_overview/', CompanyOverviewView.as_view(), name="company_overview"),
     path('terms_of_use/', TermsOfUseView.as_view(), name="terms_of_use"),
-
     path('account_create/', CreateAccountView.as_view(), name="account_create"),
     path('login/', LoginView.as_view(), name="login"),   
     path('restaurant_list/', RestaurantListView.as_view(), name="restaurant_list"),
-    path('restaurant_detail/<int:pk>', RestaurantDetailView.as_view(), name="restaurant_detail"),
+    path('restaurant/<int:pk>', RestaurantDetailView.as_view(), name="restaurant_detail"),
     path('booking_success/', BookingSuccessView.as_view(), name='booking_success'),
     path('restaurant/<int:pk>/review/new/', ReviewCreateView.as_view(), name='review_create'),
-
     path('logout/', LogoutView.as_view(), name="logout"),
     path('password_resetting/', PasswordResettingView.as_view(), name="password_resetting"),
     path('subscription_guide/', SubscriptionGuideView.as_view(), name="subscription_guide"),
@@ -86,7 +79,8 @@ urlpatterns = [
     path('checkout_success/', CheckoutSuccessView.as_view(), name="checkout_success"),
     path('checkout_cancel/', CheckoutCancelView.as_view(), name="checkout_cancel"),
     path('cancel_subscription/', CancelSubscriptionView.as_view(), name='cancel_subscription'),
-
+    path('restaurant/<int:pk>/booking/', ReviewsView.as_view(), name='reviews'),
+    path('restaurant/<int:pk>/reviews/', CreateBookingView.as_view(), name='create_booking'),
     path('delete_account/', DeleteAccountView.as_view(), name="delete_account"),
 
     path('account_info/', AccountInfoView.as_view(), name="account_info"),
