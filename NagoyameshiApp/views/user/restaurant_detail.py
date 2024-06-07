@@ -4,6 +4,8 @@ from NagoyameshiApp.models.restaurant import Restaurant
 from NagoyameshiApp.models.review import Review
 from NagoyameshiApp.forms import BookingForm
 from django.urls import reverse
+from django.core.paginator import Paginator
+
 
 import logging
 
@@ -23,8 +25,11 @@ class RestaurantDetailView(TemplateView):
         restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
         context['restaurant'] = restaurant
 
-        # レビューデータを取得してcontextに追加
-        reviews = Review.objects.filter(restaurant=restaurant)
+        # ページネーションのための設定
+        reviews_list = Review.get_newest_reviews(restaurant)
+        paginator = Paginator(reviews_list, 5)  # 1ページに表示するレビュー数
+        page_number = self.request.GET.get('page')
+        reviews = paginator.get_page(page_number)
         context['reviews'] = reviews
 
         # ユーザー名の取得

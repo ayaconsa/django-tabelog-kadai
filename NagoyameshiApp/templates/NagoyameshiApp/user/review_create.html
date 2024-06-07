@@ -1,0 +1,21 @@
+<!-- base.htmlを継承する -->
+{% extends 'NagoyameshiApp/user/base.html' %}
+
+<!-- ページタイトル -->
+{% block title %}nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
+{% block content %}
+{% load static %}
+
+<div class="container">
+  <h2>レビューを投稿</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">投稿</button>
+  </form>
+  <a href="{% url 'restaurant_detail' pk=view.kwargs.pk %}" class="btn btn-secondary">戻る</a>
+</div>
+
+  {% endblock content %}

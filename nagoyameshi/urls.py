@@ -11,6 +11,7 @@ from NagoyameshiApp.views.user.login import LoginView
 from NagoyameshiApp.views.user.restaurant_list import RestaurantListView
 from NagoyameshiApp.views.user.restaurant_detail import RestaurantDetailView
 from NagoyameshiApp.views.user.booking_success import BookingSuccessView
+from NagoyameshiApp.views.user.review_create import ReviewCreateView
 
 from NagoyameshiApp.views.user.logout import LogoutView
 from NagoyameshiApp.views.user.password_resetting import PasswordResettingView
@@ -76,6 +77,7 @@ urlpatterns = [
     path('restaurant_list/', RestaurantListView.as_view(), name="restaurant_list"),
     path('restaurant_detail/<int:pk>', RestaurantDetailView.as_view(), name="restaurant_detail"),
     path('booking_success/', BookingSuccessView.as_view(), name='booking_success'),
+    path('restaurant/<int:pk>/review/new/', ReviewCreateView.as_view(), name='review_create'),
 
     path('logout/', LogoutView.as_view(), name="logout"),
     path('password_resetting/', PasswordResettingView.as_view(), name="password_resetting"),

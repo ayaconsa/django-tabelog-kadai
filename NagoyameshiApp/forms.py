@@ -1,6 +1,7 @@
 from django import forms
 from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.models.booking import Booking
+from NagoyameshiApp.models.review import Review
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
@@ -39,4 +40,12 @@ class BookingForm(forms.ModelForm):
             'date': forms.DateInput(attrs={'type': 'date'}),
             'time': forms.Select(choices=Booking.TIME_Sorted),
             'number_of_persons': forms.NumberInput(attrs={'min': 1, 'max': 12}),
+        }
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['score', 'comment']
+        widgets = {
+            'score': forms.RadioSelect,
         }
