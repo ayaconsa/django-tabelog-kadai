@@ -5,6 +5,7 @@ function getCookie(name) {
 			const cookies = document.cookie.split(';');
 			for (let i = 0; i < cookies.length; i++) {
 					const cookie = cookies[i].trim();
+					// Does this cookie string begin with the name we want?
 					if (cookie.substring(0, name.length + 1) === (name + '=')) {
 							cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
 							break;
@@ -15,9 +16,12 @@ function getCookie(name) {
 }
 
 function csrfSafeMethod(method) {
+	// these HTTP methods do not require CSRF protection
 	return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 
+
+// お気に入りボタンのクリック処理
 document.addEventListener('DOMContentLoaded', function () {
 	const favoriteButton = document.getElementById('favorite-btn');
 
@@ -44,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
 							}
 							return response.json();
 					})
+
+					// お気に入りの状態をトグルするためのロジック
 					.then(data => {
 							if (data.status === 'success') {
 									console.log('Favorite status toggled');

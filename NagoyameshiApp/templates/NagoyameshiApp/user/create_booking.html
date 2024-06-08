@@ -3,6 +3,7 @@
 {% block content %}
 {% load static %}
 <div class="container">
+  {% if user.is_authenticated and user.subscription %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
@@ -12,7 +13,6 @@
     </ol>
   </nav>
   <h3>{{ restaurant.name }}</h3>
-  {% if user.is_authenticated and user.subscription %}
   <form method="post" action="{% url 'create_booking' restaurant.pk %}">
     {% csrf_token %}
     {{ booking_form.as_p }}

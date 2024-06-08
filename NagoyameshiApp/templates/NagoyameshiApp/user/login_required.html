@@ -1,0 +1,8 @@
+{% extends 'NagoyameshiApp/user/base.html' %}
+{% block title %}ログインが必要です{% endblock %}
+{% block content %}
+<div class="container">
+  <p>レビューの閲覧は会員専用サービスです。<br>
+  <a href="{% url 'login' %}">ログイン</a>または<a href="{% url 'account_create' %}">新規登録</a>してください。</p>
+</div>
+{% endblock %}
