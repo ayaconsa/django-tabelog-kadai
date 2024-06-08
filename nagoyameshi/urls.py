@@ -32,6 +32,7 @@ from NagoyameshiApp.views.user.favorite_delete import FavoriteDeleteView
 from NagoyameshiApp.views.user.change_payment_method import ChangePaymentMethodView
 from NagoyameshiApp.views.user.unsubscribe import UnsubscribeView
 from NagoyameshiApp.views.user.favorite_toggle import FavoriteToggleView
+from NagoyameshiApp.views.user.get_user_subscription_status import get_user_subscription_status
 
 from NagoyameshiApp.views.manage.manage_login import ManageLoginView
 from NagoyameshiApp.views.manage.manage_top import ManageTopView
@@ -82,10 +83,10 @@ urlpatterns = [
     path('restaurant/<int:pk>/booking/', ReviewsView.as_view(), name='reviews'),
     path('restaurant/<int:pk>/reviews/', CreateBookingView.as_view(), name='create_booking'),
     path('delete_account/', DeleteAccountView.as_view(), name="delete_account"),
-
     path('account_info/', AccountInfoView.as_view(), name="account_info"),
     path('account_info_edit/', AccountInfoEditView.as_view(), name="account_info_edit"),
     path('account_delete/', AccountDeleteView.as_view(), name="account_delete"),
+    path('get_user_subscription_status/', get_user_subscription_status, name='get_user_subscription_status'),
 
     path('bookings/', BookingsView.as_view(), name="bookings"),
     path('bookings/cancel/<int:pk>', BookingCancelView.as_view(), name="booking_cancel"),

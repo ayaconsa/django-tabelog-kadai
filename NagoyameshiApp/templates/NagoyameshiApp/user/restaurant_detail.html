@@ -17,15 +17,13 @@
 
   <!-- お気に入り追加ボタン -->
   <div class="container">
-    {% if user.is_authenticated and user.subscription %}
-      <button id="favorite-btn" data-favorite="{% if is_favorite %}true{% else %}false{% endif %}" data-restaurant-id="{{ restaurant.id }}">
-        {% if is_favorite %}
-          お気に入りから削除
-        {% else %}
-          お気に入りに追加
-        {% endif %}
-      </button>
-    {% endif %}
+    <button id="favorite-btn" data-favorite="{% if is_favorite %}true{% else %}false{% endif %}" data-restaurant-id="{{ restaurant.id }}">
+      {% if is_favorite %}
+        お気に入りから削除
+      {% else %}
+        お気に入りに追加
+      {% endif %}
+    </button>
   </div>
 
   <img src="{{ restaurant.img.url }}" class="img-fluid rounded-start" alt="{{ restaurant.name }}">

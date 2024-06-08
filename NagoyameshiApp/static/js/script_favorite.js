@@ -32,42 +32,63 @@ document.addEventListener('DOMContentLoaded', function () {
 					const csrf_token = getCookie("csrftoken");
 					const isFavorite = this.getAttribute('data-favorite') === 'true';
 					const restaurantId = this.getAttribute('data-restaurant-id');
-					const url = `/favorite_toggle/${restaurantId}/`;
 
-					fetch(url, {
-							method: 'POST',
-							headers: {
-									'Content-Type': 'application/json',
-									'X-CSRFToken': csrf_token
-							},
-							body: JSON.stringify({})
-					})
-					.then(response => {
-							if (!response.ok) {
-									throw new Error('Network response was not ok');
-							}
-							return response.json();
-					})
-
-					// お気に入りの状態をトグルするためのロジック
-					.then(data => {
-							if (data.status === 'success') {
-									console.log('Favorite status toggled');
-									this.setAttribute('data-favorite', String(!isFavorite));
-									if (data.favorite_status === 'unfavorited') {
-											this.textContent = 'お気に入りに追加';
-									} else if (data.favorite_status === 'favorited') {
-											this.textContent = 'お気に入りから削除';
-									}
-							} else {
-									alert(data.message);
-							}
-					})
-					.catch(error => {
-							console.error('Error:', error);
-					});
-			});
-	} else {
-			console.error('Favorite button not found');
-	}
+					fetch('/get_user_subscription_status/', {
+						method: 'GET',
+						headers: {
+								'Content-Type': 'application/json',
+						}
+				})
+				.then(response => response.json())
+				.then(data => {
+						if (data.is_authenticated) {
+								if (data.subscription) {
+										// 有料会員の場合、お気に入り処理を行う
+										const url = `/favorite_toggle/${restaurantId}/`;
+										fetch(url, {
+												method: 'POST',
+												headers: {
+														'Content-Type': 'application/json',
+														'X-CSRFToken': csrf_token
+												},
+												body: JSON.stringify({})
+										})
+										.then(response => {
+												if (!response.ok) {
+														throw new Error('Network response was not ok');
+												}
+												return response.json();
+										})
+										.then(data => {
+												if (data.status === 'success') {
+														console.log('Favorite status toggled');
+														this.setAttribute('data-favorite', String(!isFavorite));
+														if (data.favorite_status === 'unfavorited') {
+																this.textContent = 'お気に入りに追加';
+														} else if (data.favorite_status === 'favorited') {
+																this.textContent = 'お気に入りから削除';
+														}
+												} else {
+														alert(data.message);
+												}
+										})
+										.catch(error => {
+												console.error('Error:', error);
+										});
+								} else {
+										// 無料会員の場合、有料会員案内ページにリダイレクト
+										window.location.href = '/subscription_guide/';
+								}
+						} else {
+								// 非会員の場合、有料会員案内ページにリダイレクト
+								window.location.href = '/subscription_guide/';
+						}
+				})
+				.catch(error => {
+						console.error('Error:', error);
+				});
+		});
+} else {
+		console.error('Favorite button not found');
+}
 });
