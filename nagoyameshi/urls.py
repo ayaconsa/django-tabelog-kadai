@@ -31,7 +31,7 @@ from NagoyameshiApp.views.user.favorites import FavoritesView
 from NagoyameshiApp.views.user.favorite_delete import FavoriteDeleteView
 from NagoyameshiApp.views.user.change_payment_method import ChangePaymentMethodView
 from NagoyameshiApp.views.user.unsubscribe import UnsubscribeView
-from NagoyameshiApp.views.user.toggle_favorite import ToggleFavoriteView
+from NagoyameshiApp.views.user.favorite_toggle import FavoriteToggleView
 
 from NagoyameshiApp.views.manage.manage_login import ManageLoginView
 from NagoyameshiApp.views.manage.manage_top import ManageTopView
@@ -94,8 +94,9 @@ urlpatterns = [
 
     path('change_payment_method/', ChangePaymentMethodView.as_view(), name="change_payment_method"),
     path('unsubscribe/', UnsubscribeView.as_view(), name="unsubscribe"),
-    path('toggle_favorite/', ToggleFavoriteView.as_view(), name='toggle_favorite'),
-    
+    path('favorite_toggle/<int:pk>/', FavoriteToggleView.as_view(), name='favorite_toggle'),
+
+
     path('manage/', ManageTopView.as_view(), name="manage_top"),
     path('manage/login/', ManageLoginView.as_view(), name="manage_login"),
     path('manage/restaurant_info/', RestaurantInfoView.as_view(), name="manage_restaurant_info"),
