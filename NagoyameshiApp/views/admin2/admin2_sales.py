@@ -20,7 +20,7 @@ class SalesView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         today = datetime.today()
         first_day_of_year = today.replace(month=1, day=1)
         current_year = today.year
-        start_year = 2023
+        start_year = 2021
 
         # 年間売上
         yearly_revenue_data = []
