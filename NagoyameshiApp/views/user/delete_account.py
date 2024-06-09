@@ -1,9 +1,5 @@
 from django.views.generic import TemplateView
 
-
-# **************** 会員（非サブスク会員含む）のみ表示 *****************
-
-
-# アカウント削除
+# アカウント削除（会員のみ）
 class DeleteAccountView(TemplateView):
     template_name = "NagoyameshiApp/user/delete_account.html"

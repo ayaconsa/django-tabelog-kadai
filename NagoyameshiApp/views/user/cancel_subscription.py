@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+# サブスク解約（有料会員のみ）
 class CancelSubscriptionView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         user = request.user

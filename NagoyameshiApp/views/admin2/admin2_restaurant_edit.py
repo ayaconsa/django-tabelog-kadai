@@ -1,13 +1,10 @@
 from django.views.generic import UpdateView
 from NagoyameshiApp.models.restaurant import Restaurant
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.shortcuts import redirect
 
-
-
-# ================== 管理者（サイト運営側）画面 ==================
-
-
-# 店舗情報編集ページ
-class AdminRestaurantEditView(UpdateView):
+# 管理者：店舗編集
+class AdminRestaurantEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Restaurant
     fields = '__all__'
     
@@ -21,3 +18,11 @@ class AdminRestaurantEditView(UpdateView):
             v.label_suffix = ""
         
         return context
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def handle_no_permission(self):
+        if not self.request.user.is_authenticated:
+            return redirect('login')  # ログインしていない場合、ログインページにリダイレクト
+        return redirect('top')  # スタッフでない場合、トップページにリダイレクト

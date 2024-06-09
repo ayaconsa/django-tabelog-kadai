@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from NagoyameshiApp.models.review import Review
 
-# レビュー削除
+# レビュー削除（有料会員のみ）
 class ReviewDeleteView(LoginRequiredMixin, DeleteView):
     model = Review
     template_name = 'NagoyameshiApp/user/review_confirm_delete.html'

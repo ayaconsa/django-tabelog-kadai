@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_GET
 
+# ユーザーの認証状態とサブスクリプション状態を取得するAPIエンドポイント
 @require_GET
 def get_user_subscription_status(request):
     if request.user.is_authenticated:

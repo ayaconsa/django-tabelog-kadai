@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from NagoyameshiApp.models.custom_user import CustomUser
 import stripe
 
+# 支払い成功（会員のみ）
 class CheckoutSuccessView(View):
-
     def get(self, request, *args, **kwargs):    
         session_id = request.GET.get('session_id')
         user_id = request.GET.get('user_id')

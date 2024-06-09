@@ -7,7 +7,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# 予約
+# 予約（有料会員のみ）
 class CreateBookingView(TemplateView):
     template_name = "NagoyameshiApp/user/create_booking.html"
 

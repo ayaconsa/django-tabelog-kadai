@@ -5,10 +5,7 @@ from django.db.models import Q, Count
 from django.urls import reverse
 from urllib.parse import urlencode
 
-# ================== ユーザー画面 ==================
-# ************** 非会員でも表示できる画面 **************
-
-# 店舗一覧
+# 店舗一覧（全員）
 class RestaurantListView(TemplateView):
     template_name = "NagoyameshiApp/user/restaurant_list.html"
     paginate_by = 10

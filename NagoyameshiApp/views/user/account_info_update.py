@@ -2,11 +2,7 @@ from django.views.generic import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from NagoyameshiApp.models.custom_user import CustomUser
 
-
-
-# **************** サブスク会員のみ表示 *****************
-
-# 会員情報
+# 会員情報編集（会員のみ）
 class AccountInfoEditView(LoginRequiredMixin, UpdateView):
     model = CustomUser
     fields = ['name', 'furigana', 'email', 'birthday', 'zipcode', 'address', 'tel', 'works']

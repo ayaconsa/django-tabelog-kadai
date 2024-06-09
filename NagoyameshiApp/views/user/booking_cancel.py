@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from NagoyameshiApp.models.booking import Booking
 
+# 予約キャンセル（有料会員のみ）
 class BookingCancelView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         booking_id = kwargs.get('pk')

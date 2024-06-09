@@ -2,9 +2,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from NagoyameshiApp.models.favorite import Favorite
 
-# **************** サブスク会員のみ表示 *****************
-
-# お気に入り一覧
+# お気に入り一覧（有料会員のみ）
 class FavoritesView(LoginRequiredMixin, TemplateView):
     template_name = "NagoyameshiApp/user/favorites.html"
 

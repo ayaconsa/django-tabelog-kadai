@@ -6,7 +6,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# 店舗詳細
+# 店舗詳細（全員）
 class RestaurantDetailView(TemplateView):
     template_name = "NagoyameshiApp/user/restaurant_detail.html"
 

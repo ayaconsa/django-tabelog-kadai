@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from NagoyameshiApp.models.review import Review
 from NagoyameshiApp.forms import ReviewForm
 
-# レビュー編集
+# レビュー編集（有料会員のみ）
 class ReviewEditView(LoginRequiredMixin, UpdateView):
     model = Review
     form_class = ReviewForm

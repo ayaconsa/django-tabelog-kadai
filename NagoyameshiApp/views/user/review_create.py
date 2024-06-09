@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from NagoyameshiApp.models.review import Review
 from NagoyameshiApp.forms import ReviewForm
 
+# レビュー投稿（有料会員のみ）
 class ReviewCreateView(CreateView):
     model = Review
     form_class = ReviewForm

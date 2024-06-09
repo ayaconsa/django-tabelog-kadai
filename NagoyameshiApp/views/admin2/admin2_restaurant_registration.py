@@ -1,12 +1,10 @@
 from django.views.generic import CreateView
 from NagoyameshiApp.models.restaurant import Restaurant
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.shortcuts import redirect
 
-
-# ================== 管理者（サイト運営側）画面 ==================
-
-
-# 店舗登録画面
-class AdminRestaurantRegistrationView(CreateView):
+# 管理者：店舗登録
+class AdminRestaurantRegistrationView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Restaurant
     fields = '__all__'
     
@@ -24,3 +22,10 @@ class AdminRestaurantRegistrationView(CreateView):
         
         return context
     
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def handle_no_permission(self):
+        if not self.request.user.is_authenticated:
+            return redirect('login')  # ログインしていない場合、ログインページにリダイレクト
+        return redirect('top')  # スタッフでない場合、トップページにリダイレクト

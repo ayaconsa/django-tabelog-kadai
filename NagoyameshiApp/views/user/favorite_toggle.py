@@ -5,8 +5,8 @@ from django.shortcuts import get_object_or_404
 from NagoyameshiApp.models.restaurant import Restaurant
 from NagoyameshiApp.models.favorite import Favorite
 
+# お気に入りボタン（有料会員のみ）
 class FavoriteToggleView(LoginRequiredMixin, View):
-
     def post(self, request, *args, **kwargs):
         user = request.user
         restaurant_id = kwargs.get('pk')

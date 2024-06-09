@@ -3,10 +3,7 @@ from NagoyameshiApp.models.restaurant import Restaurant
 from NagoyameshiApp.models.category import Category
 from django.db.models import Q
 
-# ================== ユーザー画面 ==================
-# ************** 非会員でも表示できる画面 **************
-
-# トップページ
+# トップページ（全員）
 class TopView(TemplateView):
     template_name = "NagoyameshiApp/user/top.html"
 

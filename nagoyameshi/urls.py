@@ -45,7 +45,6 @@ from NagoyameshiApp.views.manage.booking_confirmation import BookingConfirmation
 from NagoyameshiApp.views.manage.review_confirmation import ReviewConfirmationView
 
 # スタッフ（admin2）
-from NagoyameshiApp.views.admin2.admin2_login import AdminLoginView
 from NagoyameshiApp.views.admin2.admin2_top import AdminTopView
 from NagoyameshiApp.views.admin2.admin2_category_list import CategoryListView
 from NagoyameshiApp.views.admin2.admin2_category_delete import CategoryDeleteView
@@ -111,7 +110,6 @@ urlpatterns = [
     
     # スタッフ（admin2）
     # デフォルトのadminとは変えないとうまく表示されないのでadmin2にした
-    path('admin2/login/', AdminLoginView.as_view(), name="admin_login"),
     path('admin2/', AdminTopView.as_view(), name="admin_top"),
     path('admin2/category_list/', CategoryListView.as_view(), name="admin_category_list"),
     path('admin2/category_confirm_delete/<int:pk>', CategoryDeleteView.as_view(), name="admin_category_delete"),

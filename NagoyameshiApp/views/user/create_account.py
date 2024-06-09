@@ -3,11 +3,7 @@ from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.forms import CustomUserForm
 from django.contrib.auth.hashers import make_password
 
-# ================== ユーザー画面 ==================
-# ************** 非会員でも表示できる画面 **************
-
-# アカウントの新規登録
-
+# アカウント登録（非会員のみ）
 class CreateAccountView(CreateView):
     model = CustomUser
     form_class = CustomUserForm

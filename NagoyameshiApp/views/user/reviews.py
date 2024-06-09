@@ -10,7 +10,7 @@ from django.utils.decorators import method_decorator
 
 logger = logging.getLogger(__name__)
 
-# レビュー一覧
+# レビュー一覧（会員のみ）
 class ReviewsView(TemplateView):
     template_name = "NagoyameshiApp/user/reviews.html"
 

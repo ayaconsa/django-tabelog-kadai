@@ -3,8 +3,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from NagoyameshiApp.models.custom_user import CustomUser
 
-# **************** 退会ページ *****************
-
+# 退会（会員のみ）
 class AccountDeleteView(LoginRequiredMixin, View):
     template_name = "NagoyameshiApp/user/account_delete.html"
 
