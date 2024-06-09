@@ -1,0 +1,14 @@
+{% extends 'NagoyameshiApp/user/base.html' %}
+{% block title %}レビュー削除{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <h3>レビュー削除確認</h3>
+  <p>このレビューを削除してもよろしいですか？</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">削除</button>
+    <a href="{% url 'reviews' object.restaurant.pk %}" class="btn btn-secondary">キャンセル</a>
+  </form>
+</div>
+{% endblock %}

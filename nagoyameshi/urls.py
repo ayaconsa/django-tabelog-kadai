@@ -3,6 +3,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+# ユーザー（user）
 from NagoyameshiApp.views.user.top_view import TopView
 from NagoyameshiApp.views.user.company_overview import CompanyOverviewView
 from NagoyameshiApp.views.user.terms_of_use import TermsOfUseView
@@ -33,13 +34,17 @@ from NagoyameshiApp.views.user.change_payment_method import ChangePaymentMethodV
 from NagoyameshiApp.views.user.unsubscribe import UnsubscribeView
 from NagoyameshiApp.views.user.favorite_toggle import FavoriteToggleView
 from NagoyameshiApp.views.user.get_user_subscription_status import get_user_subscription_status
+from NagoyameshiApp.views.user.review_edit_view import ReviewEditView
+from NagoyameshiApp.views.user.review_delete_view import ReviewDeleteView
 
+# スーパーユーザー（manage）
 from NagoyameshiApp.views.manage.manage_login import ManageLoginView
 from NagoyameshiApp.views.manage.manage_top import ManageTopView
 from NagoyameshiApp.views.manage.restaurant_info import RestaurantInfoView
 from NagoyameshiApp.views.manage.booking_confirmation import BookingConfirmationView
 from NagoyameshiApp.views.manage.review_confirmation import ReviewConfirmationView
 
+# スタッフ（admin2）
 from NagoyameshiApp.views.admin2.admin2_login import AdminLoginView
 from NagoyameshiApp.views.admin2.admin2_top import AdminTopView
 from NagoyameshiApp.views.admin2.admin2_category_list import CategoryListView
@@ -58,12 +63,8 @@ from NagoyameshiApp.views.admin2.admin2_review_confirmation import AdminReviewCo
 from NagoyameshiApp.views.admin2.admin2_review_deletion_confirmation import ReviewDeletionConfirmationView
 
 
-
-
-
-
-urlpatterns = [
-    
+urlpatterns = [    
+    # ユーザー
     path('', TopView.as_view(), name="top"),
     path('company_overview/', CompanyOverviewView.as_view(), name="company_overview"),
     path('terms_of_use/', TermsOfUseView.as_view(), name="terms_of_use"),
@@ -87,17 +88,17 @@ urlpatterns = [
     path('account_info_edit/', AccountInfoEditView.as_view(), name="account_info_edit"),
     path('account_delete/', AccountDeleteView.as_view(), name="account_delete"),
     path('get_user_subscription_status/', get_user_subscription_status, name='get_user_subscription_status'),
-
     path('bookings/', BookingsView.as_view(), name="bookings"),
     path('bookings/cancel/<int:pk>', BookingCancelView.as_view(), name="booking_cancel"),
     path('favorites/', FavoritesView.as_view(), name="favorites"),
     path('favorite_delete/<int:pk>', FavoriteDeleteView.as_view(), name="favorite_delete"),
-
     path('change_payment_method/', ChangePaymentMethodView.as_view(), name="change_payment_method"),
     path('unsubscribe/', UnsubscribeView.as_view(), name="unsubscribe"),
     path('favorite_toggle/<int:pk>/', FavoriteToggleView.as_view(), name='favorite_toggle'),
+    path('review/edit/<int:pk>/', ReviewEditView.as_view(), name='review_edit'),
+    path('review/delete/<int:pk>/', ReviewDeleteView.as_view(), name='review_delete'),
 
-
+    # スーパーユーザー（manage）
     path('manage/', ManageTopView.as_view(), name="manage_top"),
     path('manage/login/', ManageLoginView.as_view(), name="manage_login"),
     path('manage/restaurant_info/', RestaurantInfoView.as_view(), name="manage_restaurant_info"),
@@ -114,25 +115,19 @@ urlpatterns = [
     path('admin2/category_list/', CategoryListView.as_view(), name="admin_category_list"),
     path('admin2/category_confirm_delete/<int:pk>', CategoryDeleteView.as_view(), name="admin_category_delete"),
     path('admin2/category_registration/', CategoryRegistrationView.as_view(), name="admin_category_registration"),
-    
     path('admin2/user_list/', UserListView.as_view(), name="admin_user_list"),
     path('admin2/sales/', SalesView.as_view(), name="admin_sales"),
     path('admin2/user_number/', UserNumberView.as_view(), name="admin_user_number"),
-    
-    
     path('admin2/restaurant_list/', AdminRestaurantListView.as_view(), name="admin_restaurant_list"),
     path('admin2/restaurant_detail/<int:pk>', AdminRestaurantDetailView.as_view(), name="admin_restaurant_detail"),
     path('admin2/restaurant_edit/<int:pk>', AdminRestaurantEditView.as_view(), name="admin_restaurant_edit"),
     path('admin2/restaurant_delete/<int:pk>', AdminRestaurantDeleteView.as_view(), name="admin_restaurant_delete"),
     path('admin2/restaurant_registration/', AdminRestaurantRegistrationView.as_view(), name="admin_restaurant_registration"),
-    
-    
     path('admin2/booking_confirmation/<int:pk>', AdminBookingConfirmationView.as_view(), name="admin_booking_confirmation"),
     path('admin2/review_confirmation/<int:pk>', AdminReviewConfirmationView.as_view(), name="admin_review_confirmation"),
     path('admin2/review_deletion_confirmation/<int:pk>', ReviewDeletionConfirmationView.as_view(), name="admin_review_deletion_confirmation"),
 
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

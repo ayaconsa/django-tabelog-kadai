@@ -14,6 +14,7 @@
   </nav>
   <h3>{{ restaurant.name }}</h3>
 
+  <!-- 非会員・無料会員の場合は投稿できない（非会員は閲覧もできない） -->
   {% if user.is_authenticated %}
     {% if user.subscription %}
       <a href="{% url 'review_create' restaurant.pk %}" class="btn btn-primary">レビューを投稿する</a>
@@ -26,43 +27,56 @@
     <a href="{% url 'login' %}">ログイン</a>または<a href="{% url 'account_create' %}">新規登録</a>してください。</p>
   {% endif %}
 
+  <!-- レビュー表示の制限（非会員は閲覧できない） -->
   {% if user.is_authenticated %}
+    <!-- レビューの中身 -->
     {% for review in reviews %}
-  <p>{{ review.user.name }}</p>
-  <p>
-    {% for _ in review.score|get_range %}
-    &#9733;
+    <div>
+      <p>{{ review.user.name }}</p>
+      <p>
+        {% for _ in review.score|get_range %}
+        &#9733;
+        {% endfor %}
+      </p>
+      <p>{{ review.comment }}</p>
+        <!-- 投稿者はコメントの編集と削除ができる -->
+        {% if review.user == user %}
+        <a href="{% url 'review_edit' review.pk %}" class="btn btn-secondary">編集</a>
+        <form action="{% url 'review_delete' review.pk %}" method="post" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">削除</button>
+        </form>
+        {% endif %}
+      </div>
     {% endfor %}
-  </p>
-  <p>{{ review.comment }}</p>
-  {% endfor %}
-
-  <nav aria-label="Page navigation example w-100">
-    <ul class="pagination">
-      {% if reviews.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ reviews.previous_page_number }}" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      {% endif %}
-      {% for num in reviews.paginator.page_range %}
-      <li class="page-item {% if reviews.number == num %}active{% endif %}">
-        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-      </li>
-      {% endfor %}
-      {% if reviews.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ reviews.next_page_number }}" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-      {% endif %}
-    </ul>
-  </nav>
+    <!-- ページネーション -->
+    <nav aria-label="Page navigation example w-100">
+      <ul class="pagination">
+        {% if reviews.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ reviews.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {% endif %}
+        {% for num in reviews.paginator.page_range %}
+        <li class="page-item {% if reviews.number == num %}active{% endif %}">
+          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endfor %}
+        {% if reviews.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ reviews.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  <!-- 非会員は閲覧できない -->
   {% else %}	
-  <p>レビューの閲覧は会員専用サービスです。<br>	
-  <a href="{% url 'login' %}">ログイン</a>または<a href="{% url 'account_create' %}">新規登録</a>してください。</p>	
+    <p>レビューの閲覧は会員専用サービスです。<br>	
+    <a href="{% url 'login' %}">ログイン</a>または<a href="{% url 'account_create' %}">新規登録</a>してください。</p>	
   {% endif %}	
 </div>
 {% endblock %}
