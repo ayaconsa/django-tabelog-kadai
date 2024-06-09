@@ -17,11 +17,14 @@
     <header>
       <div class="admin_header">
         <div class="admin_logo">
-          <h1><a href="{% url 'admin_top'%}">Nagoyameshi 管理画面</a></h1>
+          <h1>Nagoyameshi / <a href="{% url 'admin_top'%}">管理画面トップ</a> / <a href="{% url 'top'%}">ユーザー画面トップ</a></h1>
         </div>
 
         <nav class="admin_menu_right">
-          <a href="#">ログアウト</a>
+          <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">ログアウト</button>
+          </form>
         </nav>
       </div>
     </header>

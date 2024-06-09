@@ -539,15 +539,19 @@ h2 {
   font-size: 18px;
 }
 
-.admin_logo a{
+.admin_logo a, .admin_menu_right button {
   color: #4c586f;
   text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
 }
 
-.admin_logo a:hover{
+.admin_logo a:hover, .admin_menu_right button:hover {
   color: #a2aab0;
 }
-
 
 .admin_menu_right {
   float: right;

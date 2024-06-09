@@ -109,6 +109,7 @@ urlpatterns = [
     # デフォルトのadmin
     path('admin/', admin.site.urls),
     
+    # スタッフ（admin2）
     # デフォルトのadminとは変えないとうまく表示されないのでadmin2にした
     path('admin2/login/', AdminLoginView.as_view(), name="admin_login"),
     path('admin2/', AdminTopView.as_view(), name="admin_top"),

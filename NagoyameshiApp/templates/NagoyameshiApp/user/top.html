@@ -30,6 +30,10 @@
               <div class="navbar-nav">
                 {% if user.is_authenticated %}
                 <span class="navbar-text">ようこそ {{ user.name }} さん</span>
+                  {% if user.is_staff %}
+                  <!-- スタッフの場合の管理者ページリンク -->
+                  <a class="nav-link" href="{% url 'admin_top' %}">管理者ページ</a>
+                  {% endif %}
                   {% if user.subscription %}
                     <!-- サブスク会員の場合のメニュー -->
                     <a class="nav-link" href="{% url 'favorites' %}">お気に入り一覧</a>
@@ -41,7 +45,7 @@
                     <a class="nav-link" href="{% url 'account_info' %}">会員登録情報</a>
                     <a class="nav-link" href="{% url 'subscription_guide' %}">有料会員のご案内</a>					
                   {% endif %}
-                  <form action="{% url 'logout' %}" method="post">
+                  <form action="{% url 'logout' %}" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button class="btn btn-outline-success flex-shrink-0" type="submit">ログアウト</button>
                   </form>
