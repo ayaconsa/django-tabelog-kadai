@@ -27,6 +27,7 @@ class SalesView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         for year in range(start_year, current_year + 1):
             yearly_revenue = 0
             yearly_subscribers = 0
+            yearly_unsubscribes = 0  # 年間退会者数
             for month in range(1, 13):
                 month_start = datetime(year=year, month=month, day=1)
                 month_end = (month_start + timedelta(days=32)).replace(day=1) - timedelta(days=1)
@@ -42,13 +43,15 @@ class SalesView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
                 monthly_revenue = monthly_subscribers * 300
 
                 yearly_revenue += monthly_revenue
+                yearly_unsubscribes += unsubscribed_this_month
                 if month == 12:
                     yearly_subscribers = subscribers_end_of_month
 
             yearly_revenue_data.insert(0, {  # 最新のデータが上に来るようにリストの先頭に挿入
                 'year': year,
                 'revenue': yearly_revenue,
-                'subscribers': yearly_subscribers
+                'subscribers': yearly_subscribers,
+                'unsubscribes': yearly_unsubscribes
             })
 
         # 月間売上
@@ -70,7 +73,8 @@ class SalesView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
             monthly_revenue_data.insert(0, {  # 最新のデータが上に来るようにリストの先頭に挿入
                 'month': month_start.strftime('%Y/%m'),
                 'revenue': monthly_revenue,
-                'subscribers': subscribers_end_of_month
+                'subscribers': subscribers_end_of_month,
+                'unsubscribes': unsubscribed_this_month
             })
 
             month_start = (month_start + timedelta(days=32)).replace(day=1)

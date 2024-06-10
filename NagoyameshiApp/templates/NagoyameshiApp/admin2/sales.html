@@ -23,12 +23,14 @@
         <th>年</th>
         <th>売上</th>
         <th>会員数（年末時点）</th>
+        <th>退会人数</th>
     </tr>
     {% for data in yearly_revenue_data %}
     <tr>
         <td>{{ data.year }}</td>
         <td>{{ data.revenue|floatformat:0 }}円</td>
         <td>{{ data.subscribers }}</td>
+        <td>{{ data.unsubscribes }}</td>
     </tr>
     {% endfor %}
 </table>
@@ -41,12 +43,14 @@
         <th>月</th>
         <th>売上</th>
         <th>会員数（月末時点）</th>
+        <th>退会人数</th>
     </tr>
     {% for data in monthly_revenue_data %}
     <tr>
         <td>{{ data.month }}</td>
         <td>{{ data.revenue|floatformat:0 }}円</td>
         <td>{{ data.subscribers }}</td>
+        <td>{{ data.unsubscribes }}</td>
     </tr>
     {% endfor %}
 </table>
