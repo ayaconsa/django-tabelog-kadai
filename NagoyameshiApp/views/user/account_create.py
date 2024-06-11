@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import View
+from django.views import View
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode
@@ -12,7 +12,7 @@ from NagoyameshiApp.forms import CustomUserForm
 class AccountCreateView(View):
     def get(self, request, *args, **kwargs):
         form = CustomUserForm()
-        return render(request, 'NagoyameshiApp/user/account_create.html')
+        return render(request, 'NagoyameshiApp/user/account_create.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = CustomUserForm(request.POST)
