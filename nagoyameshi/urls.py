@@ -36,6 +36,9 @@ from NagoyameshiApp.views.user.favorite_toggle import FavoriteToggleView
 from NagoyameshiApp.views.user.get_user_subscription_status import get_user_subscription_status
 from NagoyameshiApp.views.user.review_edit_view import ReviewEditView
 from NagoyameshiApp.views.user.review_delete_view import ReviewDeleteView
+from NagoyameshiApp.views.user.activate_account import ActivateAccount
+from NagoyameshiApp.views.user.account_create_done import AccountCreateDoneView
+from NagoyameshiApp.views.user.account_activation_invalid import AccountActivationInvalidView
 
 # スーパーユーザー（manage）
 from NagoyameshiApp.views.manage.manage_login import ManageLoginView
@@ -96,6 +99,10 @@ urlpatterns = [
     path('favorite_toggle/<int:pk>/', FavoriteToggleView.as_view(), name='favorite_toggle'),
     path('review/edit/<int:pk>/', ReviewEditView.as_view(), name='review_edit'),
     path('review/delete/<int:pk>/', ReviewDeleteView.as_view(), name='review_delete'),
+    path('account/activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'),
+    path('account_create/done/', AccountCreateDoneView.as_view(), name='account_create_done'),
+    path('account_create/invalid/', AccountActivationInvalidView.as_view(), name='account_activation_invalid'),
+
 
     # スーパーユーザー（manage）
     path('manage/', ManageTopView.as_view(), name="manage_top"),

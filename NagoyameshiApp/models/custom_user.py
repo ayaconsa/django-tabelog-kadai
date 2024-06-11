@@ -17,6 +17,7 @@ class CustomUser(AbstractUser):
     stripe_subscription_id = models.CharField(max_length=255, blank=True, null=True, verbose_name="StripeサブスクリプションID")
 
     # メール認証のために最初はFalseに設定（メール確認後Trueに変更）
+    # dummy_user実行時はis_activeをTrueにする
     is_active = models.BooleanField(default=False, verbose_name="アカウント有効")
 
     # dummy_user実行時はauto_now_addとauto_nowをFalseにする

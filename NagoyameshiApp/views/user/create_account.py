@@ -1,15 +1,37 @@
-from django.views.generic.edit import CreateView
-from NagoyameshiApp.models.custom_user import CustomUser
+from django.shortcuts import render, redirect
+from django.views.generic.edit import View
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
 from NagoyameshiApp.forms import CustomUserForm
 from django.contrib.auth.hashers import make_password
 
 # アカウント登録（非会員のみ）
-class CreateAccountView(CreateView):
-    model = CustomUser
-    form_class = CustomUserForm
-    template_name = "NagoyameshiApp/user/account_create.html"
-    
+class CreateAccountView(View):
+    def get(self, request, *args, **kwargs):
+        form = CustomUserForm()
+        return render(request, 'NagoyameshiApp/user/account_create.html')
+
     def form_valid(self, form):
         # パスワードをハッシュ化
         form.instance.password = make_password(form.cleaned_data['password'])
         return super().form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        form = CustomUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            current_site = get_current_site(request)
+            subject = 'アカウントを有効化してください'
+            message = render_to_string('NagoyameshiApp/user/account_activation_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': default_token_generator.make_token(user),
+            })
+            send_mail(subject, message, 'from@example.com', [user.email])
+            return redirect('account_create_done')
+        return render(request, 'NagoyameshiApp/user/account_create.html', {'form': form})

@@ -1,0 +1,11 @@
+{% extends 'NagoyameshiApp/user/base.html' %}
+
+{% block title %}アカウント有効化エラー{% endblock %}
+
+{% block content %}
+<div class="account-activation-invalid">
+  <h1>リンクが無効です</h1>
+  <p>このアクティベーションリンクは無効です。<br>アカウントを有効にするには、新しいリンクをリクエストしてください。</p>
+  <p>新規会員登録は<a href="{% url 'account_create' %}">こちら</a></p>
+</div>
+{% endblock %}

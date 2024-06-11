@@ -1,0 +1,6 @@
+{% block content %}
+こんにちは {{ user.username }} さん,
+「Nagoyameshi」へのご登録ありがとうございます。
+アカウントを有効にするには、以下のリンクをクリックしてください。
+<a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">アカウントを有効にする</a>
+{% endblock %}
