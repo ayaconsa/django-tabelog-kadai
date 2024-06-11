@@ -41,7 +41,6 @@ class CustomUserForm(forms.ModelForm):
         self.fields['tel'].widget.attrs = {'placeholder': '09012345678'}
         self.fields['works'].widget.attrs = {'placeholder': 'エンジニア'}
         
-        
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking

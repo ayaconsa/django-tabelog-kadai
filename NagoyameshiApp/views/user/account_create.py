@@ -18,8 +18,10 @@ class AccountCreateView(View):
         form = CustomUserForm(request.POST)
         if form.is_valid():
             user = form.save()
+            # メール再送用にアドレスをsessionに保存
+            request.session['user_email'] = user.email
             current_site = get_current_site(request)
-            subject = 'アカウントを有効化してください'
+            subject = 'アカウントを有効化してください（Nagoyameshi）'
             message = render_to_string('NagoyameshiApp/user/account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,

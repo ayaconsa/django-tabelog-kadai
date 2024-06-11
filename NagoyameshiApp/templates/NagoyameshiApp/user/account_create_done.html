@@ -1,10 +1,18 @@
 {% extends 'NagoyameshiApp/user/base.html' %}
 
-{% block title %}アカウント登録完了{% endblock %}
+{% block title %}nagoyameshi{% endblock %}
 
 {% block content %}
 <div class="account-create-done">
-  <h1>アカウント登録を受け付けました</h1>
-  <p>確認メールが送信されました。メールに記載されたリンクをクリックして、アカウントを有効化してください。</p>
+  <h1>確認メールが送信されました</h1>
+  <p>メールに記載されたリンクをクリックして、アカウントを有効化してください。</p>
+  <p>送信先: {{ email }}</p>
+
+  <p>メールが届かない場合は、こちらから再送信できます。</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">メール再送信</button>
+  </form>
 </div>
 {% endblock %}
