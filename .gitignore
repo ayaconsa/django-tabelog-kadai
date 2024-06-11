@@ -11,3 +11,5 @@ local_setting.py
 .env_aws_s3
 .is_debug
 .env_stripe
+.env_mariadb
+.env_gmail

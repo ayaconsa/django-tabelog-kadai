@@ -20,6 +20,13 @@ class CustomUserForm(forms.ModelForm):
         widget=forms.PasswordInput(attrs={'placeholder': '確認用パスワード'}),
     )
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_active = False  # メール認証のため、ユーザーを非アクティブに設定
+        if commit:
+            user.save()
+        return user
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""

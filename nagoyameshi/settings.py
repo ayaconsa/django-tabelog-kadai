@@ -201,3 +201,12 @@ if DEBUG:
     YOUR_DOMAIN = 'http://127.0.0.1:8000'
 else:
     YOUR_DOMAIN = 'https://floating-cliffs-94629-07a3203fd75b.herokuapp.com'
+
+
+# メール設定
+EMAIL_BCKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']

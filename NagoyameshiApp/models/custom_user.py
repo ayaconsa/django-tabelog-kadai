@@ -16,6 +16,9 @@ class CustomUser(AbstractUser):
     subscription = models.BooleanField(default=False, verbose_name="サブスク契約")
     stripe_subscription_id = models.CharField(max_length=255, blank=True, null=True, verbose_name="StripeサブスクリプションID")
 
+    # メール認証のために最初はFalseに設定（メール確認後Trueに変更）
+    is_active = models.BooleanField(default=False, verbose_name="アカウント有効")
+
     # dummy_user実行時はauto_now_addとauto_nowをFalseにする
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="登録日時")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新日時")

@@ -22,6 +22,7 @@ services:
       - .env_aws_s3
       - .env_mariadb
       - .env_stripe
+      - .env_gmail
 
 volumes:
   db-volume:
