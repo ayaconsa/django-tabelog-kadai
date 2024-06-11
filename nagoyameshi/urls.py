@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from NagoyameshiApp.views.user.top_view import TopView
 from NagoyameshiApp.views.user.company_overview import CompanyOverviewView
 from NagoyameshiApp.views.user.terms_of_use import TermsOfUseView
-from NagoyameshiApp.views.user.create_account import CreateAccountView
+from NagoyameshiApp.views.user.account_create import AccountCreateView
 from NagoyameshiApp.views.user.login import LoginView
 from NagoyameshiApp.views.user.restaurant_list import RestaurantListView
 from NagoyameshiApp.views.user.restaurant_detail import RestaurantDetailView
@@ -70,7 +70,7 @@ urlpatterns = [
     path('', TopView.as_view(), name="top"),
     path('company_overview/', CompanyOverviewView.as_view(), name="company_overview"),
     path('terms_of_use/', TermsOfUseView.as_view(), name="terms_of_use"),
-    path('account_create/', CreateAccountView.as_view(), name="account_create"),
+    path('account_create/', AccountCreateView.as_view(), name="account_create"),
     path('login/', LoginView.as_view(), name="login"),   
     path('restaurant_list/', RestaurantListView.as_view(), name="restaurant_list"),
     path('restaurant/<int:pk>', RestaurantDetailView.as_view(), name="restaurant_detail"),

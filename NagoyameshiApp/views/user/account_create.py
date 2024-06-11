@@ -10,7 +10,7 @@ from NagoyameshiApp.forms import CustomUserForm
 from django.contrib.auth.hashers import make_password
 
 # アカウント登録（非会員のみ）
-class CreateAccountView(View):
+class AccountCreateView(View):
     def get(self, request, *args, **kwargs):
         form = CustomUserForm()
         return render(request, 'NagoyameshiApp/user/account_create.html')
@@ -32,6 +32,6 @@ class CreateAccountView(View):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': default_token_generator.make_token(user),
             })
-            send_mail(subject, message, 'from@example.com', [user.email])
+            send_mail(subject, message, 'from@example.com', [user.email], fail_silently=False, html_message=message)
             return redirect('account_create_done')
         return render(request, 'NagoyameshiApp/user/account_create.html', {'form': form})

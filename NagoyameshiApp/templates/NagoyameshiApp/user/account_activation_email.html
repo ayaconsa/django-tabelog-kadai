@@ -1,6 +1,12 @@
-{% block content %}
-こんにちは {{ user.username }} さん,
-「Nagoyameshi」へのご登録ありがとうございます。
-アカウントを有効にするには、以下のリンクをクリックしてください。
-<a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">アカウントを有効にする</a>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>アカウント有効化</title>
+</head>
+<body>
+    <p>こんにちは {{ user.name }} さん</p>
+    <p>「Nagoyameshi」へのご登録をありがとうございます。</p>
+    <p>アカウントを有効にするには、以下のリンクをクリックしてください。</p>
+    <p><a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">アカウントを有効にする</a></p>
+</body>
+</html>
