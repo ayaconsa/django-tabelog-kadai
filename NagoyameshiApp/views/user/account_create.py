@@ -7,18 +7,12 @@ from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from NagoyameshiApp.forms import CustomUserForm
-from django.contrib.auth.hashers import make_password
 
 # アカウント登録（非会員のみ）
 class AccountCreateView(View):
     def get(self, request, *args, **kwargs):
         form = CustomUserForm()
         return render(request, 'NagoyameshiApp/user/account_create.html')
-
-    def form_valid(self, form):
-        # パスワードをハッシュ化
-        form.instance.password = make_password(form.cleaned_data['password'])
-        return super().form_valid(form)
 
     def post(self, request, *args, **kwargs):
         form = CustomUserForm(request.POST)

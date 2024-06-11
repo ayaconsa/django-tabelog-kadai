@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.hashers import make_password
 from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.models.booking import Booking
 from NagoyameshiApp.models.review import Review
@@ -23,6 +24,8 @@ class CustomUserForm(forms.ModelForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_active = False  # メール認証のため、ユーザーを非アクティブに設定
+        # パスワードをハッシュ化
+        user.password = make_password(self.cleaned_data['password'])
         if commit:
             user.save()
         return user
