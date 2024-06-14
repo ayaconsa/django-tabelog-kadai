@@ -68,6 +68,16 @@
       <a href="{% url 'account_info_edit' %}" class="btn btn-outline-success">会員情報変更</a>
     </div>
     
+    <!-- メールアドレス変更ボタン -->
+    <div class="mt-2 text-center">
+      <a href="{% url 'email_change' %}" class="btn btn-outline-success">メールアドレス変更</a>
+    </div>
+
+    <!-- パスワード変更ボタン -->
+    <div class="mt-2 text-center">
+      <a href="{% url 'email_change' %}" class="btn btn-outline-success">パスワード変更</a>
+    </div>
+
     <!-- 退会ボタン -->
     <div class="mt-2 text-center">
       <a href="{% url 'account_delete' %}" class="btn btn-outline-danger">退会</a>

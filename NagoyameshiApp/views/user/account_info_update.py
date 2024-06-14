@@ -5,7 +5,7 @@ from NagoyameshiApp.models.custom_user import CustomUser
 # 会員情報編集（会員のみ）
 class AccountInfoEditView(LoginRequiredMixin, UpdateView):
     model = CustomUser
-    fields = ['name', 'furigana', 'email', 'birthday', 'zipcode', 'address', 'tel', 'works']
+    fields = ['name', 'furigana', 'birthday', 'zipcode', 'address', 'tel', 'works']
     template_name = "NagoyameshiApp/user/account_info_update.html"
     success_url = '/account_info/'
 
