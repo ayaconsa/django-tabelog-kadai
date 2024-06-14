@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>メールアドレス変更（nagoyameshi）</title>
+</head>
+<body>
+    <p>こんにちは {{ user.name }} さん</p>
+    <p>新しいメールアドレスを有効にするには、以下のリンクをクリックしてください。</p>
+    <p><a href="http://{{ domain }}{% url 'activate_new_email' uidb64=uid token=token %}?new_email={{ new_email }}">メールアドレスを有効にする</a></p>
+    <p>-------------------</p>
+    <p>Nagoyameshiは個人開発中のサイトです。</p>
+    <p>このメールにお心あたりのない場合は、恐れ入りますがこのメールを破棄してください。</p>
+</body>
+</html>

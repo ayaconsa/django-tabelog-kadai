@@ -39,6 +39,11 @@ from NagoyameshiApp.views.user.review_delete_view import ReviewDeleteView
 from NagoyameshiApp.views.user.activate_account import ActivateAccount
 from NagoyameshiApp.views.user.account_create_done import AccountCreateDoneView
 from NagoyameshiApp.views.user.account_activation_invalid import AccountActivationInvalidView
+from NagoyameshiApp.views.user.email_change_request import EmailChangeRequestView
+from NagoyameshiApp.views.user.activate_new_email import ActivateNewEmailView
+from NagoyameshiApp.views.user.email_change_done import EmailChangeDoneView
+from NagoyameshiApp.views.user.email_change_complete import EmailChangeCompleteView
+
 
 # スーパーユーザー（manage）
 from NagoyameshiApp.views.manage.manage_login import ManageLoginView
@@ -63,7 +68,6 @@ from NagoyameshiApp.views.admin2.admin2_restaurant_registration import AdminRest
 from NagoyameshiApp.views.admin2.admin2_booking_confirmation import AdminBookingConfirmationView
 from NagoyameshiApp.views.admin2.admin2_review_confirmation import AdminReviewConfirmationView
 from NagoyameshiApp.views.admin2.admin2_review_deletion_confirmation import ReviewDeletionConfirmationView
-
 
 urlpatterns = [    
     # ユーザー
@@ -102,6 +106,11 @@ urlpatterns = [
     path('account/activate/<uidb64>/<token>/', ActivateAccount.as_view(), name='activate'),
     path('account_create/done/', AccountCreateDoneView.as_view(), name='account_create_done'),
     path('account_create/invalid/', AccountActivationInvalidView.as_view(), name='account_activation_invalid'),
+    path('email_change/', EmailChangeRequestView.as_view(), name='email_change'),
+    path('email_change/done/', EmailChangeDoneView.as_view(), name='email_change_done'),
+    path('email_change/complete/', EmailChangeCompleteView.as_view(), name='email_change_complete'),
+    path('email_change/activate/<uidb64>/<token>/', ActivateNewEmailView.as_view(), name='activate_new_email'),
+
 
 
     # スーパーユーザー（manage）

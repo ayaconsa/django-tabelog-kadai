@@ -41,6 +41,10 @@ class CustomUserForm(forms.ModelForm):
         self.fields['tel'].widget.attrs = {'placeholder': '09012345678'}
         self.fields['works'].widget.attrs = {'placeholder': 'エンジニア'}
         
+class EmailChangeForm(forms.Form):
+    new_email = forms.EmailField(label='新しいメールアドレス', required=True, widget=forms.EmailInput(attrs={'placeholder': 'taro.samurai@example.com'}))
+
+
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking

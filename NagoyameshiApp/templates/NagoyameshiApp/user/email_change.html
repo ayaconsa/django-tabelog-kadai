@@ -1,0 +1,14 @@
+{% extends 'NagoyameshiApp/user/base.html' %}
+
+{% block title %}nagoyameshi{% endblock %}
+
+{% block content %}
+<div class="email-change">
+  <h1>メールアドレス変更</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">変更確認メールを送信</button>
+  </form>
+</div>
+{% endblock %}
