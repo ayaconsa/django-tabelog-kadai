@@ -43,7 +43,8 @@ from NagoyameshiApp.views.user.email_change_request import EmailChangeRequestVie
 from NagoyameshiApp.views.user.activate_new_email import ActivateNewEmailView
 from NagoyameshiApp.views.user.email_change_done import EmailChangeDoneView
 from NagoyameshiApp.views.user.email_change_complete import EmailChangeCompleteView
-
+from NagoyameshiApp.views.user.password_change import PasswordChangeView
+from NagoyameshiApp.views.user.password_change_done import PasswordChangeDoneView
 
 # スーパーユーザー（manage）
 from NagoyameshiApp.views.manage.manage_login import ManageLoginView
@@ -110,8 +111,8 @@ urlpatterns = [
     path('email_change/done/', EmailChangeDoneView.as_view(), name='email_change_done'),
     path('email_change/complete/', EmailChangeCompleteView.as_view(), name='email_change_complete'),
     path('email_change/activate/<uidb64>/<token>/', ActivateNewEmailView.as_view(), name='activate_new_email'),
-
-
+    path('password/change/', PasswordChangeView.as_view(), name='password_change'),
+    path('password/change/done/', PasswordChangeDoneView.as_view(), name='password_change_done'),
 
     # スーパーユーザー（manage）
     path('manage/', ManageTopView.as_view(), name="manage_top"),
@@ -119,7 +120,6 @@ urlpatterns = [
     path('manage/restaurant_info/', RestaurantInfoView.as_view(), name="manage_restaurant_info"),
     path('manage/booking_confirmation/', BookingConfirmationView.as_view(), name="manage_booking_confirmation"),
     path('manage/review_confirmation/', ReviewConfirmationView.as_view(), name="manage_review_confirmation"),
-    
     
     # デフォルトのadmin
     path('admin/', admin.site.urls),

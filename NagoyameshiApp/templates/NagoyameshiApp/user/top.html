@@ -38,11 +38,11 @@
                     <!-- サブスク会員の場合のメニュー -->
                     <a class="nav-link" href="{% url 'favorites' %}">お気に入り一覧</a>
                     <a class="nav-link" href="{% url 'bookings' %}">予約一覧</a>
-                    <a class="nav-link" href="{% url 'account_info' %}">会員登録情報</a>
+                    <a class="nav-link" href="{% url 'account_info' %}">会員情報の確認/変更</a>
                     <a class="nav-link" href="{% url 'unsubscribe' %}">有料会員の解約</a>
                   {% else %}
                     <!-- 無料会員の場合のメニュー -->
-                    <a class="nav-link" href="{% url 'account_info' %}">会員登録情報</a>
+                    <a class="nav-link" href="{% url 'account_info' %}">会員情報の確認/変更</a>
                     <a class="nav-link" href="{% url 'subscription_guide' %}">有料会員のご案内</a>					
                   {% endif %}
                   <form action="{% url 'logout' %}" method="post" style="display:inline;">
