@@ -23,4 +23,34 @@
   月額300円の有料プランについては<a href="{% url 'subscription_guide' %}">こちら</a></p>
   {% endif %}
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var dateInput = document.querySelector('input[type="date"]');
+
+    // 日付入力フィールドが存在する場合に
+    if (dateInput) {
+
+      // 今日の日付を取得
+      var today = new Date();
+
+      // 最小日付を今日から1日後に設定
+      var minDate = new Date(today);
+      minDate.setDate(minDate.getDate() + 1);
+
+      // 最大日付を今日から90日後に設定
+      var maxDate = new Date(today);
+      maxDate.setDate(maxDate.getDate() + 90);
+
+      // 日付をISO形式（YYYY-MM-DD）に変換
+      var minDateString = minDate.toISOString().split('T')[0];
+      var maxDateString = maxDate.toISOString().split('T')[0];
+
+      // 日付入力フィールドに最小日付と最大日付を設定
+      dateInput.setAttribute('min', minDateString);
+      dateInput.setAttribute('max', maxDateString);
+    }
+  });
+</script>
+
 {% endblock %}

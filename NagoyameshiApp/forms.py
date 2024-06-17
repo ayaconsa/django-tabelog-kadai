@@ -6,6 +6,7 @@ from NagoyameshiApp.models.review import Review
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from datetime import date, timedelta
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
@@ -71,6 +72,15 @@ class BookingForm(forms.ModelForm):
             'time': forms.Select(choices=Booking.TIME_Sorted),
             'number_of_persons': forms.NumberInput(attrs={'min': 1, 'max': 12}),
         }
+
+    # 日付ピッカーも制限しているが、formでも制限することで、無効な日付を選択しようとした場合にも対応できる
+    def clean_date(self):
+        booking_date = self.cleaned_data['date']
+        min_date = date.today() + timedelta(days=1)
+        max_date = date.today() + timedelta(days=90)
+        if booking_date < min_date or booking_date > max_date:
+            raise forms.ValidationError("予約日は翌日から3ヶ月以内の日付を選択してください。")
+        return booking_date
 
 class ReviewForm(forms.ModelForm):
     class Meta:
