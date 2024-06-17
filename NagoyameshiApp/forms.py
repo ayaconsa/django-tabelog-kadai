@@ -4,6 +4,8 @@ from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.models.booking import Booking
 from NagoyameshiApp.models.review import Review
 from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
@@ -21,6 +23,20 @@ class CustomUserForm(forms.ModelForm):
         strip=False,
         widget=forms.PasswordInput(attrs={'placeholder': '確認用パスワード'}),
     )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        password2 = cleaned_data.get('password2')
+
+        if password and password2 and password != password2:
+            raise ValidationError("パスワードが一致しません")
+        
+        # パスワードバリデーションを実行
+        if password:
+            validate_password(password)
+
+        return cleaned_data
 
     def save(self, commit=True):
         user = super().save(commit=False)
