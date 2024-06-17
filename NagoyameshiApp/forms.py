@@ -3,6 +3,7 @@ from django.contrib.auth.hashers import make_password
 from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.models.booking import Booking
 from NagoyameshiApp.models.review import Review
+from django.contrib.auth.forms import PasswordResetForm
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
@@ -62,3 +63,8 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'score': forms.RadioSelect,
         }
+
+class CustomPasswordResetForm(PasswordResetForm):
+    def save(self, *args, **kwargs):
+        kwargs['subject_template_name'] = 'NagoyameshiApp/user/password_reset_subject.txt'
+        return super().save(*args, **kwargs)

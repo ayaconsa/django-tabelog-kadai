@@ -16,7 +16,6 @@ from NagoyameshiApp.views.user.review_create import ReviewCreateView
 from NagoyameshiApp.views.user.reviews import ReviewsView
 from NagoyameshiApp.views.user.create_booking import CreateBookingView
 from NagoyameshiApp.views.user.logout import LogoutView
-from NagoyameshiApp.views.user.password_resetting import PasswordResettingView
 from NagoyameshiApp.views.user.subscription_guide import SubscriptionGuideView
 from NagoyameshiApp.views.user.create_checkout_session import CreateCheckoutSessionView
 from NagoyameshiApp.views.user.checkout_success import CheckoutSuccessView
@@ -45,6 +44,11 @@ from NagoyameshiApp.views.user.email_change_done import EmailChangeDoneView
 from NagoyameshiApp.views.user.email_change_complete import EmailChangeCompleteView
 from NagoyameshiApp.views.user.password_change import PasswordChangeView
 from NagoyameshiApp.views.user.password_change_done import PasswordChangeDoneView
+from NagoyameshiApp.views.user.password_reset import PasswordResetView
+from NagoyameshiApp.views.user.password_reset_done import PasswordResetDoneView
+from NagoyameshiApp.views.user.password_reset_confirm import PasswordResetConfirmView
+from NagoyameshiApp.views.user.password_reset_complete import PasswordResetCompleteView
+
 
 # スーパーユーザー（manage）
 from NagoyameshiApp.views.manage.manage_login import ManageLoginView
@@ -82,7 +86,6 @@ urlpatterns = [
     path('booking_success/', BookingSuccessView.as_view(), name='booking_success'),
     path('restaurant/<int:pk>/review/new/', ReviewCreateView.as_view(), name='review_create'),
     path('logout/', LogoutView.as_view(), name="logout"),
-    path('password_resetting/', PasswordResettingView.as_view(), name="password_resetting"),
     path('subscription_guide/', SubscriptionGuideView.as_view(), name="subscription_guide"),
     path('create_checkout_session/', CreateCheckoutSessionView.as_view(), name="create_checkout_session"),
     path('checkout_success/', CheckoutSuccessView.as_view(), name="checkout_success"),
@@ -113,6 +116,11 @@ urlpatterns = [
     path('email_change/activate/<uidb64>/<token>/', ActivateNewEmailView.as_view(), name='activate_new_email'),
     path('password/change/', PasswordChangeView.as_view(), name='password_change'),
     path('password/change/done/', PasswordChangeDoneView.as_view(), name='password_change_done'),
+    path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
+    path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('rest/done/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
 
     # スーパーユーザー（manage）
     path('manage/', ManageTopView.as_view(), name="manage_top"),
