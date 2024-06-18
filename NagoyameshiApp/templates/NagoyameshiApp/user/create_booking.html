@@ -24,6 +24,10 @@
   {% endif %}
 </div>
 
+<!-- flatpickrのCSSとJavaScriptを追加 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var dateInput = document.querySelector('input[type="date"]');
@@ -49,6 +53,49 @@
       // 日付入力フィールドに最小日付と最大日付を設定
       dateInput.setAttribute('min', minDateString);
       dateInput.setAttribute('max', maxDateString);
+
+      // 定休日を設定
+      var closeDays = {{ close_day|safe }};
+      var closeDaysMap = {
+        '月曜日': 1,
+        '火曜日': 2,
+        '水曜日': 3,
+        '木曜日': 4,
+        '金曜日': 5,
+        '土曜日': 6,
+        '日曜日': 0
+      };
+
+      // closeDaysを数値のリストに変換
+      var closeDaysArray = closeDays.map(function(day) {
+        return closeDaysMap[day];
+      });
+
+      // 日付を無効化する関数
+      function disableCloseDays(date) {
+        var day = date.getDay();
+        return closeDays.includes(day);
+      }
+
+      // 入力日が定休日の場合、警告を表示
+      dateInput.addEventListener('input', function() {
+        var selectedDate = new Date(this.value);
+        if (disableCloseDays(selectedDate)) {
+          alert("選択された日付は定休日です。別の日付を選択してください。");
+          this.value = '';
+        }
+      });
+
+      // カレンダーで定休日を無効化するためにflatpickrを利用
+      flatpickr(dateInput, {
+        minDate: minDateString,
+        maxDate: maxDateString,
+        disable: [
+          function(date) {
+            return disableCloseDays(date);
+          }
+        ]
+      });
     }
   });
 </script>
