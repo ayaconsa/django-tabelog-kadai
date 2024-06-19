@@ -94,11 +94,11 @@
         <!-- 並び替え -->
         <div>
           <form id="sort-form" method="GET" action="{% url 'restaurant_list' %}">
-            <select id="sort-select" name="sort" class="form-control">
-              <option value="掲載日が新しい順">掲載日が新しい順</option>
-              <option value="価格が安い順">価格が安い順</option>
-              <option value="価格が高い順">価格が高い順</option>
-              <option value="予約数順">予約数順</option>
+            <select id="sort-select" name="sort" class="form-control" onchange="this.form.submit()">
+              <option value="掲載日が新しい順" {% if sort_option == "掲載日が新しい順" %}selected{% endif %}>掲載日が新しい順</option>
+              <option value="価格が安い順" {% if sort_option == "価格が安い順" %}selected{% endif %}>価格が安い順</option>
+              <option value="価格が高い順" {% if sort_option == "価格が高い順" %}selected{% endif %}>価格が高い順</option>
+              <option value="予約数順" {% if sort_option == "予約数順" %}selected{% endif %}>予約数順</option>
             </select>
           </form>
         </div>

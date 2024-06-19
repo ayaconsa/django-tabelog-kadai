@@ -73,7 +73,7 @@ class RestaurantListView(TemplateView):
             ('価格が高い順', '価格が高い順'),
             ('予約数順', '予約数順'),
         ]
-
+        context['sort_option'] = sort_option
         return context
 
         

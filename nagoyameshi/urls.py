@@ -21,7 +21,6 @@ from NagoyameshiApp.views.user.create_checkout_session import CreateCheckoutSess
 from NagoyameshiApp.views.user.checkout_success import CheckoutSuccessView
 from NagoyameshiApp.views.user.checkout_cancel import CheckoutCancelView
 from NagoyameshiApp.views.user.cancel_subscription import CancelSubscriptionView
-from NagoyameshiApp.views.user.delete_account import DeleteAccountView
 from NagoyameshiApp.views.user.account_info import AccountInfoView
 from NagoyameshiApp.views.user.account_info_update import AccountInfoEditView
 from NagoyameshiApp.views.user.account_delete import AccountDeleteView
@@ -29,7 +28,6 @@ from NagoyameshiApp.views.user.bookings import BookingsView
 from NagoyameshiApp.views.user.booking_cancel import BookingCancelView
 from NagoyameshiApp.views.user.favorites import FavoritesView
 from NagoyameshiApp.views.user.favorite_delete import FavoriteDeleteView
-from NagoyameshiApp.views.user.change_payment_method import ChangePaymentMethodView
 from NagoyameshiApp.views.user.unsubscribe import UnsubscribeView
 from NagoyameshiApp.views.user.favorite_toggle import FavoriteToggleView
 from NagoyameshiApp.views.user.get_user_subscription_status import get_user_subscription_status
@@ -93,7 +91,6 @@ urlpatterns = [
     path('cancel_subscription/', CancelSubscriptionView.as_view(), name='cancel_subscription'),
     path('restaurant/<int:pk>/reviews/', ReviewsView.as_view(), name='reviews'),
     path('restaurant/<int:pk>/booking/', CreateBookingView.as_view(), name='create_booking'),
-    path('delete_account/', DeleteAccountView.as_view(), name="delete_account"),
     path('account_info/', AccountInfoView.as_view(), name="account_info"),
     path('account_info_edit/', AccountInfoEditView.as_view(), name="account_info_edit"),
     path('account_delete/', AccountDeleteView.as_view(), name="account_delete"),
@@ -102,7 +99,6 @@ urlpatterns = [
     path('bookings/cancel/<int:pk>', BookingCancelView.as_view(), name="booking_cancel"),
     path('favorites/', FavoritesView.as_view(), name="favorites"),
     path('favorite_delete/<int:pk>', FavoriteDeleteView.as_view(), name="favorite_delete"),
-    path('change_payment_method/', ChangePaymentMethodView.as_view(), name="change_payment_method"),
     path('unsubscribe/', UnsubscribeView.as_view(), name="unsubscribe"),
     path('favorite_toggle/<int:pk>/', FavoriteToggleView.as_view(), name='favorite_toggle'),
     path('review/edit/<int:pk>/', ReviewEditView.as_view(), name='review_edit'),
