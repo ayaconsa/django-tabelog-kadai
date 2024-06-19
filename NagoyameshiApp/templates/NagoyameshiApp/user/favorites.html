@@ -29,6 +29,7 @@
           <thead>
             <tr>
               <th scope="col">店舗名</th>
+              <th scope="col">カテゴリ</th>
               <th scope="col">操作</th>
             </tr>
           </thead>
@@ -36,6 +37,7 @@
             {% for favorite in favorites %}
               <tr>
                 <td><a href="{% url 'restaurant_detail' favorite.restaurant.id %}">{{ favorite.restaurant.name }}</a></td>
+                <td>{{ favorite.restaurant.category }}</td>
                 <td>
                   <form method="post" action="{% url 'favorite_delete' pk=favorite.pk %}">
                     {% csrf_token %}
