@@ -38,7 +38,7 @@
           <tbody>
             {% for booking in bookings %}
               <tr>
-                <td>{{ booking.restaurant.name }}</td>
+                <td><a href="{% url 'restaurant_detail' booking.restaurant.id %}">{{ booking.restaurant.name }}</a></td>
                 <td>{{ booking.date|date:"Y-m-d" }}</td>
                 <td>{{ booking.time }}</td>
                 <td>{{ booking.number_of_persons }}</td>
@@ -59,6 +59,20 @@
   </div>
 </div>
 
-<script src="{% static 'js/script.js' %}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var cancelButtons = document.querySelectorAll('.btn-danger');
+
+    cancelButtons.forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();  // デフォルトのフォーム送信を防ぐ
+        var confirmation = confirm('本当に予約をキャンセルしますか？');
+        if (confirmation) {
+          this.closest('form').submit();  // ユーザーが確認した場合にフォームを送信
+        }
+      });
+    });
+  });
+</script>
 
 {% endblock content %}
