@@ -31,7 +31,7 @@
   {% if user.is_authenticated %}
     <!-- レビューの中身 -->
     {% for review in reviews %}
-    <div>
+    <div class="review-item">
       <p>{{ review.user.name }}</p>
       <p>
         {% for _ in review.score|get_range %}
@@ -79,4 +79,15 @@
     <a href="{% url 'login' %}">ログイン</a>または<a href="{% url 'account_create' %}">新規登録</a>してください。</p>	
   {% endif %}	
 </div>
+
+<!-- 最後のレビューに区切り線を表示させないためのスクリプト -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var reviewItems = document.querySelectorAll('.review-item');
+    if (reviewItems.length > 0) {
+      reviewItems[reviewItems.length - 1].style.borderBottom = 'none';
+    }
+  });
+</script>
+
 {% endblock %}

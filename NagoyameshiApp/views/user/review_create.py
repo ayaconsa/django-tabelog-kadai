@@ -15,4 +15,4 @@ class ReviewCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('restaurant_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('reviews', kwargs={'pk': self.kwargs['pk']})
