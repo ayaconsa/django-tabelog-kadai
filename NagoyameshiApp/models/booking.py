@@ -30,5 +30,14 @@ class Booking(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="登録日時")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="更新日時")
     
+    @staticmethod
+    def get_sorted_bookings(user=None, restaurant=None):
+        bookings = Booking.objects.all()
+        if user:
+            bookings = bookings.filter(user=user)
+        if restaurant:
+            bookings = bookings.filter(restaurant=restaurant)
+        return bookings.order_by('date', 'time')
+
     class Meta:
         app_label = 'NagoyameshiApp'

@@ -34,7 +34,7 @@
     <tbody>
         {% for booking in bookings %}
         <tr>
-            <td>{{ booking.user_name }}</td>
+            <td>{{ booking.user.name }}</td>
             <td>{{ booking.date }}</td>
             <td>{{ booking.time }}</td>
             <td>{{ booking.number_of_persons }}</td>

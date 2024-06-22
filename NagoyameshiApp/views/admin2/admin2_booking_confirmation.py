@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from NagoyameshiApp.models.restaurant import Restaurant
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import redirect
+from NagoyameshiApp.models.booking import Booking
 
 # 管理者：予約確認
 class AdminBookingConfirmationView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
@@ -11,7 +12,7 @@ class AdminBookingConfirmationView(LoginRequiredMixin, UserPassesTestMixin, Temp
         context = super().get_context_data(**kwargs)
         # 自店舗に対する予約情報を取得してテンプレートに渡す
         restaurant = Restaurant.objects.get(pk=self.kwargs['pk'])
-        context['bookings'] = restaurant.get_booking_data()
+        context['bookings'] = Booking.get_sorted_bookings(restaurant=restaurant)
         context['restaurant_name'] = restaurant.name
         return context
     

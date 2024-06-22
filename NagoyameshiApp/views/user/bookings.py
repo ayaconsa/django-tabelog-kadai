@@ -9,7 +9,7 @@ class BookingsView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.request.user
-        bookings = Booking.objects.filter(user=user)
+        bookings = Booking.get_sorted_bookings(user=user)
         context['bookings'] = bookings
         return context
     
