@@ -687,3 +687,61 @@ h2 {
   background-color: #d3d3d3;
 }
 
+/* 会員一覧の偶数行に背景をつける */
+.admin_table_list tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* 会員一覧のドロップダウンメニューのスタイルを調整 */
+.sort-dropdown {
+  width: auto;
+  display: inline-block;
+}
+
+
+
+
+/* テーブルのスタイル調整 */
+.admin_table_list {
+  width: 97%;
+  border-collapse: collapse;
+}
+
+.admin_table_list th, .admin_table_list td {
+  word-wrap: break-word;  /* テキストを折り返す */
+}
+
+/* 各列の幅を比率で調整 */
+.admin_table_list th.id, .admin_table_list td.id {
+  width: 3%;
+}
+
+.admin_table_list th.email, .admin_table_list td.email {
+  width: 12%;
+  word-break: break-all;  /* 長い文字列を折り返す */
+}
+
+.admin_table_list th.address, .admin_table_list td.address {
+  width: 15%;
+  word-break: break-all;  /* 長い文字列を折り返す */
+}
+
+.admin_table_list th.text-center, .admin_table_list td.text-center {
+  width: 5%;
+}
+
+.admin_table_list th.works, .admin_table_list td.works {
+  width: 7%;
+  word-break: break-all;  /* 長い文字列を折り返す */
+}
+
+.admin_table_list th.furigana, .admin_table_list td.furigana {
+  width: 12%;
+  word-break: break-all;  /* 長い文字列を折り返す */
+}
+
+
+/* 残りの列は適宜調整 */
+.admin_table_list th, .admin_table_list td {
+  width: auto;
+}

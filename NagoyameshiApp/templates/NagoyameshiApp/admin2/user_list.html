@@ -18,34 +18,45 @@
 	</ol>
 </nav>
 
+<!-- 並び替えオプション -->
+<form id="sort-form" method="GET" action="{% url 'admin_user_list' %}">
+    <select id="sort-select" name="sort" class="form-control sort-dropdown" onchange="this.form.submit()">
+        {% for value, label in sort_options %}
+        <option value="{{ value }}" {% if value == selected_sort %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+    </select>
+</form>
+
 <!-- 会員リスト -->
 <table class="admin_table_list">
 	<tr>
-		<th>会員ID</th>
+		<th class="id">会員ID</th>
 		<th>氏名</th>
-		<th>フリガナ</th>
-		<th>メールアドレス</th>
-		<th>サブスク</th>
+		<th class="furigana">フリガナ</th>
+		<th class="email">メールアドレス</th>
+		<th class="text-center">サブスク</th>
 		<th>生年月日</th>
 		<th>郵便番号</th>
-		<th>住所</th>
+		<th class="address">住所</th>
 		<th>電話番号</th>
-		<th>職業</th>
-		<th>登録日</th>
+		<th class="works">職業</th>
 	</tr>
     {% for user in object_list %}
     <tr>
-        <td>{{ user.id }}</td>
+        <td class="id">{{ user.id }}</td>
         <td>{{ user.name}}</td>
-        <td>{{ user.furigana }}</td>
-        <td>{{ user.email }}</td>
-        <td></td>
+        <td class="furigana">{{ user.furigana }}</td>
+        <td class="email">{{ user.email }}</td>
+        <td class="text-center">
+            {% if user.subscription %}
+                &#x25CB
+            {% endif %}
+        </td>
         <td>{{ user.birthday }}</td>
         <td>{{ user.zipcode }}</td>
-        <td>{{ user.address }}</td>
+        <td class="address">{{ user.address }}</td>
         <td>{{ user.tel }}</td>
-        <td>{{ user.works }}</td>
-        <td>{{ user.date_joined }}</td>
+        <td class="works">{{ user.works }}</td>
 	</tr>
     {% endfor %}
 </table>
