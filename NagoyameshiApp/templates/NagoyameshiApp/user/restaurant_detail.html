@@ -3,6 +3,7 @@
 {% block title %}{{ restaurant.name }}|Nagoyameshi{% endblock %}
 {% block content %}
 {% load static %}
+{% load humanize %}
 <!-- 店舗詳細ページ -->
 <div class="container">
   <nav aria-label="breadcrumb">
@@ -33,7 +34,7 @@
     <tbody>
       <tr>
         <th class="w-25" scope="row">価格帯</th>
-        <td>{{ restaurant.price_max }}円〜{{ restaurant.price_min }}円</td>
+        <td>{{ restaurant.price_min|intcomma }}円〜{{ restaurant.price_max|intcomma }}円</td>
       </tr>
       <tr>
         <th class="w-25" scope="row">座席数</th>

@@ -647,3 +647,26 @@ h2 {
 .subscription-guide p {
   margin-top: 15px;
 }
+
+
+.select-wrapper {
+  position: relative; /* 子要素であるselect-arrowが親要素の位置を基準に配置されるように */
+  display: inline-block; /* 子要素であるselect-arrowを一つのブロックとして扱い、横並びの要素として扱う */
+}
+
+.select-wrapper select {
+  appearance: none; /* デフォルトのブラウザ依存のスタイルをなくす */
+  -webkit-appearance: none; /* Safariのためのベンダープリフィックス */
+  -moz-appearance: none; /* Firefoxのためのベンダープリフィックス */
+  padding-right: 20px; /* カスタム矢印が枠に重ならないようにスペースを確保 */
+}
+
+.select-arrow {
+  position: absolute; /* select-arrowの位置を親要素（select-wrapper）に対して絶対的に配置 */
+  top: 50%; /* 垂直方向に中央揃え */
+  right: 10px; /* 矢印を右から10pxの位置に配置 */
+  pointer-events: none; /* 矢印をクリックしても何も起こらないように設定 */
+  transform: translateY(-50%); /* 矢印の位置を上に50%移動して、垂直方向に完全に中央揃えに。top: 50%;と組み合わせることで中央揃えが実現される */
+  font-size: 16px;
+  color: black;
+}
