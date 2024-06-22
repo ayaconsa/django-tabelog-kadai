@@ -671,11 +671,19 @@ h2 {
   color: black;
 }
 
+/* レビューの区切り線 */
 .review-item {
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
 }
 
+/* 最後のレコードの下に区切り線を表示しない（JSと併用） */
 .review-item:last-child {
   border-bottom: none;
 }
+
+/* 予約日を過ぎたレコードの背景をグレーに */
+.past-booking {
+  background-color: #d3d3d3;
+}
+

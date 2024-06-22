@@ -21,6 +21,7 @@
 </nav>
 
 <!-- 店舗リスト -->
+{% if bookings %}
 <table class="admin_table_list">
     <thead>
         <tr>
@@ -33,7 +34,7 @@
     </thead>
     <tbody>
         {% for booking in bookings %}
-        <tr>
+        <tr class="{% if booking.date < today %}past-booking{% endif %}">
             <td>{{ booking.user.name }}</td>
             <td>{{ booking.date }}</td>
             <td>{{ booking.time }}</td>
@@ -42,5 +43,8 @@
         </tr>
         {% endfor %}
     </tbody>
+{% else %}
+<p class="text-center">現在予約はありません。</p>
+{% endif %}
 
 {% endblock content %}

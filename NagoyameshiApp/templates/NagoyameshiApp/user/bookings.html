@@ -32,21 +32,23 @@
               <th scope="col">予約日</th>
               <th scope="col">予約時間</th>
               <th scope="col">人数</th>
-              <th scope="col">操作</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             {% for booking in bookings %}
-              <tr>
+              <tr class="{% if booking.date < today %}past-booking{% endif %}">
                 <td><a href="{% url 'restaurant_detail' booking.restaurant.id %}">{{ booking.restaurant.name }}</a></td>
                 <td>{{ booking.date|date:"Y-m-d" }}</td>
                 <td>{{ booking.time }}</td>
                 <td>{{ booking.number_of_persons }}</td>
                 <td>
+                  {% if booking.date >= today %}
                   <form method="post" action="{% url 'booking_cancel' pk=booking.pk %}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger btn-sm">キャンセル</button>
                   </form>
+                  {% endif %}
                 </td>
               </tr>
             {% endfor %}
@@ -59,6 +61,7 @@
   </div>
 </div>
 
+<!-- キャンセル確認のためのスクリプト -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var cancelButtons = document.querySelectorAll('.btn-danger');
