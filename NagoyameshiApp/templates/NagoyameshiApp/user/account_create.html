@@ -8,11 +8,38 @@
 {% block content %}
 {% load static %}
 
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <a href="{% url 'top' %}">戻る</a>
-  <input type="submit" value="登録">
-</form>
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">新規会員登録</li>
+    </ol>
+  </nav>
+
+  <h3 class="text-center">新規会員登録</h3>
+
+  <div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="account_create_ul">
+        <ul>
+          <li>個人情報と似ているパスワードにはできません。</li>
+          <li>パスワードは最低 8 文字以上必要です。</li>
+          <li>よく使われるパスワードにはできません。</li>
+          <li>数字だけのパスワードにはできません。</li>
+        </ul>
+      </div>
+      <div class="text-center">
+        <input type="submit" class="btn btn-success" value="登録">
+      </div>
+    </form>
+  </div>
+
+  <div class="text-center">
+    <a href="{% url 'top' %}" class="btn btn-outline-secondary btn_margin">戻る</a>
+  </div>
+</div>
 
 {% endblock content %}

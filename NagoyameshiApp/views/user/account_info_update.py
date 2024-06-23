@@ -1,11 +1,12 @@
 from django.views.generic import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from NagoyameshiApp.models.custom_user import CustomUser
+from NagoyameshiApp.forms import AccountInfoEditForm
 
 # 会員情報編集（会員のみ）
 class AccountInfoEditView(LoginRequiredMixin, UpdateView):
     model = CustomUser
-    fields = ['name', 'furigana', 'birthday', 'zipcode', 'address', 'tel', 'works']
+    form_class = AccountInfoEditForm
     template_name = "NagoyameshiApp/user/account_info_update.html"
     success_url = '/account_info/'
 

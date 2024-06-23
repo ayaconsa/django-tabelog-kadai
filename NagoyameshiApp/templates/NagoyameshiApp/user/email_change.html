@@ -1,14 +1,34 @@
+<!-- base.htmlを継承する -->
 {% extends 'NagoyameshiApp/user/base.html' %}
 
+<!-- ページタイトル -->
 {% block title %}メールアドレス変更|Nagoyameshi{% endblock %}
 
+<!-- コンテンツ本体 -->
 {% block content %}
-<div class="email-change">
-  <h1>メールアドレス変更</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">変更確認メールを送信</button>
-  </form>
+{% load static %}
+<div class="container email-change">
+  <!-- パンくずリスト -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'account_info' %}">会員情報</a></li>
+      <li class="breadcrumb-item active" aria-current="page">メールアドレス変更</li>
+    </ol>
+  </nav>
+
+  <h3 class="text-center">メールアドレスの変更</h3>
+  <div class="form-container">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="text-center">
+        <button class="btn btn-outline-success" type="submit">変更確認メールを送信</button>
+      </div>
+    </form>
+    <div class="text-center">
+      <a href="{% url 'account_info' %}" class="btn btn-outline-secondary btn_margin">戻る</a>
+    </div>
+  </div>
 </div>
 {% endblock %}

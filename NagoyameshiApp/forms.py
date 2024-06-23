@@ -94,3 +94,11 @@ class CustomPasswordResetForm(PasswordResetForm):
     def save(self, *args, **kwargs):
         kwargs['subject_template_name'] = 'NagoyameshiApp/user/password_reset_subject.txt'
         return super().save(*args, **kwargs)
+    
+class AccountInfoEditForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['name', 'furigana', 'birthday', 'zipcode', 'address', 'tel', 'works']
+        widgets = {
+            'birthday': forms.DateInput(attrs={'type': 'date'}),
+        }

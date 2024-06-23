@@ -3,8 +3,20 @@
 {% block title %}メールアドレス変更完了|Nagoyameshi{% endblock %}
 
 {% block content %}
-<div class="email-change-complete">
-  <h1>メールアドレス変更完了</h1>
-  <p>メールアドレスの変更が完了しました。新しいメールアドレスが有効になりました。</p>
+<div class="container email-change-complete">
+  <!-- パンくずリスト -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'account_info' %}">会員情報</a></li>
+      <li class="breadcrumb-item active" aria-current="page">メールアドレス変更</li>
+    </ol>
+  </nav>
+
+  <div class="text-center">
+    <h3>メールアドレス変更完了</h3>
+    <p>新しいメールアドレスが有効になりました。</p>
+    <a href="{% url 'top' %}" class="btn btn-outline-success">トップページに戻る</a>
+  </div>
 </div>
 {% endblock %}
