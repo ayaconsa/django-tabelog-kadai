@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
 														console.log('Favorite status toggled');
 														this.setAttribute('data-favorite', String(!isFavorite));
 														if (data.favorite_status === 'unfavorited') {
-																this.textContent = 'お気に入りに追加';
+																this.innerHTML = '&#x2661;'; // 塗りなしのハート
 														} else if (data.favorite_status === 'favorited') {
-																this.textContent = 'お気に入りから削除';
+																this.innerHTML = '&hearts;'; // 塗りありのハート
 														}
 												} else {
 														alert(data.message);

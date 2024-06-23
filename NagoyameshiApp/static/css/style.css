@@ -745,3 +745,17 @@ h2 {
 .admin_table_list th, .admin_table_list td {
   width: auto;
 }
+
+/* お気に入りボタン */
+.favorite-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
+}
+
+.favorite-btn:hover {
+  color: darkred;
+}

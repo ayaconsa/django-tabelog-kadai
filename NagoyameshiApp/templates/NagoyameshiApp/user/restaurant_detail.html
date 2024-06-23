@@ -14,18 +14,18 @@
     </ol>
   </nav>
   <h3>{{ restaurant.name }}</h3>
-  <p>&#9733; {{ average_score }}（{{ review_count }}件）</p>
-
+  <p>&#9733; {{ average_score }}（{{ review_count }}件）
   <!-- お気に入り追加ボタン -->
-  <div class="container">
-    <button id="favorite-btn" data-favorite="{% if is_favorite %}true{% else %}false{% endif %}" data-restaurant-id="{{ restaurant.id }}">
-      {% if is_favorite %}
-        お気に入りから削除
-      {% else %}
-        お気に入りに追加
-      {% endif %}
-    </button>
-  </div>
+  <button id="favorite-btn" class="favorite-btn" data-favorite="{% if is_favorite %}true{% else %}false{% endif %}" data-restaurant-id="{{ restaurant.id }}">
+    {% if is_favorite %}
+      &hearts;  <!-- 塗りありのハート --> 
+    {% else %}
+      &#x2661;  <!-- 塗りなしのハート --> 
+    {% endif %}
+  </button>
+  <a href="{% url 'create_booking' restaurant.pk %}" class="btn btn-outline-success">予約</a>
+  <a href="{% url 'reviews' restaurant.pk %}" class="btn btn-outline-success">レビュー</a>
+  </p>
 
   <img src="{{ restaurant.img.url }}" class="img-fluid rounded-start" alt="{{ restaurant.name }}">
   <h2>{{ restaurant.catch_copy }}</h2>
@@ -62,10 +62,6 @@
       </tr>
     </tbody>
   </table>
-  <p>
-    <a href="{% url 'create_booking' restaurant.pk %}">予約</a> | 
-    <a href="{% url 'reviews' restaurant.pk %}">レビュー</a>
-  </p>
 </div>
 
 <script src="{% static 'js/script_favorite.js' %}"></script>
