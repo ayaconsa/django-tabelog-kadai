@@ -1,26 +1,38 @@
+<!-- base.htmlを継承する -->
 {% extends 'NagoyameshiApp/user/base.html' %}
+
+<!-- ページタイトル -->
 {% block title %}店舗予約|Nagoyameshi{% endblock %}
+
+<!-- コンテンツ本体 -->
 {% block content %}
 {% load static %}
+
 <div class="container">
   {% if user.is_authenticated and user.subscription %}
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'restaurant_detail' restaurant.pk %}">店舗詳細</a></li>
-      <li class="breadcrumb-item active" aria-current="page">予約</li>
-    </ol>
-  </nav>
-  <h3>予約（{{ restaurant.name }}）</h3>
-  <form method="post" action="{% url 'create_booking' restaurant.pk %}">
-    {% csrf_token %}
-    {{ booking_form.as_p }}
-    <button type="submit" class="btn search_btn list_search_item">予約する</button>
-  </form>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'restaurant_detail' restaurant.pk %}">店舗詳細</a></li>
+        <li class="breadcrumb-item active" aria-current="page">予約</li>
+      </ol>
+    </nav>
+
+    <h3 class="text-center">来店予約：{{ restaurant.name }}</h3>
+
+    <div class="form-container">
+      <form method="post" action="{% url 'create_booking' restaurant.pk %}">
+        {% csrf_token %}
+        {{ booking_form.as_p }}
+        <div class="text-center">
+          <button type="submit" class="btn btn-success">予約する</button>
+        </div>
+      </form>
+    </div>
   {% else %}
-  <p>予約機能は有料会員専用サービスです。<br>
-  月額300円の有料プランについては<a href="{% url 'subscription_guide' %}">こちら</a></p>
+    <p>予約機能は有料会員専用サービスです。<br>
+    月額300円の有料プランについては<a href="{% url 'subscription_guide' %}">こちら</a></p>
   {% endif %}
 </div>
 
