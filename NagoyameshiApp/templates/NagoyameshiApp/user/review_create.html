@@ -9,13 +9,39 @@
 {% load static %}
 
 <div class="container">
-  <h2>レビューを投稿</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">投稿</button>
-  </form>
-  <a href="{% url 'restaurant_detail' pk=view.kwargs.pk %}" class="btn btn-secondary">戻る</a>
-</div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'restaurant_detail' restaurant.pk %}">店舗詳細</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'reviews' restaurant.pk %}">レビュー</a></li>
+      <li class="breadcrumb-item active" aria-current="page">投稿</li>
+    </ol>
+  </nav>
+
+  <h3 class="text-center">{{ restaurant.name }}：レビュー投稿</h3>
+  <div class="form-container">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.score.label_tag }}<br>
+        {% for radio in form.score %}
+          <label class="star-rating_form">
+            {{ radio.tag }}
+            {{ radio.choice_label }}
+          </label>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.comment.label_tag }}<br>
+        {{ form.comment }}
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-success">保存</button>
+      </div>
+    </form>
+    <div class="text-center create_review">
+      <a href="{% url 'reviews' restaurant.pk %}" class="btn btn-secondary">戻る</a>
+    </div></div>
 
   {% endblock content %}

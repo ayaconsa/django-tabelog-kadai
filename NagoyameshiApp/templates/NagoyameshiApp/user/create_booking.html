@@ -12,7 +12,7 @@
       <li class="breadcrumb-item active" aria-current="page">予約</li>
     </ol>
   </nav>
-  <h3>{{ restaurant.name }}</h3>
+  <h3>予約（{{ restaurant.name }}）</h3>
   <form method="post" action="{% url 'create_booking' restaurant.pk %}">
     {% csrf_token %}
     {{ booking_form.as_p }}

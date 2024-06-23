@@ -12,20 +12,7 @@
       <li class="breadcrumb-item active" aria-current="page">レビュー</li>
     </ol>
   </nav>
-  <h3>{{ restaurant.name }}</h3>
-
-  <!-- 非会員・無料会員の場合は投稿できない（非会員は閲覧もできない） -->
-  {% if user.is_authenticated %}
-    {% if user.subscription %}
-      <a href="{% url 'review_create' restaurant.pk %}" class="btn btn-primary">レビューを投稿する</a>
-    {% else %}
-      <p>レビューの投稿は有料会員専用サービスです。<br>
-      月額300円の有料プランについては<a href="{% url 'subscription_guide' %}">こちら</a></p>
-    {% endif %}
-  {% else %}
-    <p>レビューの閲覧は会員専用サービスです。<br>
-    <a href="{% url 'login' %}">ログイン</a>または<a href="{% url 'account_create' %}">新規登録</a>してください。</p>
-  {% endif %}
+  <h3 class="text-center">レビュー（{{ restaurant.name }}）</h3>
 
   <!-- レビュー表示の制限（非会員は閲覧できない） -->
   {% if user.is_authenticated %}
@@ -33,24 +20,41 @@
     {% for review in reviews %}
     <div class="review-item">
       <p>{{ review.user.name }}</p>
-      <p>
+      <p class="star-rating">
         {% for _ in review.score|get_range %}
         &#9733;
         {% endfor %}
       </p>
       <p>{{ review.comment }}</p>
+      <p class="review-date">{{ review.created_at|date:"Y年n月j日 H:i" }}</p>
         <!-- 投稿者はコメントの編集と削除ができる -->
         {% if review.user == user %}
         <a href="{% url 'review_edit' review.pk %}" class="btn btn-secondary">編集</a>
         <form action="{% url 'review_delete' review.pk %}" method="post" style="display:inline;">
           {% csrf_token %}
-          <button type="submit" class="btn btn-danger">削除</button>
+          <button type="submit" class="btn btn-danger delete-review-btn">削除</button>
         </form>
         {% endif %}
       </div>
     {% endfor %}
+
+    <!-- 非会員・無料会員の場合は投稿できない（非会員は閲覧もできない） -->
+    <div class="text-center">
+      {% if user.is_authenticated %}
+        {% if user.subscription %}
+          <a href="{% url 'review_create' restaurant.pk %}" class="btn btn-outline-success create_review">レビューを投稿する</a>
+        {% else %}
+          <p>レビューの投稿は有料会員専用サービスです。<br>
+          月額300円の有料プランについては<a href="{% url 'subscription_guide' %}">こちら</a></p>
+        {% endif %}
+      {% else %}
+        <p>レビューの閲覧は会員専用サービスです。<br>
+        <a href="{% url 'login' %}">ログイン</a>または<a href="{% url 'account_create' %}">新規登録</a>してください。</p>
+      {% endif %}
+    </div>
+
     <!-- ページネーション -->
-    <nav aria-label="Page navigation example w-100">
+    <nav aria-label="Page navigation example w-100" class="d-flex justify-content-center">
       <ul class="pagination">
         {% if reviews.has_previous %}
         <li class="page-item">
@@ -78,6 +82,9 @@
     <p>レビューの閲覧は会員専用サービスです。<br>	
     <a href="{% url 'login' %}">ログイン</a>または<a href="{% url 'account_create' %}">新規登録</a>してください。</p>	
   {% endif %}	
+  <div class="text-center">
+    <a class="btn btn-outline-success" href="{% url 'restaurant_detail' restaurant.pk %}">戻る</a>
+  </div>
 </div>
 
 <!-- 最後のレビューに区切り線を表示させないためのスクリプト -->
@@ -89,5 +96,23 @@
     }
   });
 </script>
+
+<!-- レビュー削除確認のポップアップのためのスクリプト -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const deleteButtons = document.querySelectorAll('.delete-review-btn');
+
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const confirmation = confirm('本当にこのレビューを削除しますか？');
+        if (confirmation) {
+          this.closest('form').submit();
+        }
+      });
+    });
+  });
+</script>
+
 
 {% endblock %}

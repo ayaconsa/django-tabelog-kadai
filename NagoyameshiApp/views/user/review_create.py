@@ -16,3 +16,9 @@ class ReviewCreateView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('reviews', kwargs={'pk': self.kwargs['pk']})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        review = self.get_object()
+        context['restaurant'] = review.restaurant
+        return context

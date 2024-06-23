@@ -759,3 +759,71 @@ h2 {
 .favorite-btn:hover {
   color: darkred;
 }
+
+/* ページネーションのカスタマイズ */
+.pagination .page-link {
+  color: #2B2A4C;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #2B2A4C;
+  border-color: #2B2A4C;
+  color: white;
+}
+
+.pagination .page-item.active .page-link:hover {
+  background-color: #2B2A4C;
+  border-color: #2B2A4C;
+}
+
+.pagination .page-link:hover {
+  color: #2B2A4C;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+/* レビューの星の色 */
+.star-rating {
+  color: #FF9A00;
+}
+
+/* レビュー日時のデザイン */
+.review-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* レビュー投稿ボタンの余白 */
+.create_review {
+  margin: 20px;
+}
+
+.star-rating_form {
+  color: #FF9A00; /* 星の色を黄色に設定 */
+  display: block; /* 縦並びにするためにブロック要素に設定 */
+  margin: 5px 0; /* 各星の間に少しのマージンを追加 */
+  text-align: left; /* ラベルの左寄せ */
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.review_form_button {
+  text-align: center;
+  width: 100%;
+}
