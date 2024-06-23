@@ -41,7 +41,7 @@
 		<td>{{ Restaurant.category }}</td>
 		<td>{{ Restaurant.catch_copy }}</td>
 		<td>
-			<button onclick="location.href='{% url 'admin_restaurant_detail' pk=Restaurant.pk %}'" class="admin_table_link">詳細</button>
+			<button onclick="location.href='{% url 'admin_restaurant_detail' pk=Restaurant.pk %}'" class="btn btn-outline-secondary">詳細</button>
 		</td>
 	</tr>
 	{% endfor %}

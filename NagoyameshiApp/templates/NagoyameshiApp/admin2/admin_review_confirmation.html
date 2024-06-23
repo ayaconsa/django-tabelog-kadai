@@ -35,10 +35,10 @@
         <tr>
             <td>{{ review.user_name }}</td>
             <td>{{ review.score }}</td>
-            <td>{{ review.comment }}</td>
-            <td>{{ review.created_at }}</td>
+            <td class="comment">{{ review.comment }}</td>
+            <td class="date">{{ review.created_at }}</td>
 			<td>
-				<a class="admin_link" href="{% url 'admin_review_deletion_confirmation' pk=review.pk %}">削除</a>
+				<a class="btn btn-outline-danger" href="{% url 'admin_review_deletion_confirmation' pk=review.pk %}">削除</a>
 			</td>	
         </tr>
         {% endfor %}

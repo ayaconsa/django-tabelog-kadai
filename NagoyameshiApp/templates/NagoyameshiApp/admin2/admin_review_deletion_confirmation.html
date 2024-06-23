@@ -8,26 +8,35 @@
 {% block content %}
 {% load static %}
 
+<div class="container">
+    <!-- パンくずリスト -->
+    <nav>
+        <ol class="admin_breadcrumb">
+        <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+        <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
+        <li><a href="{% url 'admin_restaurant_detail' pk=review.restaurant.pk %}">店舗情報 詳細</a></li>
+        <li><a href="{% url 'admin_review_confirmation' pk=review.restaurant.pk %}">レビュー 一覧</a></li>
+        <li>投稿削除</li>
+        </ol>
+    </nav>
 
-<!-- パンくずリスト -->
-<nav>
-	<ol class="admin_breadcrumb">
-    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
-    <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
-    <li><a href="{% url 'admin_restaurant_detail' pk=review.restaurant.pk %}">店舗情報 詳細</a></li>
-    <li><a href="{% url 'admin_review_confirmation' pk=review.restaurant.pk %}">レビュー 一覧</a></li>
-    <li>投稿削除</li>
-	</ol>
-</nav>
-
-<form method="post">
-    {% csrf_token %}
-    以下のレビュー投稿を削除してもよろしいですか？<br>
-    投稿者：{{ review.user_name }}<br>
-    評価：{{ review.score }}<br>
-    コメント：{{ review.comment }}<br>
-    投稿日時：{{ review.created_at }}<br>
-    <a href="{% url 'admin_review_confirmation' pk=review.restaurant.pk %}">戻る</a>
-    <input type="submit" class="btn btn-danger" value="削除">
-</form>
+    <h3 class="text-center">以下のレビュー投稿を削除してもよろしいですか？</h3>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <ul>
+                <li>投稿者：{{ review.user_name }}</li>
+                <li>評価：{{ review.score }}</li>
+                <li>コメント：{{ review.comment }}</li>
+                <li>投稿日時：{{ review.created_at }}</li>
+            </ul>
+            <div class="text-center">
+                <input type="submit" class="btn btn-danger" value="削除">
+            </div>
+        </form>
+    </div>
+    <div class="text-center">
+        <a class="btn btn-outline-secondary btn_margin" href="{% url 'admin_review_confirmation' pk=review.restaurant.pk %}">戻る</a>
+    </div>
+</div>
 {% endblock %}

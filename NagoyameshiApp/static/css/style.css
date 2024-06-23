@@ -524,6 +524,22 @@ h2 {
   padding: 5px;
 }
 
+.admin_table_list_bookings {
+  width: 90%;
+  margin: 20px;
+}
+
+.admin_table_list_bookings tr {
+  border-bottom: solid 1px gray;
+}
+
+.admin_table_list_bookings th {
+  padding: 5px;
+}
+
+.admin_table_list_bookings td {
+  padding: 5px;
+}
 
 .admin_header {
   width: 100%;
@@ -740,6 +756,10 @@ h2 {
   word-break: break-all;  /* 長い文字列を折り返す */
 }
 
+.admin_table_list th.comment, .admin_table_list td.comment {
+  width: 50%;
+  word-break: break-all;  /* 長い文字列を折り返す */
+}
 
 /* 残りの列は適宜調整 */
 .admin_table_list th, .admin_table_list td {
