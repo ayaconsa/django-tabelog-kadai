@@ -8,50 +8,34 @@
 {% block content %}
 {% load static %}
 
-<h1>カテゴリ一覧</h1>
+<div class="container">
+	<h1>カテゴリ一覧</h1>
 
-<!-- パンくずリスト -->
-<nav>
-	<ol class="admin_breadcrumb">
-    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
-    <li>カテゴリ一覧</li>
-	</ol>
-</nav>
+	<!-- パンくずリスト -->
+	<nav>
+		<ol class="admin_breadcrumb">
+		<li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+		<li>カテゴリ一覧</li>
+		</ol>
+	</nav>
 
-<!-- 新規登録ボタン -->
-<div class="admin_btn_parent">
-	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_category_registration'%}">新規カテゴリ登録</a>
+	<!-- 新規登録ボタン -->
+	<div>
+		<a class="btn btn-outline-success" href="{% url 'admin_category_registration'%}">新規カテゴリ登録</a>
 	</div>
+
+	<!-- カテゴリリスト -->
+	<table class="admin_table_category_list">
+		{% for category in object_list %}
+		<tr>
+			<td>{{ category.name }}</td>
+			<td>
+				<!-- category_delete未設定 -->
+				<button class="btn btn-outline-secondary" onclick="location.href='{% url 'admin_category_delete' pk=category.pk %}'" class="admin_link">削除</button>
+		</td>
+		</tr>
+		{% endfor %}
+
 </div>
-
-
-<!-- カテゴリリスト -->
-<table class="admin_table_category_list">
-	{% for category in object_list %}
-	<tr>
-		<td>{{ category.name }}</td>
-		<td>
-			<!-- category_delete未設定 -->
-			<button onclick="location.href='{% url 'admin_category_delete' pk=category.pk %}'" class="admin_link">削除</button>
-    </td>
-	</tr>
-	{% endfor %}
-
-
-<!-- 
-	<tr>
-		<form method="post" enctype="multipart/form-data">
-			<td>
-				{% csrf_token %}
-				{{ form.as_p }}
-			</td>
-			<td>
-				<input type="submit" value="追加" class="admin_btn">
-			</td>
-		</form>
-	</tr>
--->
-
-
 {% endblock content %}
+

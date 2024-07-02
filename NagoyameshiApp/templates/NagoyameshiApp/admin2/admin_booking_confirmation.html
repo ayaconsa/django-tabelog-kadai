@@ -8,6 +8,7 @@
 {% block content %}
 {% load static %}
 
+<div class="container">
 <h1>予約確認：{{ restaurant_name }}</h1>
 
 <!-- パンくずリスト -->
@@ -19,6 +20,7 @@
     <li>予約確認</li>
 	</ol>
 </nav>
+</div>
 
 <!-- 店舗リスト -->
 {% if bookings %}

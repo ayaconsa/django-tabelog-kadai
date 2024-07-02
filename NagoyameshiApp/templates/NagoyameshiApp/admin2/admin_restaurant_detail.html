@@ -8,6 +8,7 @@
 {% block content %}
 {% load static %}
 
+<div class="container">
 <h1>店舗情報 詳細</h1>
 
 <!-- パンくずリスト -->
@@ -20,16 +21,10 @@
 </nav>
 
 
-<div class="admin_btn_parent">
-	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_restaurant_edit' pk=restaurant.pk %}">店舗情報編集</a>
-	</div>
-	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_booking_confirmation' pk=restaurant.pk %}">予約確認</a>
-	</div>
-	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_review_confirmation' pk=restaurant.pk %}">レビュー確認</a>
-	</div>
+<div>
+	<a class="btn btn-outline-success" href="{% url 'admin_restaurant_edit' pk=restaurant.pk %}">店舗情報編集</a>
+	<a class="btn btn-outline-success" href="{% url 'admin_booking_confirmation' pk=restaurant.pk %}">予約確認</a>
+	<a class="btn btn-outline-success" href="{% url 'admin_review_confirmation' pk=restaurant.pk %}">レビュー確認</a>
 </div>
 
 <!-- メモ：Restrantオブジェクトから自動的にrestrantという名前で渡される -->
@@ -100,12 +95,10 @@
 	</tbody>
 </table>
 
-<div class="admin_btn_parent">
-	<div class="admin_btn">
-		<a class="admin_link" href="{% url 'admin_restaurant_delete' pk=restaurant.pk %}">！削除！</a>
-	</div>
+<div>
+	<a class="btn btn-outline-danger btn_margin_top" href="{% url 'admin_restaurant_delete' pk=restaurant.pk %}">！削除！</a>
 </div>
 
-
+</div>
 
 {% endblock content %}

@@ -857,3 +857,19 @@ h2 {
   margin: 20px;
 }
 
+.register_form label {
+  min-width: 130px;
+}
+
+.booking_form label {
+  min-width: 70px;
+}
+
+.restaurant_form label {
+  min-width: 110px;
+}
+
+.btn_margin_top {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

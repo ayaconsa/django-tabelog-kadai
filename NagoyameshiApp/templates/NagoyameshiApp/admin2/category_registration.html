@@ -8,6 +8,7 @@
 {% block content %}
 {% load static %}
 
+<div class="container">
 <h1>カテゴリ一覧</h1>
 
 <!-- パンくずリスト -->
@@ -18,13 +19,16 @@
     <li>新規カテゴリ登録</li>
 	</ol>
 </nav>
- 
- <form method="post" enctype="multipart/form-data" class="input-form">
-     {% csrf_token %}
-     {{ form.as_p }}
+<form method="post" enctype="multipart/form-data" class="input-form">
+    {% csrf_token %}
+    {{ form.as_p }}
 
-     <br>
-     <a href="{% url 'admin_category_list' %}">戻る</a>
-     <input type="submit" class="btn btn-primary" value="登録">
- </form>
- {% endblock %}
+<div>
+    <input type="submit" class="btn btn-outline-success" value="登録">
+</div>
+<div>
+    <a class="btn btn-outline-secondary btn_margin_top" href="{% url 'admin_category_list' %}">戻る</a>
+</div>
+</form>
+{% endblock %}
+</div>

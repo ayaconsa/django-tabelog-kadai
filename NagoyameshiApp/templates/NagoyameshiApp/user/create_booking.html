@@ -9,20 +9,20 @@
 {% load static %}
 
 <div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'restaurant_detail' restaurant.pk %}">店舗詳細</a></li>
+      <li class="breadcrumb-item active" aria-current="page">予約</li>
+    </ol>
+  </nav>
   {% if user.is_authenticated and user.subscription %}
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'top' %}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'restaurant_list' %}">店舗一覧</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'restaurant_detail' restaurant.pk %}">店舗詳細</a></li>
-        <li class="breadcrumb-item active" aria-current="page">予約</li>
-      </ol>
-    </nav>
 
     <h3 class="text-center">来店予約：{{ restaurant.name }}</h3>
 
     <div class="form-container">
-      <form method="post" action="{% url 'create_booking' restaurant.pk %}">
+      <form class="booking_form" method="post" action="{% url 'create_booking' restaurant.pk %}">
         {% csrf_token %}
         {{ booking_form.as_p }}
         <div class="text-center">

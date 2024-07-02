@@ -20,7 +20,7 @@
   <h3 class="text-center">新規会員登録</h3>
 
   <div class="form-container">
-    <form method="post" enctype="multipart/form-data">
+    <form class="register_form" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
       <div class="account_create_ul">

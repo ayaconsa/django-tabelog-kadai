@@ -9,24 +9,28 @@
 {% load static %}
 
 
-<h1>店舗情報 新規登録</h1>
+<div class="container">
+  <h1>店舗情報 新規登録</h1>
+  <!-- パンくずリスト -->
+  <nav>
+    <ol class="admin_breadcrumb">
+      <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+      <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
+      <li>店舗情報 新規登録</li>
+    </ol>
+  </nav>
 
-<!-- パンくずリスト -->
-<nav>
-  <ol class="admin_breadcrumb">
-    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
-    <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
-    <li>店舗情報 新規登録</li>
-  </ol>
-</nav>
+  <form class="restaurant_form" method="post" enctype="multipart/form-data" class="restaurant-regist">
+    {% csrf_token %}
+    {{ form.as_p }}
 
-<form method="post" enctype="multipart/form-data" class="restaurant-regist">
-	{% csrf_token %}
-	{{ form.as_p }}
+    <div>
+      <input type="submit" value="登録" class="btn btn-outline-success">
+    </div>
+    <div>
+      <a class="btn btn-outline-secondary btn_margin_top" href="{% url 'admin_restaurant_list'%}">戻る</a>
+    </div>
 
-	<a href="{% url 'admin_restaurant_list'%}">戻る</a>
-	<input type="submit" value="登録" class="admin_btn">
-
-</form>
-	
+  </form>
+</div>
 {% endblock content %}

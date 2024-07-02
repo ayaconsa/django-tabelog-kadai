@@ -1,7 +1,6 @@
 from django.views.generic import DeleteView
 from NagoyameshiApp.models.review import Review
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import redirect
 
 # 管理者：レビュー削除確認
@@ -21,3 +20,8 @@ class ReviewDeletionConfirmationView(DeleteView):
         if not self.request.user.is_authenticated:
             return redirect('login')  # ログインしていない場合、ログインページにリダイレクト
         return redirect('top')  # スタッフでない場合、トップページにリダイレクト
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['review_user_name'] = self.object.user.name
+        return context

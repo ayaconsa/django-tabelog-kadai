@@ -8,25 +8,30 @@
 {% block content %}
 {% load static %}
 
+<div class="container">
+  <h1>店舗情報 編集</h1>
 
-<h1>店舗情報 編集</h1>
+  <!-- パンくずリスト -->
+  <nav>
+    <ol class="admin_breadcrumb">
+      <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
+      <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
+      <li><a href="{% url 'admin_restaurant_detail' pk=restaurant.pk %}">店舗情報 詳細</a></li>
+      <li>店舗情報 編集</li>
+    </ol>
+  </nav>
 
-<!-- パンくずリスト -->
-<nav>
-  <ol class="admin_breadcrumb">
-    <li><a href="{% url 'admin_top' %}">管理画面トップ</a></li>
-    <li><a href="{% url 'admin_restaurant_list' %}">登録店舗一覧</a></li>
-    <li><a href="{% url 'admin_restaurant_detail' pk=restaurant.pk %}">店舗情報 詳細</a></li>
-    <li>店舗情報 編集</li>
-  </ol>
-</nav>
+  <form class="restaurant_form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center">
+      <input class="btn btn-outline-success" type="submit" value="登録" class="admin_btn">
+    </div>
+    <div class="text-center">
+      <a class="btn btn-outline-secondary btn_margin" href="{% url 'admin_restaurant_detail' pk=restaurant.pk %}">戻る</a>
+    </div>
+    </form>
 
-<form method="post" enctype="multipart/form-data">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<a href="{% url 'admin_restaurant_detail' pk=restaurant.pk %}">戻る</a>
-	<input type="submit" value="登録" class="admin_btn">
-</form>
-	
+</div>
 	
 {% endblock content %}

@@ -8,6 +8,7 @@
 {% block content %}
 {% load static %}
 
+<div class="container">
 <h1>会員一覧</h1>
 
 <!-- パンくずリスト -->
@@ -20,12 +21,16 @@
 
 <!-- 並び替えオプション -->
 <form id="sort-form" method="GET" action="{% url 'admin_user_list' %}">
-    <select id="sort-select" name="sort" class="form-control sort-dropdown" onchange="this.form.submit()">
-        {% for value, label in sort_options %}
-        <option value="{{ value }}" {% if value == selected_sort %}selected{% endif %}>{{ label }}</option>
-        {% endfor %}
-    </select>
+    <div class="select-wrapper">
+        <select id="sort-select" name="sort" class="form-control sort-dropdown" onchange="this.form.submit()">
+            {% for value, label in sort_options %}
+            <option value="{{ value }}" {% if value == selected_sort %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+        <span class="select-arrow">▽</span>
+    </div>
 </form>
+</div>
 
 <!-- 会員リスト -->
 <table class="admin_table_list">
@@ -60,7 +65,6 @@
 	</tr>
     {% endfor %}
 </table>
-
 
 
 {% endblock content %}

@@ -62,7 +62,6 @@ from NagoyameshiApp.views.admin2.admin2_category_delete import CategoryDeleteVie
 from NagoyameshiApp.views.admin2.admin2_category_registration import CategoryRegistrationView
 from NagoyameshiApp.views.admin2.admin2_user_list import UserListView
 from NagoyameshiApp.views.admin2.admin2_sales import SalesView
-from NagoyameshiApp.views.admin2.admin2_user_number import UserNumberView
 from NagoyameshiApp.views.admin2.admin2_restaurant_list import AdminRestaurantListView
 from NagoyameshiApp.views.admin2.admin2_restaurant_detail import AdminRestaurantDetailView
 from NagoyameshiApp.views.admin2.admin2_restaurant_edit import AdminRestaurantEditView
@@ -136,7 +135,6 @@ urlpatterns = [
     path('admin2/category_registration/', CategoryRegistrationView.as_view(), name="admin_category_registration"),
     path('admin2/user_list/', UserListView.as_view(), name="admin_user_list"),
     path('admin2/sales/', SalesView.as_view(), name="admin_sales"),
-    path('admin2/user_number/', UserNumberView.as_view(), name="admin_user_number"),
     path('admin2/restaurant_list/', AdminRestaurantListView.as_view(), name="admin_restaurant_list"),
     path('admin2/restaurant_detail/<int:pk>', AdminRestaurantDetailView.as_view(), name="admin_restaurant_detail"),
     path('admin2/restaurant_edit/<int:pk>', AdminRestaurantEditView.as_view(), name="admin_restaurant_edit"),

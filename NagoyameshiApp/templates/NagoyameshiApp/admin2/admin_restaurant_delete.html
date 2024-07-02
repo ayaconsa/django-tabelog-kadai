@@ -8,6 +8,7 @@
 {% block content %}
 {% load static %}
 
+<div class="container">
 <h1>店舗情報 削除</h1>
 
 <!-- パンくずリスト -->
@@ -21,15 +22,13 @@
 
 <form method="post">
 	{% csrf_token %}
-	店舗情報を本当に削除しますか？<br>
-	店舗名：{{ restaurant.name }}<br>
+	<b>{{ restaurant.name }}</b> の店舗情報を本当に削除しますか？<br>
 	<br>
-	<input type="submit" value="削除">
-	<br>
-	<br>
-	<br>
-	<a href="{% url 'admin_restaurant_list' %}">戻る</a><br>
+	<div>
+		<input class="btn btn-outline-danger" type="submit" value="削除">
+	</div>
+	<a class="btn btn-outline-secondary btn_margin_top" href="{% url 'admin_restaurant_list' %}">戻る</a><br>
 </form>
 
-
+</div>
 {% endblock content %}

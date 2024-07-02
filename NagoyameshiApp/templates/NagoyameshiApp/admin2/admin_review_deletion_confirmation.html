@@ -25,7 +25,7 @@
         <form method="post">
             {% csrf_token %}
             <ul>
-                <li>投稿者：{{ review.user_name }}</li>
+                <li>投稿者：{{ review_user_name }}</li>
                 <li>評価：{{ review.score }}</li>
                 <li>コメント：{{ review.comment }}</li>
                 <li>投稿日時：{{ review.created_at }}</li>

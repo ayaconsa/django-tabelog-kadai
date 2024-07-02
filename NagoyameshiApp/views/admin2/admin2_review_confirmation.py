@@ -1,6 +1,5 @@
 from django.views.generic import TemplateView
 from NagoyameshiApp.models.restaurant import Restaurant
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import redirect
 
 # 管理者：レビュー一覧
