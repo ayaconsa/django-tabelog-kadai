@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from NagoyameshiApp.models.restaurant import Restaurant
 from django.core.paginator import Paginator
-from django.db.models import Q, Count
+from django.db.models import Q, Count, Avg
 from django.urls import reverse
 from urllib.parse import urlencode
 
@@ -45,6 +45,8 @@ class RestaurantListView(TemplateView):
             restaurants = restaurants.order_by('-price_min')
         elif sort_option == '予約数順':
             restaurants = restaurants.annotate(booking_count=Count('booking')).order_by('-booking_count')
+        elif sort_option == '評価の高い順':
+            restaurants = restaurants.annotate(avg_score=Avg('review__score')).order_by('-avg_score')
         else: # デフォルトは掲載日が新しい順
             restaurants = restaurants.order_by('-created_at')
 
@@ -72,6 +74,7 @@ class RestaurantListView(TemplateView):
             ('価格が安い順', '価格が安い順'),
             ('価格が高い順', '価格が高い順'),
             ('予約数順', '予約数順'),
+            ('評価の高い順', '評価の高い順'),
         ]
         context['sort_option'] = sort_option
         return context

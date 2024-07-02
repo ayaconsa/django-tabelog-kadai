@@ -111,6 +111,7 @@
                         {{ restaurant.catch_copy }}
                       </p>
                       <p>&#9733; {{ restaurant.get_average.0 }}（{{ restaurant.get_average.1 }}件）</p>
+                      <p>{{ restaurant.price_min }}円〜{{ restaurant.price_max }}円</p>
                     </div>
                   </div>
                 </a>
@@ -155,6 +156,8 @@
                         {{ restaurant.catch_copy }}
                       </p>
                       <p>&#9733; {{ restaurant.get_average.0 }}（{{ restaurant.get_average.1 }}件）</p>
+                      <p>{{ restaurant.price_min }}円〜{{ restaurant.price_max }}円</p>
+                      <p>{{ restaurant.created_at|date:"Y年m月d日" }} 掲載</p>
                     </div>
                   </div>
                 </a>

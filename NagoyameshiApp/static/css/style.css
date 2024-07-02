@@ -873,3 +873,21 @@ h2 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.card-link {
+  text-decoration: none;
+  color: black;
+}
+.card-link:hover {
+  text-decoration: none;
+  color: black;
+}
+.card-body {
+  padding: 10px;
+}
+.card-title {
+  margin-bottom: 5px;
+}
+.card-text {
+  margin-bottom: 5px;
+}

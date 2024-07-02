@@ -100,6 +100,7 @@
                 <option value="価格が安い順" {% if sort_option == "価格が安い順" %}selected{% endif %}>価格が安い順　</option>
                 <option value="価格が高い順" {% if sort_option == "価格が高い順" %}selected{% endif %}>価格が高い順　</option>
                 <option value="予約数順" {% if sort_option == "予約数順" %}selected{% endif %}>予約数順　</option>
+                <option value="評価の高い順" {% if sort_option == "評価の高い順" %}selected{% endif %}>評価の高い順　</option>
               </select>
               <span class="select-arrow">▽</span>
             </div>
@@ -110,7 +111,7 @@
       <!-- 店舗カード -->
       <div class="mb-3">
         {% for restaurant in restaurants %}
-        <a href="{% url 'restaurant_detail' restaurant.pk %}">
+        <a href="{% url 'restaurant_detail' restaurant.pk %}" class="card-link">
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
@@ -122,6 +123,8 @@
                 <p class="card-text">{{ restaurant.catch_copy }}</p>
                 <p class="card-text"><small class="text-body-secondary">{{ restaurant.category }}</small></p>
                 <p class="card-text"><small class="text-body-secondary">&#9733; {{ restaurant.get_average.0 }}（{{ restaurant.get_average.1 }}件）</small></p>
+                <p class="card-text"><small class="text-body-secondary">{{ restaurant.price_min }}円〜{{ restaurant.price_max }}円</small></p>
+                <p class="card-text"><small class="text-body-secondary">{{ restaurant.created_at|date:"Y年m月d日" }} 掲載</small></p>
               </div>
             </div>
           </div>
