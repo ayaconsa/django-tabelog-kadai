@@ -40,7 +40,7 @@ class Command(BaseCommand):
             name = fake.name()
             furigana = KanaFromKanji(name)
             email = fake.email()
-            birthday = fake.date_of_birth()
+            birthday = fake.date_of_birth(minimum_age=18, maximum_age=60)
             zipcode = fake.zipcode()
             address = fake.address()
             tel = fake.phone_number()
