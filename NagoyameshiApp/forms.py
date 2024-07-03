@@ -4,9 +4,11 @@ from NagoyameshiApp.models.custom_user import CustomUser
 from NagoyameshiApp.models.booking import Booking
 from NagoyameshiApp.models.review import Review
 from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from datetime import date, timedelta
+from django.utils.safestring import mark_safe
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
@@ -58,9 +60,19 @@ class CustomUserForm(forms.ModelForm):
         self.fields['address'].widget.attrs = {'placeholder': '東京都千代田区'}
         self.fields['tel'].widget.attrs = {'placeholder': '09012345678'}
         self.fields['works'].widget.attrs = {'placeholder': 'エンジニア'}
-        
+
+        # 必須フィールドに「必須」追加
+        for field_name, field in self.fields.items():
+            if field.required:
+                field.label = mark_safe(f'{field.label} <span class="required">必須</span>')
+
+
 class EmailChangeForm(forms.Form):
     new_email = forms.EmailField(label='新しいメールアドレス', required=True, widget=forms.EmailInput(attrs={'placeholder': 'taro.samurai@example.com'}))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
 
 
 class BookingForm(forms.ModelForm):
@@ -82,6 +94,16 @@ class BookingForm(forms.ModelForm):
             raise forms.ValidationError("予約日は翌日から3ヶ月以内の日付を選択してください。")
         return booking_date
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
+        # "必須" マークを追加
+        for field_name, field in self.fields.items():
+            if field.required:
+                field.label = mark_safe(f'{field.label} <span class="required">必須</span>')
+
+
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
@@ -90,11 +112,26 @@ class ReviewForm(forms.ModelForm):
             'score': forms.RadioSelect,
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
+        # "必須" マークを追加
+        for field_name, field in self.fields.items():
+            if field.required:
+                field.label = mark_safe(f'{field.label} <span class="required">必須</span>')
+
+
 class CustomPasswordResetForm(PasswordResetForm):
     def save(self, *args, **kwargs):
         kwargs['subject_template_name'] = 'NagoyameshiApp/user/password_reset_subject.txt'
         return super().save(*args, **kwargs)
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
+
 class AccountInfoEditForm(forms.ModelForm):
     class Meta:
         model = CustomUser
@@ -102,3 +139,13 @@ class AccountInfoEditForm(forms.ModelForm):
         widgets = {
             'birthday': forms.DateInput(attrs={'type': 'date'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.label_suffix = ""

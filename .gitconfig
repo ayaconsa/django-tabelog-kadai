@@ -7,4 +7,4 @@
 [init]
 	defaultBranch = main
 [credential]
-	helper = "!f() { /root/.vscode-server/bin/dc96b837cf6bb4af9cd736aa3af08cf8279f7685/node /tmp/vscode-remote-containers-9bf6b56b-704b-432a-a8a1-b9569e8bffc4.js git-credential-helper $*; }; f"
+	helper = "!f() { /root/.vscode-server/bin/5437499feb04f7a586f677b155b039bc2b3669eb/node /tmp/vscode-remote-containers-ecf30230-50db-4435-8025-91a44640f51d.js git-credential-helper $*; }; f"

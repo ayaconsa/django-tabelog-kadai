@@ -871,11 +871,15 @@ h2 {
 }
 
 .register_form label {
-  min-width: 130px;
+  min-width: 160px;
 }
 
 .booking_form label {
-  min-width: 70px;
+  min-width: 100px;
+}
+
+.password_change_form label {
+  min-width: 200px;
 }
 
 .restaurant_form label {
@@ -903,4 +907,20 @@ h2 {
 }
 .card-text {
   margin-bottom: 5px;
+}
+
+
+/* .required {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: gray;
+  color: white;
+  border-radius: 3px;
+  font-size: 0.7em;
+  margin-left: 5px;
+} */
+
+.required {
+  color: #EA906C;
+  font-size: 0.7em;
 }
