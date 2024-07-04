@@ -16,6 +16,8 @@ class Booking(models.Model):
         (datetime.time(18, 0), '18:00'), (datetime.time(18, 30), '18:30'),
         (datetime.time(19, 0), '19:00'), (datetime.time(19, 30), '19:30'),
         (datetime.time(20, 0), '20:00'), (datetime.time(20, 30), '20:30'),
+        (datetime.time(21, 0), '21:00'), (datetime.time(21, 30), '21:30'),
+        (datetime.time(22, 0), '22:00'), (datetime.time(22, 30), '22:30'),
     ]
     
     TIME_Sorted = sorted(TIME)

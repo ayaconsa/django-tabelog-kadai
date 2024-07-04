@@ -93,6 +93,21 @@ class BookingForm(forms.ModelForm):
         if booking_date < min_date or booking_date > max_date:
             raise forms.ValidationError("予約日は翌日から3ヶ月以内の日付を選択してください。")
         return booking_date
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        booking_date = cleaned_data.get('date')
+        booking_time = cleaned_data.get('time')
+        restaurant = self.instance.restaurant
+
+        if restaurant:
+            open_time = restaurant.open_time
+            close_time = restaurant.close_time
+
+            if not (open_time <= booking_time <= close_time):
+                raise forms.ValidationError(f"予約時間は営業時間内（{open_time}から{close_time}まで）に設定してください。")
+
+        return cleaned_data
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

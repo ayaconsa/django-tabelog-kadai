@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, redirect
 from NagoyameshiApp.models.restaurant import Restaurant
 from NagoyameshiApp.forms import BookingForm
 from django.urls import reverse
+from NagoyameshiApp.models.booking import Booking
 import logging
 import json
 
@@ -24,6 +25,9 @@ class CreateBookingView(TemplateView):
         context['restaurant'] = restaurant
 
         context['close_day'] = json.dumps([self.day_to_number(day) for day in close_days])
+        context['open_time'] = restaurant.open_time
+        context['close_time'] = restaurant.close_time
+
 
         if self.request.user.is_authenticated and self.request.user.subscription:
             context['booking_form'] = BookingForm()
@@ -36,7 +40,7 @@ class CreateBookingView(TemplateView):
 
 
         if request.user.is_authenticated and request.user.subscription:
-            form = BookingForm(request.POST)
+            form = BookingForm(request.POST, instance=Booking(restaurant=restaurant))
             if form.is_valid():
                 booking = form.save(commit=False)
                 booking.user = request.user

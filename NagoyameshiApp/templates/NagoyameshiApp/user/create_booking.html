@@ -43,6 +43,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<!-- 選択できる日を制限するスクリプト（その日から3ヶ月以内かつ定休日以外） -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var dateInput = document.querySelector('input[type="date"]');
@@ -111,6 +112,28 @@
           }
         ]
       });
+    }
+  });
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var openTime = "{{ open_time }}";  // レストランの開店時間を取得
+    var closeTime = "{{ close_time }}";  // レストランの閉店時間を取得
+    
+    var timeSelect = document.querySelector('select[name="time"]'); // 時間選択フィールドを取得
+    
+    if (timeSelect) {
+      for (var i = 0; i < timeSelect.options.length; i++) {
+        var option = timeSelect.options[i];
+        var time = option.value;  // 各オプションの値（時間）を取得
+        
+        // 開店時間より前、または閉店時間より後のオプションを無効化
+        if (time < openTime || time > closeTime) {
+          option.disabled = true;
+        }
+      }
     }
   });
 </script>
